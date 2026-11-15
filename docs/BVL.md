@@ -47,6 +47,11 @@ What the data lack:
   issuer's RUC. [`issuers.py`](../packages/bvl/bvl/issuers.py) matches the two
   by normalised name, and `OVERRIDES` there lists renamed issuers and names the
   rule cannot match.
+- **One index family across time.** The S&P/BVL indices (Peru General, Lima 25,
+  the sector indices and others) end on 2025-08-29. From 2025-09-01 the API
+  carries only the MSCI NUAM indices, with Peru General, Peru Select and Peru
+  Select Capped 15% under new codes, so a series past August 2025 has to be
+  joined across the two families.
 
 ## The panel
 
