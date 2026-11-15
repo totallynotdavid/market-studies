@@ -161,15 +161,24 @@ class SmvClient:
 
 
 def _write_atomic(path: Path, content: bytes) -> None:
+    # Without the fsyncs, a power loss can persist the rename before the data
+    # and leave an empty cache file that every later run reads as a hit.
     path.parent.mkdir(parents=True, exist_ok=True)
     descriptor, partial = tempfile.mkstemp(dir=path.parent, suffix=".partial")
     try:
         with os.fdopen(descriptor, "wb") as handle:
             handle.write(content)
+            handle.flush()
+            os.fsync(handle.fileno())
         os.replace(partial, path)
     except BaseException:
         os.unlink(partial)
         raise
+    directory = os.open(path.parent, os.O_RDONLY)
+    try:
+        os.fsync(directory)
+    finally:
+        os.close(directory)
 
 
 def quotes(client: SmvClient, start: date, end: date, today: date) -> list[Record]:
