@@ -1,14 +1,17 @@
 # bvl
 
 `bvl` fills one SQLite file with Lima Stock Exchange (BVL) data from the SMV
-open data API and runs the studies in [`studies/`](../studies) on it.
+open data API and the central bank's (BCRP) statistics API, and runs the
+studies in [`studies/`](../studies) on it.
 
 ```bash
 uv run bvl fetch quotes      # BVL daily quotes, 1996 to today
 uv run bvl fetch events      # SMV material events, 2010 to today
 uv run bvl fetch indices     # BVL index levels, one request per market day
+uv run bvl fetch bcrp        # BCRP sol per dollar and copper, 1997 to today
 uv run bvl study liquidity   # writes studies/bvl-liquidity
 uv run bvl study disclosure  # writes studies/bvl-disclosure
+uv run bvl study politics    # writes studies/bvl-politics
 ```
 
 `--db` sets the database (default `data/bvl.sqlite`) and `--cache` the response
@@ -53,6 +56,21 @@ What the data lack:
   Select Capped 15% under new codes, so a series past August 2025 has to be
   joined across the two families.
 
+The BCRP publishes its series at
+`https://estadisticas.bcrp.gob.pe/estadisticas/series/api/`, with no key. One
+request returns a whole daily series, so a fill sends one request per series
+and caches nothing. `bcrp.SERIES` lists the codes the studies read, and they
+land in the `bcrp_series` table as (date, code, value):
+
+| Code        | Series                                              |
+| ----------- | --------------------------------------------------- |
+| `PD04638PD` | Interbank exchange rate, soles per US dollar, sell  |
+| `PD04701XD` | Copper, London, US cents per pound                  |
+
+A day the BCRP has not yet published reads `n.d.` and is skipped. The BCRP
+keeps its own holidays, so a study carries each value forward onto the BVL
+calendar.
+
 ## The panel
 
 [`panel.py`](../packages/bvl/bvl/panel.py) turns quotes into returns. A return
@@ -71,6 +89,7 @@ between bid and ask, which gives this index a small upward drift; over the 2 to
 | Module          | Responsible for                                                |
 | --------------- | -------------------------------------------------------------- |
 | `smv.py`        | The API client: windows, envelope codes, retries and the cache |
+| `bcrp.py`       | The BCRP API client and its period names                       |
 | `records.py`    | API rows to table rows                                         |
 | `store.py`      | The SQLite schema, writes and reads                            |
 | `fetch.py`      | Filling each table one query at a time                         |
@@ -79,10 +98,12 @@ between bid and ask, which gives this index a small upward drift; over the 2 to
 | `events.py`     | Event rows to filings with topics                              |
 | `liquidity.py`  | Coverage and Amihud illiquidity                                |
 | `disclosure.py` | The event-study grid, measures, placebos and bootstrap         |
+| `politics.py`   | The chained Peru General index and the political event table   |
 | `figures.py`    | Line and bar charts                                            |
 | `studies.py`    | Each study end to end: numbers.json and figures                |
 | `cli.py`        | The `bvl` command                                              |
 
-Only `smv.py` touches the network and only `store.py` speaks SQL. A study writes
+Only `smv.py` and `bcrp.py` touch the network, and only `store.py` opens the
+database. A study writes
 `numbers.json` and its figures; its README cites them and is checked by hand
 after a rerun.

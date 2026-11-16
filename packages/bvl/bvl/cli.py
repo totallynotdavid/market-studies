@@ -1,4 +1,4 @@
-"""The `bvl` command: fill the panel from the SMV API and run the studies."""
+"""The `bvl` command: fill the panel from the SMV and BCRP APIs and run the studies."""
 
 import argparse
 import logging
@@ -9,7 +9,7 @@ from datetime import date
 from pathlib import Path
 from typing import TYPE_CHECKING
 
-from bvl import fetch, smv, store, studies
+from bvl import bcrp, fetch, smv, store, studies
 
 
 if TYPE_CHECKING:
@@ -17,7 +17,11 @@ if TYPE_CHECKING:
 
 DEFAULT_DB = Path("data/bvl.sqlite")
 DEFAULT_CACHE = Path.home() / ".cache" / "bvl" / "smv"
-STUDIES = {"liquidity": studies.run_liquidity, "disclosure": studies.run_disclosure}
+STUDIES = {
+    "liquidity": studies.run_liquidity,
+    "disclosure": studies.run_disclosure,
+    "politics": studies.run_politics,
+}
 # The first day each API query answers.
 QUOTES_START = date(1996, 1, 1)
 EVENTS_START = date(2010, 1, 1)
@@ -32,8 +36,8 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("-v", "--verbose", action="store_true")
     commands = parser.add_subparsers(dest="command", required=True)
 
-    fill = commands.add_parser("fetch", help="fill the panel from the SMV API")
-    fill.add_argument("dataset", choices=["quotes", "events", "indices"])
+    fill = commands.add_parser("fetch", help="fill the panel from the SMV or BCRP API")
+    fill.add_argument("dataset", choices=["quotes", "events", "indices", "bcrp"])
     fill.add_argument("--start", type=date.fromisoformat)
     fill.add_argument("--end", type=date.fromisoformat, default=date.today())
 
@@ -58,6 +62,9 @@ def main(argv: Sequence[str] | None = None) -> None:
 
 
 def _fetch(args: argparse.Namespace) -> None:
+    if args.dataset == "bcrp":
+        _fetch_bcrp(args)
+        return
     today = date.today()
     client = smv.SmvClient(args.cache)
     with closing(store.connect(args.db)) as connection:
@@ -72,4 +79,11 @@ def _fetch(args: argparse.Namespace) -> None:
             if args.start is not None:
                 days = [d for d in days if d >= args.start]
             fetch.fill_index_levels(client, connection, days, today)
+    client.close()
+
+
+def _fetch_bcrp(args: argparse.Namespace) -> None:
+    client = bcrp.BcrpClient()
+    with closing(store.connect(args.db)) as connection:
+        fetch.fill_bcrp(client, connection, args.start or QUOTES_START, args.end)
     client.close()

@@ -1,10 +1,10 @@
-"""Fills the store from the SMV API, one query window at a time."""
+"""Fills the store from the SMV API, one query window at a time, and from the BCRP."""
 
 import logging
 
 from typing import TYPE_CHECKING
 
-from bvl import records, smv, store
+from bvl import bcrp, records, smv, store
 
 
 if TYPE_CHECKING:
@@ -58,6 +58,22 @@ def fill_index_levels(
         rows = [records.index_level(r) for r in smv.index_levels(client, day, today)]
         total += store.write(connection, "index_levels", rows)
         log.info("index levels %s: %d rows", day, len(rows))
+    return total
+
+
+def fill_bcrp(
+    client: bcrp.BcrpClient,
+    connection: sqlite3.Connection,
+    start: date,
+    end: date,
+) -> int:
+    """Fetch every series in `bcrp.SERIES` for `start..end`, one request each."""
+    total = 0
+    for code in bcrp.SERIES:
+        values = client.series(code, start, end)
+        rows = [{"date": d.isoformat(), "code": code, "value": v} for d, v in values]
+        total += store.write(connection, "bcrp_series", rows)
+        log.info("bcrp %s %s..%s: %d rows", code, start, end, len(rows))
     return total
 
 
