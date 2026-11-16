@@ -157,7 +157,7 @@ push the first actual maturity later.
 
 - [The manual](docs/README.md) lists every document: commands, outputs, model,
   fundamentals, backtest, architecture and deploy.
-- [Live page](https://equity-analysis.vercel.app) shows the demo universe scored
+- [Live page](https://market-studies.vercel.app) shows the demo universe scored
   on Tiingo prices and EDGAR filings, and `/api/scores` returns them as JSON.
   [Deploy](docs/DEPLOY.md) explains how.
 - [Contributing](.github/CONTRIBUTING.md) covers setup, checks and tests.
