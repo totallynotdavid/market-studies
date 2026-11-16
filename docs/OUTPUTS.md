@@ -119,17 +119,26 @@ web dev server.
 
 ## Web page
 
-`web/` is an [Astro](https://astro.build/) site with four kinds of page:
+`web/` is an [Astro](https://astro.build/) site with these pages:
 
-| Page          | Shows                                                   |
-| ------------- | ------------------------------------------------------- |
-| `/`           | [The screener](#the-screener)                           |
-| `/t/<TICKER>` | One page per ticker report                              |
-| `/evidence`   | The proof page, rendered from `evidence.json`           |
-| `/method`     | Every metric with its definition, and each data licence |
+| Page            | Shows                                                     |
+| --------------- | --------------------------------------------------------- |
+| `/`             | [The screener](#the-screener)                             |
+| `/t/<TICKER>`   | One page per ticker report                                |
+| `/evidence`     | The proof page, rendered from `evidence.json`             |
+| `/method`       | Every metric with its definition, and each data licence   |
+| `/peru`         | The list of BVL studies, one per folder in `studies/`     |
+| `/peru/<study>` | The study's `README.md` with its figures, as it is in git |
 
 The build renders the files into the pages, so run `eq run` first and build
 again after each run. The pages do not call the API.
+
+The Peru pages read the committed `studies/*/README.md` through an Astro
+content collection ([`content.config.ts`](../web/src/content.config.ts)). A
+study's own figures are optimised into the site, and a relative link to any
+other file, such as `numbers.json` or `docs/BVL.md`, points at that file on
+GitHub's `master`. A rerun of `bvl study` changes the pages only once its
+README and figures are committed.
 
 From the repository root:
 

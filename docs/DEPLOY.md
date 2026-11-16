@@ -10,6 +10,7 @@ The page and the API run as one [Vercel](https://vercel.com/) project,
 | <https://market-studies.vercel.app/t/AAPL>           | The page of a ticker from `web/`           |
 | <https://market-studies.vercel.app/evidence>         | The proof page from `web/`                 |
 | <https://market-studies.vercel.app/method>           | The metrics and data licences from `web/`  |
+| <https://market-studies.vercel.app/peru>             | The BVL studies in `studies/`              |
 | <https://market-studies.vercel.app/api/scores>       | `GET /scores` of [the API](OUTPUTS.md#api) |
 | `https://market-studies.vercel.app/api/tickers/AAPL` | `GET /tickers/{ticker}` of the API         |
 | <https://market-studies.vercel.app/api/health>       | `GET /health` of the API                   |
@@ -102,8 +103,8 @@ in the file's `left_out`, which the page lists ([Outputs](OUTPUTS.md#web-page)).
 The Vercel project is connected to the GitHub repository. A push to `master`
 builds and deploys production, and every other branch gets a preview. The
 `ignoreCommand` in `vercel.json` skips the build when the push changed none of
-the page, the API, the packages, `deploy/`, the deploy scripts or the Vercel
-files. A change to the docs alone does not redeploy.
+the page, the API, the packages, `deploy/`, `studies/`, the deploy scripts or
+the Vercel files. A change to the docs alone does not redeploy.
 
 Deploy a checkout by hand:
 

@@ -1,0 +1,39 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "@/layouts/Layout.astro";
+import { lede, title } from "@/lib/studies";
+
+const studies = (await getCollection("studies"))
+  .map((entry) => ({
+    id: entry.id,
+    title: title(entry.body ?? "", entry.id),
+    lede: lede(entry.body ?? ""),
+  }))
+  .sort((a, b) => a.title.localeCompare(b.title));
+---
+
+<Layout title="Peru · market-studies">
+  <main class="container mx-auto max-w-3xl px-4 py-12 sm:py-16">
+    <h1 class="text-primary text-4xl font-bold tracking-tight">
+      The Lima Stock Exchange
+    </h1>
+    <p class="text-muted-foreground mt-4">
+      Studies of the Lima Stock Exchange (BVL) on the open data of Peru's
+      securities regulator, the SMV: daily quotes since 1996 and every material
+      event filed since 2010.
+    </p>
+    <ul class="mt-10 space-y-8">
+      {studies.map((study) => (
+        <li>
+          <a
+            class="text-xl font-semibold underline-offset-4 hover:underline"
+            href={`/peru/${study.id}`}
+          >
+            {study.title}
+          </a>
+          <p class="text-muted-foreground mt-2 text-sm">{study.lede}</p>
+        </li>
+      ))}
+    </ul>
+  </main>
+</Layout>

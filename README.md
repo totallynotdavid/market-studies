@@ -9,6 +9,7 @@ Two market projects in one workspace:
     review of 2015-16.
   - [Do BVL prices move before a material event is filed?](studies/bvl-disclosure/README.md)
 
+  The [live site](https://market-studies.vercel.app/peru) shows them too.
   [docs/BVL.md](docs/BVL.md) describes the data and the `bvl` command.
 
 - **index** scores US stocks. The rest of this page is about index.

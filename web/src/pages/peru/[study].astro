@@ -1,0 +1,28 @@
+---
+import { getCollection, render } from "astro:content";
+import Layout from "@/layouts/Layout.astro";
+import { title } from "@/lib/studies";
+import "@/styles/study.css";
+
+export async function getStaticPaths() {
+  const studies = await getCollection("studies");
+  return studies.map((entry) => ({
+    params: { study: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<Layout title={`${title(entry.body ?? "", entry.id)} · market-studies`}>
+  <main class="container mx-auto max-w-3xl px-4 py-12 sm:py-16">
+    <a class="text-muted-foreground text-sm hover:underline" href="/peru">
+      ← Peru studies
+    </a>
+    <article class="study mt-6">
+      <Content />
+    </article>
+  </main>
+</Layout>
