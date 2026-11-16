@@ -1,0 +1,35 @@
+{
+"config":
+{
+"title":"Tipo de cambio",
+"series":
+[
+{
+"name":"Tipo de cambio - TC Interbancario (S/ por US$) - Venta",
+"dec":"3"
+}]
+},
+"periods":
+[
+{
+"name":"10.Nov.26",
+"values":["3.41621428571429"]
+},
+{
+"name":"11.Nov.26",
+"values":["3.41085714285714"]
+},
+{
+"name":"12.Nov.26",
+"values":["3.40585714285714"]
+},
+{
+"name":"13.Nov.26",
+"values":["n.d."]
+},
+{
+"name":"16.Nov.26",
+"values":["n.d."]
+}
+]
+}

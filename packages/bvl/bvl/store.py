@@ -1,4 +1,4 @@
-"""The SQLite panel of BVL quotes, index levels and SMV material events.
+"""The SQLite panel of BVL quotes, index levels, SMV material events and BCRP series.
 
 A fetch writes each answer whole, so a second fetch of the same span replaces
 rows and never duplicates them. One filing lists every event kind it reports
@@ -59,9 +59,15 @@ CREATE TABLE IF NOT EXISTS events (
     company_type TEXT NOT NULL,
     PRIMARY KEY (filing, kind)
 );
+CREATE TABLE IF NOT EXISTS bcrp_series (
+    date TEXT NOT NULL,
+    code TEXT NOT NULL,
+    value REAL NOT NULL,
+    PRIMARY KEY (date, code)
+);
 """
 
-TABLES = ("quotes", "index_levels", "events")
+TABLES = ("quotes", "index_levels", "events", "bcrp_series")
 
 
 def connect(path: Path) -> sqlite3.Connection:

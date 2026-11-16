@@ -106,8 +106,12 @@ def bars(
     ylabel: str,
     note: str,
     errors: tuple[pd.Series, pd.Series] | None = None,
+    rotate: bool = False,
 ) -> None:
-    """Vertical bars by label, with optional low and high error bounds."""
+    """Vertical bars by label, with optional low and high error bounds.
+
+    `rotate` slants the labels for a long list of long names.
+    """
     figure, axes = _axes(title, ylabel)
     positions = range(len(values))
     yerr = None
@@ -115,6 +119,12 @@ def bars(
         low, high = errors
         yerr = [values - low, high - values]
     axes.bar(positions, values.to_numpy(), color=INK, yerr=yerr, ecolor=ACCENT)
-    axes.set_xticks(list(positions), [str(i) for i in values.index], fontsize=8)
+    axes.set_xticks(
+        list(positions),
+        [str(i) for i in values.index],
+        fontsize=8,
+        rotation=40 if rotate else 0,
+        ha="right" if rotate else "center",
+    )
     axes.axhline(0, color=MUTED, lw=0.8)
     _save(figure, path, note)
