@@ -1,18 +1,19 @@
 # Deploy
 
 The page and the API run as one [Vercel](https://vercel.com/) project,
-`equity-analysis`, at <https://equity-analysis.vercel.app>.
+`market-studies`, at <https://market-studies.vercel.app>. The former address,
+`equity-analysis.vercel.app`, redirects to it with a 308.
 
-| URL                                                   | Serves                                     |
-| ----------------------------------------------------- | ------------------------------------------ |
-| <https://equity-analysis.vercel.app/>                 | The screener from `web/`                   |
-| <https://equity-analysis.vercel.app/t/AAPL>           | The page of a ticker from `web/`           |
-| <https://equity-analysis.vercel.app/evidence>         | The proof page from `web/`                 |
-| <https://equity-analysis.vercel.app/method>           | The metrics and data licences from `web/`  |
-| <https://equity-analysis.vercel.app/api/scores>       | `GET /scores` of [the API](OUTPUTS.md#api) |
-| `https://equity-analysis.vercel.app/api/tickers/AAPL` | `GET /tickers/{ticker}` of the API         |
-| <https://equity-analysis.vercel.app/api/health>       | `GET /health` of the API                   |
-| <https://equity-analysis.vercel.app/api/docs>         | The interactive API docs                   |
+| URL                                                  | Serves                                     |
+| ---------------------------------------------------- | ------------------------------------------ |
+| <https://market-studies.vercel.app/>                 | The screener from `web/`                   |
+| <https://market-studies.vercel.app/t/AAPL>           | The page of a ticker from `web/`           |
+| <https://market-studies.vercel.app/evidence>         | The proof page from `web/`                 |
+| <https://market-studies.vercel.app/method>           | The metrics and data licences from `web/`  |
+| <https://market-studies.vercel.app/api/scores>       | `GET /scores` of [the API](OUTPUTS.md#api) |
+| `https://market-studies.vercel.app/api/tickers/AAPL` | `GET /tickers/{ticker}` of the API         |
+| <https://market-studies.vercel.app/api/health>       | `GET /health` of the API                   |
+| <https://market-studies.vercel.app/api/docs>         | The interactive API docs                   |
 
 The page and the API share one origin, so the API's CORS list does not apply.
 The pages are built from the committed files and do not call the API
