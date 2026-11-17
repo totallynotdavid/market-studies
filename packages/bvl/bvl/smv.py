@@ -197,6 +197,15 @@ def index_levels(client: SmvClient, day: date, today: date) -> list[Record]:
     )
 
 
+def broker_amounts(client: SmvClient, day: date, today: date) -> list[Record]:
+    """Each brokerage firm's buys and sells on one day."""
+    return client.rows(
+        "valores/MontoNegociado",
+        {"sFechaNegoc": smv_date(day)},
+        keep=settled(day, today),
+    )
+
+
 def events(client: SmvClient, start: date, end: date, today: date) -> list[Record]:
     """Material events (hechos de importancia) issuers filed in `start..end`."""
     return client.rows(

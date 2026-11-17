@@ -8,10 +8,12 @@ studies in [`studies/`](../studies) on it.
 uv run bvl fetch quotes      # BVL daily quotes, 1996 to today
 uv run bvl fetch events      # SMV material events, 2010 to today
 uv run bvl fetch indices     # BVL index levels, one request per market day
+uv run bvl fetch brokers     # each brokerage firm's amounts, one request per market day
 uv run bvl fetch bcrp        # BCRP sol per dollar and copper, 1997 to today
 uv run bvl study liquidity   # writes studies/bvl-liquidity
 uv run bvl study disclosure  # writes studies/bvl-disclosure
 uv run bvl study politics    # writes studies/bvl-politics
+uv run bvl study brokers     # writes studies/bvl-brokers
 ```
 
 `--db` sets the database (default `data/bvl.sqlite`) and `--cache` the response
@@ -33,9 +35,12 @@ clients that do not send a browser User-Agent.
 | `valores/Cotizaciones`     | `quotes`       | Daily open, high, low, close, average and traded amount per ticker, with the previous close and its date |
 | `registro/HechosSMVEmisor` | `events`       | Material events: issuer RUC and name, event kind, agreement date, filing minute, sector                  |
 | `valores/Indices`          | `index_levels` | Daily IGBVL, ISBVL and the other BVL indices                                                             |
+| `valores/MontoNegociado`   | `broker_amounts` | Each brokerage firm's (SAB) bought and sold amount on one day                                          |
 
 Quote and event queries cover at most 90 days, so a fill walks the span in
-90-day windows. The API often fails with a server error about its own log file,
+90-day windows. Index and broker queries answer one day each, so `fetch indices`
+and `fetch brokers` ask for every quotes day the table lacks. A broker row
+carries no date; the fill stamps it with the day it asked for. The API often fails with a server error about its own log file,
 under code `-2147024864` or under `-1` with "being used by another process". The
 client retries both with backoff. A window that closed more than 7 days ago
 never changes, so its answer is kept gzipped in the cache.
@@ -55,6 +60,13 @@ What the data lack:
   carries only the MSCI NUAM indices, with Peru General, Peru Select and Peru
   Select Capped 15% under new codes, so a series past August 2025 has to be
   joined across the two families.
+- **Balanced broker amounts.** A day's bought and sold totals should match, and
+  on recent days they do. On some older days they differ (2011-06-06: 51.2
+  million bought, 55.2 million sold), and the API's percentages then sum to
+  less than 100. A firm is keyed by its SAB code, and the API gives a code
+  today's name on every day. Before 2010 the firms' bought amount covers well
+  under the quotes' traded amount (42% in 1996), so the API lacks some firms of
+  those years.
 
 The BCRP publishes its series at
 `https://estadisticas.bcrp.gob.pe/estadisticas/series/api/`, with no key. One
@@ -99,6 +111,7 @@ between bid and ask, which gives this index a small upward drift; over the 2 to
 | `liquidity.py`  | Coverage and Amihud illiquidity                                |
 | `disclosure.py` | The event-study grid, measures, placebos and bootstrap         |
 | `politics.py`   | The chained Peru General index and the political event table   |
+| `brokers.py`    | Brokerage firm shares and concentration (HHI)                  |
 | `figures.py`    | Line and bar charts                                            |
 | `studies.py`    | Each study end to end: numbers.json and figures                |
 | `cli.py`        | The `bvl` command                                              |

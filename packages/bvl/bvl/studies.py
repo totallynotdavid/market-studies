@@ -11,7 +11,16 @@ from typing import TYPE_CHECKING, Any
 import numpy as np
 import pandas as pd
 
-from bvl import disclosure, events, figures, issuers, liquidity, panel, politics
+from bvl import (
+    brokers,
+    disclosure,
+    events,
+    figures,
+    issuers,
+    liquidity,
+    panel,
+    politics,
+)
 
 
 if TYPE_CHECKING:
@@ -24,6 +33,9 @@ MSCI_MARKS = {
     "2015-09-30": "Peru kept, on review",
     "2016-06-14": "Peru stays Emerging",
 }
+# A year enters the brokers figures once the firms' bought amount, and every
+# later year's, reaches this share of the quotes' traded amount.
+BROKER_COVERAGE = 0.9
 
 
 def run_liquidity(db: Path, out: Path) -> dict[str, object]:
@@ -406,6 +418,73 @@ def run_politics(db: Path, out: Path) -> dict[str, object]:
         "estimation_window": list(politics.ESTIMATION),
         "reaction_days": politics.REACTION_DAYS,
         "events": json.loads(table.round(5).to_json(orient="records")),
+    }
+    _write_numbers(out, numbers)
+    return numbers
+
+
+def run_brokers(db: Path, out: Path) -> dict[str, object]:
+    rows = brokers.amounts(db)
+    names = brokers.latest_names(rows)
+    by_year = brokers.concentration_by_year(rows).join(brokers.coverage(db))
+    by_year["leader"] = brokers.yearly_shares(rows).idxmax(axis=1)
+    short = by_year["coverage"] < BROKER_COVERAGE
+    first = (
+        int(by_year.index[short].max()) + 1 if short.any() else int(by_year.index[0])
+    )
+    shown = by_year.loc[first:]
+    shares = brokers.yearly_shares(rows).loc[first:]
+    note = SOURCE.replace("BVL daily quotes", "amounts traded by each SAB")
+    last_year = int(shares.index.max())
+
+    figures.lines(
+        {"yearly shares": shown["hhi"], "median day": shown["daily_hhi"]},
+        out / "hhi.png",
+        title="Concentration of BVL brokerage, Herfindahl-Hirschman index",
+        ylabel="HHI, 0 to 10,000",
+        note=note + f" {last_year} is partial.",
+    )
+    figures.lines(
+        {"largest firm": shown["top1"] * 100, "three largest": shown["top3"] * 100},
+        out / "top-shares.png",
+        title="Share of the amount traded through the largest firms",
+        ylabel="% of bought plus sold",
+        note=note + " Each year's ranking.",
+    )
+    figures.lines(
+        {"firms": shown["firms"]},
+        out / "firms.png",
+        title="Brokerage firms with any amount traded in the year",
+        ylabel="firms",
+        note=note,
+    )
+    leaders = shares.iloc[-1].nlargest(3)
+    figures.lines(
+        {f"{names[code]} ({code})": shares[code] * 100 for code in leaders.index},
+        out / "leaders.png",
+        title=f"Yearly share of the three largest firms in {last_year}",
+        ylabel="% of bought plus sold",
+        note=note,
+    )
+
+    numbers: dict[str, object] = {
+        "first_day": rows["date"].min().date().isoformat(),
+        "last_day": rows["date"].max().date().isoformat(),
+        "market_days": int(rows["date"].nunique()),
+        "firms_ever": int(rows["broker"].nunique()),
+        "coverage_threshold": BROKER_COVERAGE,
+        "first_covered_year": first,
+        "by_year": _records(by_year.round(4)),
+        "shares": {
+            str(year): [
+                {"broker": code, "name": names[str(code)], "share": round(float(s), 4)}
+                for code, s in year_shares[year_shares > 0]
+                .sort_values()
+                .iloc[::-1]
+                .items()
+            ]
+            for year, year_shares in shares.iterrows()
+        },
     }
     _write_numbers(out, numbers)
     return numbers

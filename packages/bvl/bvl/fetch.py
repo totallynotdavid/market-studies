@@ -61,6 +61,24 @@ def fill_index_levels(
     return total
 
 
+def fill_broker_amounts(
+    client: smv.SmvClient,
+    connection: sqlite3.Connection,
+    days: Iterable[date],
+    today: date,
+) -> int:
+    """Fetch each brokerage firm's amounts for each of `days`, one request a day."""
+    total = 0
+    for day in days:
+        rows = [
+            records.broker_amount(r, day)
+            for r in smv.broker_amounts(client, day, today)
+        ]
+        total += store.write(connection, "broker_amounts", rows)
+        log.info("broker amounts %s: %d rows", day, len(rows))
+    return total
+
+
 def fill_bcrp(
     client: bcrp.BcrpClient,
     connection: sqlite3.Connection,
@@ -77,10 +95,12 @@ def fill_bcrp(
     return total
 
 
-def missing_index_days(connection: sqlite3.Connection) -> list[str]:
-    """Trading days in the quotes table that have no index level yet."""
+def missing_days(connection: sqlite3.Connection, table: str) -> list[str]:
+    """Trading days in the quotes table that have no row in `table` yet."""
+    if table not in store.TABLES:
+        raise ValueError(f"unknown table {table}")
     found = connection.execute(
         "SELECT DISTINCT date FROM quotes "
-        "WHERE date NOT IN (SELECT DISTINCT date FROM index_levels) ORDER BY date"
+        f"WHERE date NOT IN (SELECT DISTINCT date FROM {table}) ORDER BY date"
     ).fetchall()
     return [day for (day,) in found]
