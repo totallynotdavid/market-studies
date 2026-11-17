@@ -10,6 +10,8 @@ Two market projects in one workspace:
   - [Do BVL prices move before a material event is filed?](studies/bvl-disclosure/README.md)
   - [How the BVL and the sol take Peru's political shocks](studies/bvl-politics/README.md),
     with the central bank's exchange rate and copper series.
+  - [How concentrated is BVL brokerage?](studies/bvl-brokers/README.md),
+    from the amounts each brokerage firm bought and sold each day.
 
   The [live site](https://market-studies.vercel.app/peru) shows them too.
   [docs/BVL.md](docs/BVL.md) describes the data and the `bvl` command.

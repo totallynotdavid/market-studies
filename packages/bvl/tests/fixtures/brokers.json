@@ -1,0 +1,36 @@
+{
+ "ResponseCode": "0",
+ "Message": "Consulta generada",
+ "Resultado": [
+  {
+   "CodigoSAB": "CRE",
+   "SocAgenteBolsa": "CREDICORP CAPITAL SAB",
+   "MontoCompras": 6892941.47,
+   "PorcentajeCompras": 21.26,
+   "MontoVentas": 6696110.67,
+   "PorcentajeVentas": 20.65,
+   "MontoTotal": 13589052.14,
+   "PorcentajeTotal": 20.96
+  },
+  {
+   "CodigoSAB": "GCO",
+   "SocAgenteBolsa": "GRUPO CORIL SAB",
+   "MontoCompras": 6732170.02,
+   "PorcentajeCompras": 20.77,
+   "MontoVentas": 6706964.76,
+   "PorcentajeVentas": 20.69,
+   "MontoTotal": 13439134.77,
+   "PorcentajeTotal": 20.73
+  },
+  {
+   "CodigoSAB": "ITG",
+   "SocAgenteBolsa": "INTELIGO SAB",
+   "MontoCompras": 4859542.83,
+   "PorcentajeCompras": 14.99,
+   "MontoVentas": 6944573.36,
+   "PorcentajeVentas": 21.42,
+   "MontoTotal": 11804116.19,
+   "PorcentajeTotal": 18.21
+  }
+ ]
+}

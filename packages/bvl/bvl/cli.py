@@ -21,6 +21,12 @@ STUDIES = {
     "liquidity": studies.run_liquidity,
     "disclosure": studies.run_disclosure,
     "politics": studies.run_politics,
+    "brokers": studies.run_brokers,
+}
+# Datasets the SMV answers one market day per request: table and fill.
+DAILY_FILLS = {
+    "indices": ("index_levels", fetch.fill_index_levels),
+    "brokers": ("broker_amounts", fetch.fill_broker_amounts),
 }
 # The first day each API query answers.
 QUOTES_START = date(1996, 1, 1)
@@ -37,7 +43,7 @@ def build_parser() -> argparse.ArgumentParser:
     commands = parser.add_subparsers(dest="command", required=True)
 
     fill = commands.add_parser("fetch", help="fill the panel from the SMV or BCRP API")
-    fill.add_argument("dataset", choices=["quotes", "events", "indices", "bcrp"])
+    fill.add_argument("dataset", choices=["quotes", "events", *DAILY_FILLS, "bcrp"])
     fill.add_argument("--start", type=date.fromisoformat)
     fill.add_argument("--end", type=date.fromisoformat, default=date.today())
 
@@ -75,10 +81,13 @@ def _fetch(args: argparse.Namespace) -> None:
             start = args.start or EVENTS_START
             fetch.fill_events(client, connection, start, args.end, today)
         else:
-            days = [date.fromisoformat(d) for d in fetch.missing_index_days(connection)]
+            table, fill = DAILY_FILLS[args.dataset]
+            days = [
+                date.fromisoformat(d) for d in fetch.missing_days(connection, table)
+            ]
             if args.start is not None:
                 days = [d for d in days if d >= args.start]
-            fetch.fill_index_levels(client, connection, days, today)
+            fill(client, connection, days, today)
     client.close()
 
 

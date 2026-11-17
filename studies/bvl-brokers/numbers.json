@@ -1,0 +1,2237 @@
+{
+  "first_day": "1996-01-02",
+  "last_day": "2026-11-13",
+  "market_days": 7615,
+  "firms_ever": 31,
+  "coverage_threshold": 0.9,
+  "first_covered_year": 2010,
+  "by_year": [
+    {
+      "year": 1996,
+      "days": 239,
+      "firms": 12,
+      "hhi": 2382.266,
+      "daily_hhi": 2352.5384,
+      "top1": 0.4335,
+      "top3": 0.6773,
+      "coverage": 0.4163,
+      "leader": "CRE"
+    },
+    {
+      "year": 1997,
+      "days": 233,
+      "firms": 13,
+      "hhi": 2137.0795,
+      "daily_hhi": 2245.8622,
+      "top1": 0.4068,
+      "top3": 0.6536,
+      "coverage": 0.4608,
+      "leader": "CRE"
+    },
+    {
+      "year": 1998,
+      "days": 247,
+      "firms": 13,
+      "hhi": 1726.1411,
+      "daily_hhi": 2111.9321,
+      "top1": 0.3303,
+      "top3": 0.6126,
+      "coverage": 0.4916,
+      "leader": "CRE"
+    },
+    {
+      "year": 1999,
+      "days": 247,
+      "firms": 13,
+      "hhi": 1919.8701,
+      "daily_hhi": 2127.1949,
+      "top1": 0.3207,
+      "top3": 0.7013,
+      "coverage": 0.629,
+      "leader": "CRE"
+    },
+    {
+      "year": 2000,
+      "days": 250,
+      "firms": 13,
+      "hhi": 3097.7421,
+      "daily_hhi": 3051.5019,
+      "top1": 0.4727,
+      "top3": 0.8211,
+      "coverage": 1.2555,
+      "leader": "CON"
+    },
+    {
+      "year": 2001,
+      "days": 245,
+      "firms": 13,
+      "hhi": 2305.8691,
+      "daily_hhi": 2701.0384,
+      "top1": 0.3587,
+      "top3": 0.7795,
+      "coverage": 0.676,
+      "leader": "CRE"
+    },
+    {
+      "year": 2002,
+      "days": 243,
+      "firms": 13,
+      "hhi": 2816.4978,
+      "daily_hhi": 3298.4337,
+      "top1": 0.419,
+      "top3": 0.7964,
+      "coverage": 0.5325,
+      "leader": "CRE"
+    },
+    {
+      "year": 2003,
+      "days": 250,
+      "firms": 13,
+      "hhi": 2202.0351,
+      "daily_hhi": 2390.1841,
+      "top1": 0.3231,
+      "top3": 0.7479,
+      "coverage": 0.5892,
+      "leader": "CRE"
+    },
+    {
+      "year": 2004,
+      "days": 250,
+      "firms": 13,
+      "hhi": 1721.3814,
+      "daily_hhi": 2059.7313,
+      "top1": 0.2535,
+      "top3": 0.6588,
+      "coverage": 0.7671,
+      "leader": "CRE"
+    },
+    {
+      "year": 2005,
+      "days": 251,
+      "firms": 14,
+      "hhi": 2254.2835,
+      "daily_hhi": 2227.8335,
+      "top1": 0.3262,
+      "top3": 0.7654,
+      "coverage": 0.7668,
+      "leader": "CON"
+    },
+    {
+      "year": 2006,
+      "days": 250,
+      "firms": 15,
+      "hhi": 1846.0787,
+      "daily_hhi": 2166.7123,
+      "top1": 0.2782,
+      "top3": 0.714,
+      "coverage": 0.7986,
+      "leader": "CON"
+    },
+    {
+      "year": 2007,
+      "days": 249,
+      "firms": 15,
+      "hhi": 1652.3901,
+      "daily_hhi": 1863.5394,
+      "top1": 0.2662,
+      "top3": 0.6234,
+      "coverage": 0.74,
+      "leader": "CRE"
+    },
+    {
+      "year": 2008,
+      "days": 241,
+      "firms": 17,
+      "hhi": 1700.9194,
+      "daily_hhi": 1822.6417,
+      "top1": 0.2445,
+      "top3": 0.6535,
+      "coverage": 0.8274,
+      "leader": "CRE"
+    },
+    {
+      "year": 2009,
+      "days": 248,
+      "firms": 19,
+      "hhi": 1916.6276,
+      "daily_hhi": 1656.8864,
+      "top1": 0.2945,
+      "top3": 0.6809,
+      "coverage": 0.8448,
+      "leader": "CRE"
+    },
+    {
+      "year": 2010,
+      "days": 249,
+      "firms": 21,
+      "hhi": 1325.048,
+      "daily_hhi": 1581.5801,
+      "top1": 0.203,
+      "top3": 0.5639,
+      "coverage": 0.9514,
+      "leader": "ITG"
+    },
+    {
+      "year": 2011,
+      "days": 249,
+      "firms": 22,
+      "hhi": 1537.3949,
+      "daily_hhi": 1524.5963,
+      "top1": 0.3176,
+      "top3": 0.5646,
+      "coverage": 0.9169,
+      "leader": "CRE"
+    },
+    {
+      "year": 2012,
+      "days": 251,
+      "firms": 23,
+      "hhi": 1943.2249,
+      "daily_hhi": 1595.8141,
+      "top1": 0.362,
+      "top3": 0.6467,
+      "coverage": 0.9189,
+      "leader": "CON"
+    },
+    {
+      "year": 2013,
+      "days": 249,
+      "firms": 24,
+      "hhi": 1488.9241,
+      "daily_hhi": 1996.7824,
+      "top1": 0.2327,
+      "top3": 0.5999,
+      "coverage": 0.981,
+      "leader": "CON"
+    },
+    {
+      "year": 2014,
+      "days": 248,
+      "firms": 24,
+      "hhi": 2214.5218,
+      "daily_hhi": 1840.9575,
+      "top1": 0.4238,
+      "top3": 0.6223,
+      "coverage": 1.0033,
+      "leader": "CRE"
+    },
+    {
+      "year": 2015,
+      "days": 248,
+      "firms": 24,
+      "hhi": 1531.6275,
+      "daily_hhi": 2364.9109,
+      "top1": 0.283,
+      "top3": 0.5775,
+      "coverage": 1.0506,
+      "leader": "CRE"
+    },
+    {
+      "year": 2016,
+      "days": 250,
+      "firms": 26,
+      "hhi": 2055.6258,
+      "daily_hhi": 2303.9509,
+      "top1": 0.3885,
+      "top3": 0.6412,
+      "coverage": 1.0715,
+      "leader": "CRE"
+    },
+    {
+      "year": 2017,
+      "days": 250,
+      "firms": 23,
+      "hhi": 2101.7291,
+      "daily_hhi": 2067.8859,
+      "top1": 0.3837,
+      "top3": 0.6821,
+      "coverage": 1.009,
+      "leader": "CRE"
+    },
+    {
+      "year": 2018,
+      "days": 250,
+      "firms": 22,
+      "hhi": 2628.2753,
+      "daily_hhi": 2455.6387,
+      "top1": 0.472,
+      "top3": 0.6775,
+      "coverage": 1.0165,
+      "leader": "CRE"
+    },
+    {
+      "year": 2019,
+      "days": 251,
+      "firms": 21,
+      "hhi": 1674.2561,
+      "daily_hhi": 2733.1339,
+      "top1": 0.3132,
+      "top3": 0.6046,
+      "coverage": 1.1155,
+      "leader": "CRE"
+    },
+    {
+      "year": 2020,
+      "days": 254,
+      "firms": 21,
+      "hhi": 2124.6703,
+      "daily_hhi": 2592.632,
+      "top1": 0.3204,
+      "top3": 0.7184,
+      "coverage": 1.0739,
+      "leader": "CRE"
+    },
+    {
+      "year": 2021,
+      "days": 249,
+      "firms": 21,
+      "hhi": 1623.1859,
+      "daily_hhi": 2629.0544,
+      "top1": 0.3078,
+      "top3": 0.5788,
+      "coverage": 1.0182,
+      "leader": "CRE"
+    },
+    {
+      "year": 2022,
+      "days": 242,
+      "firms": 20,
+      "hhi": 1475.4066,
+      "daily_hhi": 2524.708,
+      "top1": 0.2771,
+      "top3": 0.5721,
+      "coverage": 1.0504,
+      "leader": "CRE"
+    },
+    {
+      "year": 2023,
+      "days": 247,
+      "firms": 20,
+      "hhi": 1420.8443,
+      "daily_hhi": 2510.3982,
+      "top1": 0.238,
+      "top3": 0.5603,
+      "coverage": 1.0015,
+      "leader": "CRE"
+    },
+    {
+      "year": 2024,
+      "days": 237,
+      "firms": 19,
+      "hhi": 1827.3006,
+      "daily_hhi": 2267.7672,
+      "top1": 0.3247,
+      "top3": 0.6364,
+      "coverage": 1.1055,
+      "leader": "CON"
+    },
+    {
+      "year": 2025,
+      "days": 246,
+      "firms": 20,
+      "hhi": 1469.2283,
+      "daily_hhi": 2388.4267,
+      "top1": 0.2615,
+      "top3": 0.5668,
+      "coverage": 1.0026,
+      "leader": "CRE"
+    },
+    {
+      "year": 2026,
+      "days": 202,
+      "firms": 19,
+      "hhi": 1403.964,
+      "daily_hhi": 2063.3004,
+      "top1": 0.258,
+      "top3": 0.5352,
+      "coverage": 1.0897,
+      "leader": "CRE"
+    }
+  ],
+  "shares": {
+    "2010": [
+      {
+        "broker": "ITG",
+        "name": "INTELIGO SAB",
+        "share": 0.203
+      },
+      {
+        "broker": "CON",
+        "name": "BBVA SAB",
+        "share": 0.1906
+      },
+      {
+        "broker": "CRE",
+        "name": "CREDICORP CAPITAL SAB",
+        "share": 0.1703
+      },
+      {
+        "broker": "SCO",
+        "name": "SCOTIA BOLSA SAB",
+        "share": 0.1079
+      },
+      {
+        "broker": "S&S",
+        "name": "SEMINARIO y CIA. SAB",
+        "share": 0.0883
+      },
+      {
+        "broker": "CIT",
+        "name": "CITICORP PERU SAB",
+        "share": 0.0523
+      },
+      {
+        "broker": "MGS",
+        "name": "MGS & ASOCIADOS SAB",
+        "share": 0.0396
+      },
+      {
+        "broker": "IVT",
+        "name": "INVESTA SAB",
+        "share": 0.0212
+      },
+      {
+        "broker": "CPS",
+        "name": "COMPASS GROUP SAB",
+        "share": 0.0184
+      },
+      {
+        "broker": "KAL",
+        "name": "KALLPA SECURITIES SAB",
+        "share": 0.0171
+      },
+      {
+        "broker": "IND",
+        "name": "INVERSION Y DESARROLLO SAB",
+        "share": 0.0137
+      },
+      {
+        "broker": "ANS",
+        "name": "FIT CAPITAL SAB",
+        "share": 0.0136
+      },
+      {
+        "broker": "GPI",
+        "name": "GPI VALORES SAB",
+        "share": 0.0132
+      },
+      {
+        "broker": "MAG",
+        "name": "MAGOT SAB",
+        "share": 0.013
+      },
+      {
+        "broker": "PRO",
+        "name": "PROVALOR SAB",
+        "share": 0.0117
+      },
+      {
+        "broker": "CAR",
+        "name": "SAB CARTISA PERU",
+        "share": 0.0113
+      },
+      {
+        "broker": "GCO",
+        "name": "GRUPO CORIL SAB",
+        "share": 0.0109
+      },
+      {
+        "broker": "LAT",
+        "name": "LATINOAMERICANA S.A.B.",
+        "share": 0.0028
+      },
+      {
+        "broker": "TRD",
+        "name": "TRADEK SAB",
+        "share": 0.0004
+      },
+      {
+        "broker": "CAP",
+        "name": "CAPITARIA SIV",
+        "share": 0.0002
+      },
+      {
+        "broker": "BNB",
+        "name": "BNB VALORES PERU SOLFIN SAB",
+        "share": 0.0001
+      }
+    ],
+    "2011": [
+      {
+        "broker": "CRE",
+        "name": "CREDICORP CAPITAL SAB",
+        "share": 0.3176
+      },
+      {
+        "broker": "ITG",
+        "name": "INTELIGO SAB",
+        "share": 0.148
+      },
+      {
+        "broker": "CON",
+        "name": "BBVA SAB",
+        "share": 0.099
+      },
+      {
+        "broker": "S&S",
+        "name": "SEMINARIO y CIA. SAB",
+        "share": 0.0902
+      },
+      {
+        "broker": "SCO",
+        "name": "SCOTIA BOLSA SAB",
+        "share": 0.0809
+      },
+      {
+        "broker": "CIT",
+        "name": "CITICORP PERU SAB",
+        "share": 0.043
+      },
+      {
+        "broker": "KAL",
+        "name": "KALLPA SECURITIES SAB",
+        "share": 0.0337
+      },
+      {
+        "broker": "IVT",
+        "name": "INVESTA SAB",
+        "share": 0.0252
+      },
+      {
+        "broker": "LAR",
+        "name": "LARRAIN VIAL SAB",
+        "share": 0.0229
+      },
+      {
+        "broker": "GCO",
+        "name": "GRUPO CORIL SAB",
+        "share": 0.0227
+      },
+      {
+        "broker": "IND",
+        "name": "INVERSION Y DESARROLLO SAB",
+        "share": 0.02
+      },
+      {
+        "broker": "MGS",
+        "name": "MGS & ASOCIADOS SAB",
+        "share": 0.0191
+      },
+      {
+        "broker": "CPS",
+        "name": "COMPASS GROUP SAB",
+        "share": 0.0187
+      },
+      {
+        "broker": "ANS",
+        "name": "FIT CAPITAL SAB",
+        "share": 0.0181
+      },
+      {
+        "broker": "CAR",
+        "name": "SAB CARTISA PERU",
+        "share": 0.0139
+      },
+      {
+        "broker": "MAG",
+        "name": "MAGOT SAB",
+        "share": 0.0121
+      },
+      {
+        "broker": "GPI",
+        "name": "GPI VALORES SAB",
+        "share": 0.0061
+      },
+      {
+        "broker": "PRO",
+        "name": "PROVALOR SAB",
+        "share": 0.0045
+      },
+      {
+        "broker": "LAT",
+        "name": "LATINOAMERICANA S.A.B.",
+        "share": 0.0032
+      },
+      {
+        "broker": "BNB",
+        "name": "BNB VALORES PERU SOLFIN SAB",
+        "share": 0.0007
+      },
+      {
+        "broker": "TRD",
+        "name": "TRADEK SAB",
+        "share": 0.0004
+      },
+      {
+        "broker": "CAP",
+        "name": "CAPITARIA SIV",
+        "share": 0.0002
+      }
+    ],
+    "2012": [
+      {
+        "broker": "CON",
+        "name": "BBVA SAB",
+        "share": 0.362
+      },
+      {
+        "broker": "CRE",
+        "name": "CREDICORP CAPITAL SAB",
+        "share": 0.1861
+      },
+      {
+        "broker": "ITG",
+        "name": "INTELIGO SAB",
+        "share": 0.0986
+      },
+      {
+        "broker": "SCO",
+        "name": "SCOTIA BOLSA SAB",
+        "share": 0.0966
+      },
+      {
+        "broker": "LAR",
+        "name": "LARRAIN VIAL SAB",
+        "share": 0.0658
+      },
+      {
+        "broker": "S&S",
+        "name": "SEMINARIO y CIA. SAB",
+        "share": 0.0485
+      },
+      {
+        "broker": "KAL",
+        "name": "KALLPA SECURITIES SAB",
+        "share": 0.043
+      },
+      {
+        "broker": "GCO",
+        "name": "GRUPO CORIL SAB",
+        "share": 0.018
+      },
+      {
+        "broker": "CPS",
+        "name": "COMPASS GROUP SAB",
+        "share": 0.0124
+      },
+      {
+        "broker": "CAR",
+        "name": "SAB CARTISA PERU",
+        "share": 0.012
+      },
+      {
+        "broker": "IND",
+        "name": "INVERSION Y DESARROLLO SAB",
+        "share": 0.01
+      },
+      {
+        "broker": "GPI",
+        "name": "GPI VALORES SAB",
+        "share": 0.0091
+      },
+      {
+        "broker": "ANS",
+        "name": "FIT CAPITAL SAB",
+        "share": 0.0088
+      },
+      {
+        "broker": "MGS",
+        "name": "MGS & ASOCIADOS SAB",
+        "share": 0.0087
+      },
+      {
+        "broker": "IVT",
+        "name": "INVESTA SAB",
+        "share": 0.0085
+      },
+      {
+        "broker": "MAG",
+        "name": "MAGOT SAB",
+        "share": 0.007
+      },
+      {
+        "broker": "PRO",
+        "name": "PROVALOR SAB",
+        "share": 0.0021
+      },
+      {
+        "broker": "LAT",
+        "name": "LATINOAMERICANA S.A.B.",
+        "share": 0.0013
+      },
+      {
+        "broker": "BNB",
+        "name": "BNB VALORES PERU SOLFIN SAB",
+        "share": 0.0007
+      },
+      {
+        "broker": "CIT",
+        "name": "CITICORP PERU SAB",
+        "share": 0.0004
+      },
+      {
+        "broker": "TRD",
+        "name": "TRADEK SAB",
+        "share": 0.0003
+      },
+      {
+        "broker": "PCA",
+        "name": "CA PERU SAB",
+        "share": 0.0
+      },
+      {
+        "broker": "CAP",
+        "name": "CAPITARIA SIV",
+        "share": 0.0
+      }
+    ],
+    "2013": [
+      {
+        "broker": "CON",
+        "name": "BBVA SAB",
+        "share": 0.2327
+      },
+      {
+        "broker": "LAR",
+        "name": "LARRAIN VIAL SAB",
+        "share": 0.1895
+      },
+      {
+        "broker": "CRE",
+        "name": "CREDICORP CAPITAL SAB",
+        "share": 0.1777
+      },
+      {
+        "broker": "ITG",
+        "name": "INTELIGO SAB",
+        "share": 0.1237
+      },
+      {
+        "broker": "SCO",
+        "name": "SCOTIA BOLSA SAB",
+        "share": 0.0788
+      },
+      {
+        "broker": "S&S",
+        "name": "SEMINARIO y CIA. SAB",
+        "share": 0.0594
+      },
+      {
+        "broker": "KAL",
+        "name": "KALLPA SECURITIES SAB",
+        "share": 0.0328
+      },
+      {
+        "broker": "BTG",
+        "name": "BTG PACTUAL PERU SAB",
+        "share": 0.0178
+      },
+      {
+        "broker": "CIT",
+        "name": "CITICORP PERU SAB",
+        "share": 0.0173
+      },
+      {
+        "broker": "GCO",
+        "name": "GRUPO CORIL SAB",
+        "share": 0.0112
+      },
+      {
+        "broker": "CPS",
+        "name": "COMPASS GROUP SAB",
+        "share": 0.0111
+      },
+      {
+        "broker": "ANS",
+        "name": "FIT CAPITAL SAB",
+        "share": 0.008
+      },
+      {
+        "broker": "IVT",
+        "name": "INVESTA SAB",
+        "share": 0.0069
+      },
+      {
+        "broker": "MGS",
+        "name": "MGS & ASOCIADOS SAB",
+        "share": 0.0059
+      },
+      {
+        "broker": "MAG",
+        "name": "MAGOT SAB",
+        "share": 0.0056
+      },
+      {
+        "broker": "CAR",
+        "name": "SAB CARTISA PERU",
+        "share": 0.0055
+      },
+      {
+        "broker": "IND",
+        "name": "INVERSION Y DESARROLLO SAB",
+        "share": 0.0053
+      },
+      {
+        "broker": "GPI",
+        "name": "GPI VALORES SAB",
+        "share": 0.0035
+      },
+      {
+        "broker": "PRO",
+        "name": "PROVALOR SAB",
+        "share": 0.0035
+      },
+      {
+        "broker": "PCA",
+        "name": "CA PERU SAB",
+        "share": 0.0013
+      },
+      {
+        "broker": "PUE",
+        "name": "PUENTE SAB",
+        "share": 0.0009
+      },
+      {
+        "broker": "BNB",
+        "name": "BNB VALORES PERU SOLFIN SAB",
+        "share": 0.0009
+      },
+      {
+        "broker": "TRD",
+        "name": "TRADEK SAB",
+        "share": 0.0007
+      },
+      {
+        "broker": "DVS",
+        "name": "DIVISO BOLSA SAB",
+        "share": 0.0
+      }
+    ],
+    "2014": [
+      {
+        "broker": "CRE",
+        "name": "CREDICORP CAPITAL SAB",
+        "share": 0.4238
+      },
+      {
+        "broker": "BTG",
+        "name": "BTG PACTUAL PERU SAB",
+        "share": 0.1026
+      },
+      {
+        "broker": "SCO",
+        "name": "SCOTIA BOLSA SAB",
+        "share": 0.0959
+      },
+      {
+        "broker": "ITG",
+        "name": "INTELIGO SAB",
+        "share": 0.0938
+      },
+      {
+        "broker": "S&S",
+        "name": "SEMINARIO y CIA. SAB",
+        "share": 0.0823
+      },
+      {
+        "broker": "LAR",
+        "name": "LARRAIN VIAL SAB",
+        "share": 0.0641
+      },
+      {
+        "broker": "CON",
+        "name": "BBVA SAB",
+        "share": 0.0312
+      },
+      {
+        "broker": "KAL",
+        "name": "KALLPA SECURITIES SAB",
+        "share": 0.0262
+      },
+      {
+        "broker": "PUE",
+        "name": "PUENTE SAB",
+        "share": 0.0188
+      },
+      {
+        "broker": "DVS",
+        "name": "DIVISO BOLSA SAB",
+        "share": 0.011
+      },
+      {
+        "broker": "ANS",
+        "name": "FIT CAPITAL SAB",
+        "share": 0.0109
+      },
+      {
+        "broker": "IVT",
+        "name": "INVESTA SAB",
+        "share": 0.0073
+      },
+      {
+        "broker": "IND",
+        "name": "INVERSION Y DESARROLLO SAB",
+        "share": 0.0065
+      },
+      {
+        "broker": "GCO",
+        "name": "GRUPO CORIL SAB",
+        "share": 0.0063
+      },
+      {
+        "broker": "GPI",
+        "name": "GPI VALORES SAB",
+        "share": 0.0045
+      },
+      {
+        "broker": "MAG",
+        "name": "MAGOT SAB",
+        "share": 0.0044
+      },
+      {
+        "broker": "CAR",
+        "name": "SAB CARTISA PERU",
+        "share": 0.0033
+      },
+      {
+        "broker": "CPS",
+        "name": "COMPASS GROUP SAB",
+        "share": 0.0033
+      },
+      {
+        "broker": "PRO",
+        "name": "PROVALOR SAB",
+        "share": 0.0017
+      },
+      {
+        "broker": "BNB",
+        "name": "BNB VALORES PERU SOLFIN SAB",
+        "share": 0.0008
+      },
+      {
+        "broker": "PCA",
+        "name": "CA PERU SAB",
+        "share": 0.0007
+      },
+      {
+        "broker": "TRD",
+        "name": "TRADEK SAB",
+        "share": 0.0005
+      },
+      {
+        "broker": "MGS",
+        "name": "MGS & ASOCIADOS SAB",
+        "share": 0.0002
+      },
+      {
+        "broker": "RNT",
+        "name": "RENTA4 SAB",
+        "share": 0.0
+      }
+    ],
+    "2015": [
+      {
+        "broker": "CRE",
+        "name": "CREDICORP CAPITAL SAB",
+        "share": 0.283
+      },
+      {
+        "broker": "BTG",
+        "name": "BTG PACTUAL PERU SAB",
+        "share": 0.1598
+      },
+      {
+        "broker": "ITG",
+        "name": "INTELIGO SAB",
+        "share": 0.1346
+      },
+      {
+        "broker": "SCO",
+        "name": "SCOTIA BOLSA SAB",
+        "share": 0.1084
+      },
+      {
+        "broker": "S&S",
+        "name": "SEMINARIO y CIA. SAB",
+        "share": 0.0922
+      },
+      {
+        "broker": "LAR",
+        "name": "LARRAIN VIAL SAB",
+        "share": 0.0722
+      },
+      {
+        "broker": "CON",
+        "name": "BBVA SAB",
+        "share": 0.0432
+      },
+      {
+        "broker": "KAL",
+        "name": "KALLPA SECURITIES SAB",
+        "share": 0.0391
+      },
+      {
+        "broker": "DVS",
+        "name": "DIVISO BOLSA SAB",
+        "share": 0.0143
+      },
+      {
+        "broker": "GCO",
+        "name": "GRUPO CORIL SAB",
+        "share": 0.0104
+      },
+      {
+        "broker": "IND",
+        "name": "INVERSION Y DESARROLLO SAB",
+        "share": 0.0088
+      },
+      {
+        "broker": "PUE",
+        "name": "PUENTE SAB",
+        "share": 0.0061
+      },
+      {
+        "broker": "IVT",
+        "name": "INVESTA SAB",
+        "share": 0.0049
+      },
+      {
+        "broker": "ANS",
+        "name": "FIT CAPITAL SAB",
+        "share": 0.0049
+      },
+      {
+        "broker": "MAG",
+        "name": "MAGOT SAB",
+        "share": 0.0043
+      },
+      {
+        "broker": "CAR",
+        "name": "SAB CARTISA PERU",
+        "share": 0.0037
+      },
+      {
+        "broker": "GPI",
+        "name": "GPI VALORES SAB",
+        "share": 0.0036
+      },
+      {
+        "broker": "PRO",
+        "name": "PROVALOR SAB",
+        "share": 0.0022
+      },
+      {
+        "broker": "CPS",
+        "name": "COMPASS GROUP SAB",
+        "share": 0.0014
+      },
+      {
+        "broker": "RNT",
+        "name": "RENTA4 SAB",
+        "share": 0.0009
+      },
+      {
+        "broker": "BNB",
+        "name": "BNB VALORES PERU SOLFIN SAB",
+        "share": 0.0008
+      },
+      {
+        "broker": "PCA",
+        "name": "CA PERU SAB",
+        "share": 0.0005
+      },
+      {
+        "broker": "TRD",
+        "name": "TRADEK SAB",
+        "share": 0.0004
+      },
+      {
+        "broker": "CIT",
+        "name": "CITICORP PERU SAB",
+        "share": 0.0
+      }
+    ],
+    "2016": [
+      {
+        "broker": "CRE",
+        "name": "CREDICORP CAPITAL SAB",
+        "share": 0.3885
+      },
+      {
+        "broker": "ITG",
+        "name": "INTELIGO SAB",
+        "share": 0.1639
+      },
+      {
+        "broker": "S&S",
+        "name": "SEMINARIO y CIA. SAB",
+        "share": 0.0888
+      },
+      {
+        "broker": "BTG",
+        "name": "BTG PACTUAL PERU SAB",
+        "share": 0.0801
+      },
+      {
+        "broker": "SCO",
+        "name": "SCOTIA BOLSA SAB",
+        "share": 0.0764
+      },
+      {
+        "broker": "LAR",
+        "name": "LARRAIN VIAL SAB",
+        "share": 0.0726
+      },
+      {
+        "broker": "CON",
+        "name": "BBVA SAB",
+        "share": 0.0356
+      },
+      {
+        "broker": "KAL",
+        "name": "KALLPA SECURITIES SAB",
+        "share": 0.0224
+      },
+      {
+        "broker": "GCO",
+        "name": "GRUPO CORIL SAB",
+        "share": 0.0129
+      },
+      {
+        "broker": "DVS",
+        "name": "DIVISO BOLSA SAB",
+        "share": 0.0122
+      },
+      {
+        "broker": "SSU",
+        "name": "SAB SURA",
+        "share": 0.0093
+      },
+      {
+        "broker": "IND",
+        "name": "INVERSION Y DESARROLLO SAB",
+        "share": 0.0082
+      },
+      {
+        "broker": "MAG",
+        "name": "MAGOT SAB",
+        "share": 0.0074
+      },
+      {
+        "broker": "IVT",
+        "name": "INVESTA SAB",
+        "share": 0.005
+      },
+      {
+        "broker": "CIT",
+        "name": "CITICORP PERU SAB",
+        "share": 0.0044
+      },
+      {
+        "broker": "ANS",
+        "name": "FIT CAPITAL SAB",
+        "share": 0.0038
+      },
+      {
+        "broker": "CAR",
+        "name": "SAB CARTISA PERU",
+        "share": 0.0035
+      },
+      {
+        "broker": "RNT",
+        "name": "RENTA4 SAB",
+        "share": 0.0017
+      },
+      {
+        "broker": "PRO",
+        "name": "PROVALOR SAB",
+        "share": 0.0011
+      },
+      {
+        "broker": "GPI",
+        "name": "GPI VALORES SAB",
+        "share": 0.0008
+      },
+      {
+        "broker": "BNB",
+        "name": "BNB VALORES PERU SOLFIN SAB",
+        "share": 0.0007
+      },
+      {
+        "broker": "PCA",
+        "name": "CA PERU SAB",
+        "share": 0.0006
+      },
+      {
+        "broker": "TRD",
+        "name": "TRADEK SAB",
+        "share": 0.0002
+      },
+      {
+        "broker": "ACR",
+        "name": "ACRES SAB",
+        "share": 0.0001
+      },
+      {
+        "broker": "CPS",
+        "name": "COMPASS GROUP SAB",
+        "share": 0.0001
+      },
+      {
+        "broker": "PUE",
+        "name": "PUENTE SAB",
+        "share": 0.0
+      }
+    ],
+    "2017": [
+      {
+        "broker": "CRE",
+        "name": "CREDICORP CAPITAL SAB",
+        "share": 0.3837
+      },
+      {
+        "broker": "CON",
+        "name": "BBVA SAB",
+        "share": 0.1873
+      },
+      {
+        "broker": "BTG",
+        "name": "BTG PACTUAL PERU SAB",
+        "share": 0.1111
+      },
+      {
+        "broker": "ITG",
+        "name": "INTELIGO SAB",
+        "share": 0.0719
+      },
+      {
+        "broker": "S&S",
+        "name": "SEMINARIO y CIA. SAB",
+        "share": 0.067
+      },
+      {
+        "broker": "LAR",
+        "name": "LARRAIN VIAL SAB",
+        "share": 0.057
+      },
+      {
+        "broker": "SCO",
+        "name": "SCOTIA BOLSA SAB",
+        "share": 0.04
+      },
+      {
+        "broker": "SSU",
+        "name": "SAB SURA",
+        "share": 0.024
+      },
+      {
+        "broker": "KAL",
+        "name": "KALLPA SECURITIES SAB",
+        "share": 0.0156
+      },
+      {
+        "broker": "GCO",
+        "name": "GRUPO CORIL SAB",
+        "share": 0.0077
+      },
+      {
+        "broker": "MAG",
+        "name": "MAGOT SAB",
+        "share": 0.0067
+      },
+      {
+        "broker": "IND",
+        "name": "INVERSION Y DESARROLLO SAB",
+        "share": 0.0052
+      },
+      {
+        "broker": "IVT",
+        "name": "INVESTA SAB",
+        "share": 0.0048
+      },
+      {
+        "broker": "DVS",
+        "name": "DIVISO BOLSA SAB",
+        "share": 0.0047
+      },
+      {
+        "broker": "CAR",
+        "name": "SAB CARTISA PERU",
+        "share": 0.0028
+      },
+      {
+        "broker": "ANS",
+        "name": "FIT CAPITAL SAB",
+        "share": 0.0022
+      },
+      {
+        "broker": "PCA",
+        "name": "CA PERU SAB",
+        "share": 0.0017
+      },
+      {
+        "broker": "PRO",
+        "name": "PROVALOR SAB",
+        "share": 0.0016
+      },
+      {
+        "broker": "RNT",
+        "name": "RENTA4 SAB",
+        "share": 0.0015
+      },
+      {
+        "broker": "CIT",
+        "name": "CITICORP PERU SAB",
+        "share": 0.001
+      },
+      {
+        "broker": "TRD",
+        "name": "TRADEK SAB",
+        "share": 0.001
+      },
+      {
+        "broker": "ACR",
+        "name": "ACRES SAB",
+        "share": 0.0009
+      },
+      {
+        "broker": "BNB",
+        "name": "BNB VALORES PERU SOLFIN SAB",
+        "share": 0.0007
+      }
+    ],
+    "2018": [
+      {
+        "broker": "CRE",
+        "name": "CREDICORP CAPITAL SAB",
+        "share": 0.472
+      },
+      {
+        "broker": "S&S",
+        "name": "SEMINARIO y CIA. SAB",
+        "share": 0.1095
+      },
+      {
+        "broker": "BTG",
+        "name": "BTG PACTUAL PERU SAB",
+        "share": 0.096
+      },
+      {
+        "broker": "ITG",
+        "name": "INTELIGO SAB",
+        "share": 0.0937
+      },
+      {
+        "broker": "SCO",
+        "name": "SCOTIA BOLSA SAB",
+        "share": 0.0715
+      },
+      {
+        "broker": "LAR",
+        "name": "LARRAIN VIAL SAB",
+        "share": 0.0582
+      },
+      {
+        "broker": "CON",
+        "name": "BBVA SAB",
+        "share": 0.0303
+      },
+      {
+        "broker": "KAL",
+        "name": "KALLPA SECURITIES SAB",
+        "share": 0.0186
+      },
+      {
+        "broker": "GCO",
+        "name": "GRUPO CORIL SAB",
+        "share": 0.01
+      },
+      {
+        "broker": "SSU",
+        "name": "SAB SURA",
+        "share": 0.0083
+      },
+      {
+        "broker": "IVT",
+        "name": "INVESTA SAB",
+        "share": 0.0077
+      },
+      {
+        "broker": "IND",
+        "name": "INVERSION Y DESARROLLO SAB",
+        "share": 0.0046
+      },
+      {
+        "broker": "MAG",
+        "name": "MAGOT SAB",
+        "share": 0.0039
+      },
+      {
+        "broker": "PRO",
+        "name": "PROVALOR SAB",
+        "share": 0.0032
+      },
+      {
+        "broker": "DVS",
+        "name": "DIVISO BOLSA SAB",
+        "share": 0.0027
+      },
+      {
+        "broker": "CAR",
+        "name": "SAB CARTISA PERU",
+        "share": 0.0026
+      },
+      {
+        "broker": "ANS",
+        "name": "FIT CAPITAL SAB",
+        "share": 0.0021
+      },
+      {
+        "broker": "ACR",
+        "name": "ACRES SAB",
+        "share": 0.0021
+      },
+      {
+        "broker": "RNT",
+        "name": "RENTA4 SAB",
+        "share": 0.0015
+      },
+      {
+        "broker": "PCA",
+        "name": "CA PERU SAB",
+        "share": 0.0007
+      },
+      {
+        "broker": "BNB",
+        "name": "BNB VALORES PERU SOLFIN SAB",
+        "share": 0.0005
+      },
+      {
+        "broker": "TRD",
+        "name": "TRADEK SAB",
+        "share": 0.0004
+      }
+    ],
+    "2019": [
+      {
+        "broker": "CRE",
+        "name": "CREDICORP CAPITAL SAB",
+        "share": 0.3132
+      },
+      {
+        "broker": "BTG",
+        "name": "BTG PACTUAL PERU SAB",
+        "share": 0.1467
+      },
+      {
+        "broker": "ITG",
+        "name": "INTELIGO SAB",
+        "share": 0.1446
+      },
+      {
+        "broker": "S&S",
+        "name": "SEMINARIO y CIA. SAB",
+        "share": 0.1066
+      },
+      {
+        "broker": "SCO",
+        "name": "SCOTIA BOLSA SAB",
+        "share": 0.0756
+      },
+      {
+        "broker": "KAL",
+        "name": "KALLPA SECURITIES SAB",
+        "share": 0.073
+      },
+      {
+        "broker": "CON",
+        "name": "BBVA SAB",
+        "share": 0.0532
+      },
+      {
+        "broker": "LAR",
+        "name": "LARRAIN VIAL SAB",
+        "share": 0.0316
+      },
+      {
+        "broker": "GCO",
+        "name": "GRUPO CORIL SAB",
+        "share": 0.0163
+      },
+      {
+        "broker": "SSU",
+        "name": "SAB SURA",
+        "share": 0.0141
+      },
+      {
+        "broker": "IVT",
+        "name": "INVESTA SAB",
+        "share": 0.0129
+      },
+      {
+        "broker": "MAG",
+        "name": "MAGOT SAB",
+        "share": 0.003
+      },
+      {
+        "broker": "IND",
+        "name": "INVERSION Y DESARROLLO SAB",
+        "share": 0.0025
+      },
+      {
+        "broker": "CAR",
+        "name": "SAB CARTISA PERU",
+        "share": 0.0021
+      },
+      {
+        "broker": "DVS",
+        "name": "DIVISO BOLSA SAB",
+        "share": 0.0015
+      },
+      {
+        "broker": "RNT",
+        "name": "RENTA4 SAB",
+        "share": 0.0012
+      },
+      {
+        "broker": "ANS",
+        "name": "FIT CAPITAL SAB",
+        "share": 0.0006
+      },
+      {
+        "broker": "PRO",
+        "name": "PROVALOR SAB",
+        "share": 0.0006
+      },
+      {
+        "broker": "BNB",
+        "name": "BNB VALORES PERU SOLFIN SAB",
+        "share": 0.0003
+      },
+      {
+        "broker": "ACR",
+        "name": "ACRES SAB",
+        "share": 0.0001
+      },
+      {
+        "broker": "TRD",
+        "name": "TRADEK SAB",
+        "share": 0.0001
+      }
+    ],
+    "2020": [
+      {
+        "broker": "CRE",
+        "name": "CREDICORP CAPITAL SAB",
+        "share": 0.3204
+      },
+      {
+        "broker": "CON",
+        "name": "BBVA SAB",
+        "share": 0.2935
+      },
+      {
+        "broker": "S&S",
+        "name": "SEMINARIO y CIA. SAB",
+        "share": 0.1045
+      },
+      {
+        "broker": "SCO",
+        "name": "SCOTIA BOLSA SAB",
+        "share": 0.0865
+      },
+      {
+        "broker": "BTG",
+        "name": "BTG PACTUAL PERU SAB",
+        "share": 0.0383
+      },
+      {
+        "broker": "LAR",
+        "name": "LARRAIN VIAL SAB",
+        "share": 0.0329
+      },
+      {
+        "broker": "GCO",
+        "name": "GRUPO CORIL SAB",
+        "share": 0.0314
+      },
+      {
+        "broker": "ITG",
+        "name": "INTELIGO SAB",
+        "share": 0.03
+      },
+      {
+        "broker": "IVT",
+        "name": "INVESTA SAB",
+        "share": 0.0215
+      },
+      {
+        "broker": "KAL",
+        "name": "KALLPA SECURITIES SAB",
+        "share": 0.0129
+      },
+      {
+        "broker": "SSU",
+        "name": "SAB SURA",
+        "share": 0.0122
+      },
+      {
+        "broker": "MAG",
+        "name": "MAGOT SAB",
+        "share": 0.0034
+      },
+      {
+        "broker": "IND",
+        "name": "INVERSION Y DESARROLLO SAB",
+        "share": 0.0028
+      },
+      {
+        "broker": "CAR",
+        "name": "SAB CARTISA PERU",
+        "share": 0.0025
+      },
+      {
+        "broker": "RNT",
+        "name": "RENTA4 SAB",
+        "share": 0.0019
+      },
+      {
+        "broker": "DVS",
+        "name": "DIVISO BOLSA SAB",
+        "share": 0.0019
+      },
+      {
+        "broker": "ACR",
+        "name": "ACRES SAB",
+        "share": 0.0014
+      },
+      {
+        "broker": "ANS",
+        "name": "FIT CAPITAL SAB",
+        "share": 0.0008
+      },
+      {
+        "broker": "PRO",
+        "name": "PROVALOR SAB",
+        "share": 0.0005
+      },
+      {
+        "broker": "BNB",
+        "name": "BNB VALORES PERU SOLFIN SAB",
+        "share": 0.0004
+      },
+      {
+        "broker": "TRD",
+        "name": "TRADEK SAB",
+        "share": 0.0002
+      }
+    ],
+    "2021": [
+      {
+        "broker": "CRE",
+        "name": "CREDICORP CAPITAL SAB",
+        "share": 0.3078
+      },
+      {
+        "broker": "S&S",
+        "name": "SEMINARIO y CIA. SAB",
+        "share": 0.1412
+      },
+      {
+        "broker": "LAR",
+        "name": "LARRAIN VIAL SAB",
+        "share": 0.1298
+      },
+      {
+        "broker": "CON",
+        "name": "BBVA SAB",
+        "share": 0.1296
+      },
+      {
+        "broker": "SCO",
+        "name": "SCOTIA BOLSA SAB",
+        "share": 0.0808
+      },
+      {
+        "broker": "BTG",
+        "name": "BTG PACTUAL PERU SAB",
+        "share": 0.0512
+      },
+      {
+        "broker": "ITG",
+        "name": "INTELIGO SAB",
+        "share": 0.0451
+      },
+      {
+        "broker": "GCO",
+        "name": "GRUPO CORIL SAB",
+        "share": 0.0438
+      },
+      {
+        "broker": "SSU",
+        "name": "SAB SURA",
+        "share": 0.0206
+      },
+      {
+        "broker": "KAL",
+        "name": "KALLPA SECURITIES SAB",
+        "share": 0.0148
+      },
+      {
+        "broker": "IVT",
+        "name": "INVESTA SAB",
+        "share": 0.0125
+      },
+      {
+        "broker": "IND",
+        "name": "INVERSION Y DESARROLLO SAB",
+        "share": 0.0047
+      },
+      {
+        "broker": "MAG",
+        "name": "MAGOT SAB",
+        "share": 0.0045
+      },
+      {
+        "broker": "CAR",
+        "name": "SAB CARTISA PERU",
+        "share": 0.0037
+      },
+      {
+        "broker": "RNT",
+        "name": "RENTA4 SAB",
+        "share": 0.0035
+      },
+      {
+        "broker": "DVS",
+        "name": "DIVISO BOLSA SAB",
+        "share": 0.0021
+      },
+      {
+        "broker": "ACR",
+        "name": "ACRES SAB",
+        "share": 0.0012
+      },
+      {
+        "broker": "PRO",
+        "name": "PROVALOR SAB",
+        "share": 0.0012
+      },
+      {
+        "broker": "ANS",
+        "name": "FIT CAPITAL SAB",
+        "share": 0.0011
+      },
+      {
+        "broker": "BNB",
+        "name": "BNB VALORES PERU SOLFIN SAB",
+        "share": 0.0006
+      },
+      {
+        "broker": "TRD",
+        "name": "TRADEK SAB",
+        "share": 0.0002
+      }
+    ],
+    "2022": [
+      {
+        "broker": "CRE",
+        "name": "CREDICORP CAPITAL SAB",
+        "share": 0.2771
+      },
+      {
+        "broker": "S&S",
+        "name": "SEMINARIO y CIA. SAB",
+        "share": 0.1648
+      },
+      {
+        "broker": "LAR",
+        "name": "LARRAIN VIAL SAB",
+        "share": 0.1301
+      },
+      {
+        "broker": "BTG",
+        "name": "BTG PACTUAL PERU SAB",
+        "share": 0.0884
+      },
+      {
+        "broker": "GCO",
+        "name": "GRUPO CORIL SAB",
+        "share": 0.0792
+      },
+      {
+        "broker": "SCO",
+        "name": "SCOTIA BOLSA SAB",
+        "share": 0.0781
+      },
+      {
+        "broker": "ITG",
+        "name": "INTELIGO SAB",
+        "share": 0.0583
+      },
+      {
+        "broker": "IVT",
+        "name": "INVESTA SAB",
+        "share": 0.0372
+      },
+      {
+        "broker": "CON",
+        "name": "BBVA SAB",
+        "share": 0.0362
+      },
+      {
+        "broker": "KAL",
+        "name": "KALLPA SECURITIES SAB",
+        "share": 0.0142
+      },
+      {
+        "broker": "SSU",
+        "name": "SAB SURA",
+        "share": 0.0082
+      },
+      {
+        "broker": "RNT",
+        "name": "RENTA4 SAB",
+        "share": 0.0057
+      },
+      {
+        "broker": "IND",
+        "name": "INVERSION Y DESARROLLO SAB",
+        "share": 0.0057
+      },
+      {
+        "broker": "CAR",
+        "name": "SAB CARTISA PERU",
+        "share": 0.0051
+      },
+      {
+        "broker": "MAG",
+        "name": "MAGOT SAB",
+        "share": 0.0049
+      },
+      {
+        "broker": "ANS",
+        "name": "FIT CAPITAL SAB",
+        "share": 0.0027
+      },
+      {
+        "broker": "DVS",
+        "name": "DIVISO BOLSA SAB",
+        "share": 0.0026
+      },
+      {
+        "broker": "BNB",
+        "name": "BNB VALORES PERU SOLFIN SAB",
+        "share": 0.0009
+      },
+      {
+        "broker": "ACR",
+        "name": "ACRES SAB",
+        "share": 0.0006
+      },
+      {
+        "broker": "TRD",
+        "name": "TRADEK SAB",
+        "share": 0.0001
+      }
+    ],
+    "2023": [
+      {
+        "broker": "CRE",
+        "name": "CREDICORP CAPITAL SAB",
+        "share": 0.238
+      },
+      {
+        "broker": "GCO",
+        "name": "GRUPO CORIL SAB",
+        "share": 0.1751
+      },
+      {
+        "broker": "S&S",
+        "name": "SEMINARIO y CIA. SAB",
+        "share": 0.1471
+      },
+      {
+        "broker": "LAR",
+        "name": "LARRAIN VIAL SAB",
+        "share": 0.1228
+      },
+      {
+        "broker": "BTG",
+        "name": "BTG PACTUAL PERU SAB",
+        "share": 0.1049
+      },
+      {
+        "broker": "ITG",
+        "name": "INTELIGO SAB",
+        "share": 0.0572
+      },
+      {
+        "broker": "SCO",
+        "name": "SCOTIA BOLSA SAB",
+        "share": 0.0409
+      },
+      {
+        "broker": "CON",
+        "name": "BBVA SAB",
+        "share": 0.0269
+      },
+      {
+        "broker": "KAL",
+        "name": "KALLPA SECURITIES SAB",
+        "share": 0.0266
+      },
+      {
+        "broker": "SSU",
+        "name": "SAB SURA",
+        "share": 0.0167
+      },
+      {
+        "broker": "IVT",
+        "name": "INVESTA SAB",
+        "share": 0.0138
+      },
+      {
+        "broker": "IND",
+        "name": "INVERSION Y DESARROLLO SAB",
+        "share": 0.0077
+      },
+      {
+        "broker": "RNT",
+        "name": "RENTA4 SAB",
+        "share": 0.0072
+      },
+      {
+        "broker": "MAG",
+        "name": "MAGOT SAB",
+        "share": 0.0052
+      },
+      {
+        "broker": "CAR",
+        "name": "SAB CARTISA PERU",
+        "share": 0.0045
+      },
+      {
+        "broker": "DVS",
+        "name": "DIVISO BOLSA SAB",
+        "share": 0.003
+      },
+      {
+        "broker": "ANS",
+        "name": "FIT CAPITAL SAB",
+        "share": 0.001
+      },
+      {
+        "broker": "BNB",
+        "name": "BNB VALORES PERU SOLFIN SAB",
+        "share": 0.0008
+      },
+      {
+        "broker": "ACR",
+        "name": "ACRES SAB",
+        "share": 0.0004
+      },
+      {
+        "broker": "TRD",
+        "name": "TRADEK SAB",
+        "share": 0.0001
+      }
+    ],
+    "2024": [
+      {
+        "broker": "CON",
+        "name": "BBVA SAB",
+        "share": 0.3247
+      },
+      {
+        "broker": "CRE",
+        "name": "CREDICORP CAPITAL SAB",
+        "share": 0.2216
+      },
+      {
+        "broker": "S&S",
+        "name": "SEMINARIO y CIA. SAB",
+        "share": 0.0901
+      },
+      {
+        "broker": "GCO",
+        "name": "GRUPO CORIL SAB",
+        "share": 0.0784
+      },
+      {
+        "broker": "BTG",
+        "name": "BTG PACTUAL PERU SAB",
+        "share": 0.0651
+      },
+      {
+        "broker": "ITG",
+        "name": "INTELIGO SAB",
+        "share": 0.0582
+      },
+      {
+        "broker": "SCO",
+        "name": "SCOTIA BOLSA SAB",
+        "share": 0.0554
+      },
+      {
+        "broker": "LAR",
+        "name": "LARRAIN VIAL SAB",
+        "share": 0.0516
+      },
+      {
+        "broker": "KAL",
+        "name": "KALLPA SECURITIES SAB",
+        "share": 0.0148
+      },
+      {
+        "broker": "SSU",
+        "name": "SAB SURA",
+        "share": 0.0125
+      },
+      {
+        "broker": "IVT",
+        "name": "INVESTA SAB",
+        "share": 0.0092
+      },
+      {
+        "broker": "RNT",
+        "name": "RENTA4 SAB",
+        "share": 0.0087
+      },
+      {
+        "broker": "IND",
+        "name": "INVERSION Y DESARROLLO SAB",
+        "share": 0.0034
+      },
+      {
+        "broker": "CAR",
+        "name": "SAB CARTISA PERU",
+        "share": 0.0027
+      },
+      {
+        "broker": "MAG",
+        "name": "MAGOT SAB",
+        "share": 0.002
+      },
+      {
+        "broker": "DVS",
+        "name": "DIVISO BOLSA SAB",
+        "share": 0.0011
+      },
+      {
+        "broker": "BNB",
+        "name": "BNB VALORES PERU SOLFIN SAB",
+        "share": 0.0004
+      },
+      {
+        "broker": "ACR",
+        "name": "ACRES SAB",
+        "share": 0.0001
+      },
+      {
+        "broker": "TRD",
+        "name": "TRADEK SAB",
+        "share": 0.0
+      }
+    ],
+    "2025": [
+      {
+        "broker": "CRE",
+        "name": "CREDICORP CAPITAL SAB",
+        "share": 0.2615
+      },
+      {
+        "broker": "GCO",
+        "name": "GRUPO CORIL SAB",
+        "share": 0.167
+      },
+      {
+        "broker": "LAR",
+        "name": "LARRAIN VIAL SAB",
+        "share": 0.1383
+      },
+      {
+        "broker": "S&S",
+        "name": "SEMINARIO y CIA. SAB",
+        "share": 0.1085
+      },
+      {
+        "broker": "ITG",
+        "name": "INTELIGO SAB",
+        "share": 0.1063
+      },
+      {
+        "broker": "BTG",
+        "name": "BTG PACTUAL PERU SAB",
+        "share": 0.0681
+      },
+      {
+        "broker": "CON",
+        "name": "BBVA SAB",
+        "share": 0.0417
+      },
+      {
+        "broker": "KAL",
+        "name": "KALLPA SECURITIES SAB",
+        "share": 0.0339
+      },
+      {
+        "broker": "SSU",
+        "name": "SAB SURA",
+        "share": 0.0205
+      },
+      {
+        "broker": "SCO",
+        "name": "SCOTIA BOLSA SAB",
+        "share": 0.0146
+      },
+      {
+        "broker": "IVT",
+        "name": "INVESTA SAB",
+        "share": 0.0116
+      },
+      {
+        "broker": "RNT",
+        "name": "RENTA4 SAB",
+        "share": 0.0112
+      },
+      {
+        "broker": "IND",
+        "name": "INVERSION Y DESARROLLO SAB",
+        "share": 0.0043
+      },
+      {
+        "broker": "CAR",
+        "name": "SAB CARTISA PERU",
+        "share": 0.0035
+      },
+      {
+        "broker": "MAG",
+        "name": "MAGOT SAB",
+        "share": 0.0034
+      },
+      {
+        "broker": "DVS",
+        "name": "DIVISO BOLSA SAB",
+        "share": 0.0031
+      },
+      {
+        "broker": "BNB",
+        "name": "BNB VALORES PERU SOLFIN SAB",
+        "share": 0.0012
+      },
+      {
+        "broker": "INV",
+        "name": "INVIU PERU",
+        "share": 0.001
+      },
+      {
+        "broker": "ACR",
+        "name": "ACRES SAB",
+        "share": 0.0002
+      },
+      {
+        "broker": "TRD",
+        "name": "TRADEK SAB",
+        "share": 0.0001
+      }
+    ],
+    "2026": [
+      {
+        "broker": "CRE",
+        "name": "CREDICORP CAPITAL SAB",
+        "share": 0.258
+      },
+      {
+        "broker": "GCO",
+        "name": "GRUPO CORIL SAB",
+        "share": 0.1583
+      },
+      {
+        "broker": "S&S",
+        "name": "SEMINARIO y CIA. SAB",
+        "share": 0.1189
+      },
+      {
+        "broker": "CON",
+        "name": "BBVA SAB",
+        "share": 0.1138
+      },
+      {
+        "broker": "LAR",
+        "name": "LARRAIN VIAL SAB",
+        "share": 0.0982
+      },
+      {
+        "broker": "ITG",
+        "name": "INTELIGO SAB",
+        "share": 0.0792
+      },
+      {
+        "broker": "BTG",
+        "name": "BTG PACTUAL PERU SAB",
+        "share": 0.0546
+      },
+      {
+        "broker": "KAL",
+        "name": "KALLPA SECURITIES SAB",
+        "share": 0.039
+      },
+      {
+        "broker": "SCO",
+        "name": "SCOTIA BOLSA SAB",
+        "share": 0.0228
+      },
+      {
+        "broker": "SSU",
+        "name": "SAB SURA",
+        "share": 0.0203
+      },
+      {
+        "broker": "RNT",
+        "name": "RENTA4 SAB",
+        "share": 0.0152
+      },
+      {
+        "broker": "CAR",
+        "name": "SAB CARTISA PERU",
+        "share": 0.0053
+      },
+      {
+        "broker": "IND",
+        "name": "INVERSION Y DESARROLLO SAB",
+        "share": 0.0042
+      },
+      {
+        "broker": "IVT",
+        "name": "INVESTA SAB",
+        "share": 0.0039
+      },
+      {
+        "broker": "MAG",
+        "name": "MAGOT SAB",
+        "share": 0.0039
+      },
+      {
+        "broker": "INV",
+        "name": "INVIU PERU",
+        "share": 0.0033
+      },
+      {
+        "broker": "BNB",
+        "name": "BNB VALORES PERU SOLFIN SAB",
+        "share": 0.0005
+      },
+      {
+        "broker": "ACR",
+        "name": "ACRES SAB",
+        "share": 0.0003
+      },
+      {
+        "broker": "TRD",
+        "name": "TRADEK SAB",
+        "share": 0.0001
+      }
+    ]
+  }
+}

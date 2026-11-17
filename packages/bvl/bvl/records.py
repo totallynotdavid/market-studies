@@ -5,6 +5,8 @@ from typing import TYPE_CHECKING, Any
 
 
 if TYPE_CHECKING:
+    from datetime import date
+
     from bvl.smv import Record
 
 Row = dict[str, Any]
@@ -50,6 +52,17 @@ def index_level(record: Record) -> Row:
         "high": record.get("maxima"),
         "low": record.get("minima"),
         "close": record.get("ultimo"),
+    }
+
+
+def broker_amount(record: Record, day: date) -> Row:
+    """One brokerage firm's buys and sells on `day`; the API row carries no date."""
+    return {
+        "date": day.isoformat(),
+        "broker": record["CodigoSAB"].strip(),
+        "name": (record.get("SocAgenteBolsa") or "").strip(),
+        "bought": record.get("MontoCompras") or 0.0,
+        "sold": record.get("MontoVentas") or 0.0,
     }
 
 
