@@ -92,6 +92,21 @@ def statement(record: Record, quarter: int, *, consolidated: bool) -> Row:
     }
 
 
+def holder(record: Record, fetched_on: date) -> Row:
+    """One holding in an issuer's register; the API answers only the current one."""
+    return {
+        "fetched_on": fetched_on.isoformat(),
+        "rpj": record["RPJ"].strip(),
+        "ruc": (record.get("RUC") or "").strip(),
+        "company": (record.get("Empresa") or "").strip(),
+        "holder": record["Accionista"].strip(),
+        "nationality": (record.get("Nacionalidad") or "").strip(),
+        "since": iso_date(record.get("Fecha_Inicio")),
+        "percent": float(record["Porcentaje_Participacion"]),
+        "series": (record.get("Serie") or "").strip(),
+    }
+
+
 def event(record: Record) -> Row:
     return {
         "filing": record["Numero_Expediente"].strip(),

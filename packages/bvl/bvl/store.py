@@ -86,6 +86,18 @@ CREATE TABLE IF NOT EXISTS statements (
     filed_on TEXT,
     PRIMARY KEY (rpj, year, quarter, consolidated)
 );
+CREATE TABLE IF NOT EXISTS holders (
+    fetched_on TEXT NOT NULL,
+    rpj TEXT NOT NULL,
+    ruc TEXT NOT NULL,
+    company TEXT NOT NULL,
+    holder TEXT NOT NULL,
+    nationality TEXT NOT NULL,
+    since TEXT,
+    percent REAL NOT NULL,
+    series TEXT NOT NULL,
+    PRIMARY KEY (fetched_on, rpj, holder, series)
+);
 CREATE TABLE IF NOT EXISTS bcrp_series (
     date TEXT NOT NULL,
     code TEXT NOT NULL,
@@ -100,6 +112,7 @@ TABLES = (
     "events",
     "broker_amounts",
     "statements",
+    "holders",
     "bcrp_series",
 )
 

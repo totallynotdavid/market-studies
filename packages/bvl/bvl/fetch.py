@@ -79,6 +79,16 @@ def fill_broker_amounts(
     return total
 
 
+def fill_holders(
+    client: smv.SmvClient, connection: sqlite3.Connection, today: date
+) -> int:
+    """Store today's register of holders as the snapshot dated `today`."""
+    rows = [records.holder(r, today) for r in smv.holders(client)]
+    total = store.write(connection, "holders", rows)
+    log.info("holders %s: %d rows", today, len(rows))
+    return total
+
+
 def fill_statements(
     client: smv.SmvClient,
     connection: sqlite3.Connection,

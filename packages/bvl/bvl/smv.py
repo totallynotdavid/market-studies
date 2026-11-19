@@ -232,6 +232,11 @@ def quarter_end(year: int, quarter: int) -> date:
     return following - timedelta(days=1)
 
 
+def holders(client: SmvClient) -> list[Record]:
+    """Every issuer's holders as the SMV registers them today; no history."""
+    return client.rows("registro/AccionistaSMVEmisor", {}, keep=False)
+
+
 def events(client: SmvClient, start: date, end: date, today: date) -> list[Record]:
     """Material events (hechos de importancia) issuers filed in `start..end`."""
     return client.rows(
