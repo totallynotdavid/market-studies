@@ -41,6 +41,7 @@ USER_AGENT = (
 MAX_WINDOW_DAYS = 90
 # The SMV keeps correcting a filing for a few days after it is made.
 SETTLED = timedelta(days=7)
+STATEMENTS_SETTLED = timedelta(days=365)
 
 _OK = frozenset({"0", "OK"})
 _NO_ROWS = "108"
@@ -204,6 +205,31 @@ def broker_amounts(client: SmvClient, day: date, today: date) -> list[Record]:
         {"sFechaNegoc": smv_date(day)},
         keep=settled(day, today),
     )
+
+
+def statements(
+    client: SmvClient, year: int, quarter: int, *, consolidated: bool, today: date
+) -> list[Record]:
+    """Each filer's summary accounts for one quarter, individual or consolidated.
+
+    A late or amended filing can still arrive months after the quarter, so an
+    answer is kept only once `STATEMENTS_SETTLED` has passed since its end.
+    """
+    end = quarter_end(year, quarter)
+    return client.rows(
+        "InfFinanciera/PrincipalCuentaSMV",
+        {
+            "sEjercicio": str(year),
+            "sPeriodo": str(quarter),
+            "sTipoInf": "C" if consolidated else "I",
+        },
+        keep=settled(end + STATEMENTS_SETTLED, today),
+    )
+
+
+def quarter_end(year: int, quarter: int) -> date:
+    following = date(year + quarter // 4, quarter % 4 * 3 + 1, 1)
+    return following - timedelta(days=1)
 
 
 def events(client: SmvClient, start: date, end: date, today: date) -> list[Record]:

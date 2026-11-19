@@ -66,6 +66,32 @@ def broker_amount(record: Record, day: date) -> Row:
     }
 
 
+def statement(record: Record, quarter: int, *, consolidated: bool) -> Row:
+    """One filer's summary accounts for a quarter, in `currency`.
+
+    The API spells `Dólares` with a broken `ó`, so the currency is read from
+    the first letter. Income figures cover the quarter alone, not the year to
+    date.
+    """
+    return {
+        "rpj": record["RPJ"].strip(),
+        "year": int(record["Ejercicio"]),
+        "quarter": quarter,
+        "consolidated": int(consolidated),
+        "ruc": (record.get("RUC") or "").strip(),
+        "company": (record.get("NombreEmpresa") or "").strip(),
+        "company_type": (record.get("TipoEmpresa") or "").strip(),
+        "sector": (record.get("TipoSector") or "").strip(),
+        "currency": "USD" if (record.get("Moneda") or "").startswith("D") else "PEN",
+        "assets": record.get("ActivoTotal"),
+        "liabilities": record.get("PasivoTotal"),
+        "equity": record.get("PatrimonioTotal"),
+        "revenue": record.get("TotalIngreso"),
+        "net_income": record.get("UtilidadNeta"),
+        "filed_on": iso_date(record.get("FechaRegistro")),
+    }
+
+
 def event(record: Record) -> Row:
     return {
         "filing": record["Numero_Expediente"].strip(),

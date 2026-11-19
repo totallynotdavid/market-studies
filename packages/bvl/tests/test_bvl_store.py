@@ -35,6 +35,19 @@ def test_index_row_reads_the_level() -> None:
     assert (row["date"], row["code"], row["close"]) == ("2005-01-03", "IGBVL", 3774.37)
 
 
+def test_statement_row_trims_the_rpj_and_reads_the_currency() -> None:
+    by_name = {
+        r["NombreEmpresa"]: records.statement(r, 1, consolidated=False)
+        for r in rows("statements.json")
+    }
+    broker = by_name["ACRES SOCIEDAD AGENTE DE BOLSA S.A."]
+    farm = by_name["AGRICOLA CERRO PRIETO S.A."]
+    assert broker["rpj"] == "OE5661"
+    assert (broker["currency"], farm["currency"]) == ("PEN", "USD")
+    assert (farm["year"], farm["quarter"], farm["consolidated"]) == (2015, 1, 0)
+    assert farm["filed_on"] == "2015-05-05"
+
+
 def test_refetching_a_span_replaces_rows(tmp_path: Path) -> None:
     db = tmp_path / "bvl.sqlite"
     with closing(store.connect(db)) as connection:

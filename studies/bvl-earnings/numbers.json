@@ -1,0 +1,1036 @@
+{
+  "statements": 35936,
+  "filers": 581,
+  "first_quarter": "2002Q1",
+  "last_quarter": "2026Q2",
+  "issuer_statements": 19693,
+  "issuers": 384,
+  "rule_from": "2014-07-01",
+  "since_rule": {
+    "statements": 9671,
+    "median_lag": 30.0,
+    "on_due_day": 0.3134,
+    "late": 0.0667,
+    "late_over_30_days": 0.0266
+  },
+  "since_rule_by_traded": {
+    "traded share": {
+      "statements": 5297,
+      "median_lag": 30.0,
+      "on_due_day": 0.357,
+      "late": 0.0729,
+      "late_over_30_days": 0.0304
+    },
+    "no traded share": {
+      "statements": 4374,
+      "median_lag": 30.0,
+      "on_due_day": 0.2606,
+      "late": 0.0592,
+      "late_over_30_days": 0.0219
+    }
+  },
+  "by_quarter": [
+    {
+      "quarter": "2002Q1",
+      "statements": 191,
+      "median_lag": 30.0,
+      "on_due_day": 0.518,
+      "late": 0.131
+    },
+    {
+      "quarter": "2002Q2",
+      "statements": 194,
+      "median_lag": 26.0,
+      "on_due_day": 0.314,
+      "late": 0.088
+    },
+    {
+      "quarter": "2002Q3",
+      "statements": 196,
+      "median_lag": 30.0,
+      "on_due_day": 0.02,
+      "late": 0.056
+    },
+    {
+      "quarter": "2002Q4",
+      "statements": 192,
+      "median_lag": 45.0,
+      "on_due_day": 0.036,
+      "late": 0.099
+    },
+    {
+      "quarter": "2003Q1",
+      "statements": 194,
+      "median_lag": 30.0,
+      "on_due_day": 0.495,
+      "late": 0.17
+    },
+    {
+      "quarter": "2003Q2",
+      "statements": 192,
+      "median_lag": 25.0,
+      "on_due_day": 0.021,
+      "late": 0.031
+    },
+    {
+      "quarter": "2003Q3",
+      "statements": 192,
+      "median_lag": 30.0,
+      "on_due_day": 0.021,
+      "late": 0.031
+    },
+    {
+      "quarter": "2003Q4",
+      "statements": 194,
+      "median_lag": 47.0,
+      "on_due_day": 0.418,
+      "late": 0.155
+    },
+    {
+      "quarter": "2004Q1",
+      "statements": 195,
+      "median_lag": 30.0,
+      "on_due_day": 0.518,
+      "late": 0.108
+    },
+    {
+      "quarter": "2004Q2",
+      "statements": 194,
+      "median_lag": 27.0,
+      "on_due_day": 0.046,
+      "late": 0.072
+    },
+    {
+      "quarter": "2004Q3",
+      "statements": 195,
+      "median_lag": 29.0,
+      "on_due_day": 0.221,
+      "late": 0.092
+    },
+    {
+      "quarter": "2004Q4",
+      "statements": 192,
+      "median_lag": 45.0,
+      "on_due_day": 0.057,
+      "late": 0.083
+    },
+    {
+      "quarter": "2005Q1",
+      "statements": 195,
+      "median_lag": 29.0,
+      "on_due_day": 0.246,
+      "late": 0.2
+    },
+    {
+      "quarter": "2005Q2",
+      "statements": 196,
+      "median_lag": 27.0,
+      "on_due_day": 0.311,
+      "late": 0.061
+    },
+    {
+      "quarter": "2005Q3",
+      "statements": 199,
+      "median_lag": 28.0,
+      "on_due_day": 0.342,
+      "late": 0.055
+    },
+    {
+      "quarter": "2005Q4",
+      "statements": 201,
+      "median_lag": 45.0,
+      "on_due_day": 0.035,
+      "late": 0.08
+    },
+    {
+      "quarter": "2006Q1",
+      "statements": 201,
+      "median_lag": 32.0,
+      "on_due_day": 0.438,
+      "late": 0.124
+    },
+    {
+      "quarter": "2006Q2",
+      "statements": 198,
+      "median_lag": 27.0,
+      "on_due_day": 0.328,
+      "late": 0.157
+    },
+    {
+      "quarter": "2006Q3",
+      "statements": 201,
+      "median_lag": 27.0,
+      "on_due_day": 0.04,
+      "late": 0.095
+    },
+    {
+      "quarter": "2006Q4",
+      "statements": 194,
+      "median_lag": 45.0,
+      "on_due_day": 0.093,
+      "late": 0.088
+    },
+    {
+      "quarter": "2007Q1",
+      "statements": 195,
+      "median_lag": 32.0,
+      "on_due_day": 0.082,
+      "late": 0.554
+    },
+    {
+      "quarter": "2007Q2",
+      "statements": 199,
+      "median_lag": 27.0,
+      "on_due_day": 0.312,
+      "late": 0.07
+    },
+    {
+      "quarter": "2007Q3",
+      "statements": 200,
+      "median_lag": 30.0,
+      "on_due_day": 0.085,
+      "late": 0.045
+    },
+    {
+      "quarter": "2007Q4",
+      "statements": 205,
+      "median_lag": 45.0,
+      "on_due_day": 0.02,
+      "late": 0.063
+    },
+    {
+      "quarter": "2008Q1",
+      "statements": 204,
+      "median_lag": 30.0,
+      "on_due_day": 0.495,
+      "late": 0.069
+    },
+    {
+      "quarter": "2008Q2",
+      "statements": 204,
+      "median_lag": 29.5,
+      "on_due_day": 0.064,
+      "late": 0.039
+    },
+    {
+      "quarter": "2008Q3",
+      "statements": 208,
+      "median_lag": 30.0,
+      "on_due_day": 0.048,
+      "late": 0.067
+    },
+    {
+      "quarter": "2008Q4",
+      "statements": 207,
+      "median_lag": 47.0,
+      "on_due_day": 0.425,
+      "late": 0.111
+    },
+    {
+      "quarter": "2009Q1",
+      "statements": 206,
+      "median_lag": 30.0,
+      "on_due_day": 0.5,
+      "late": 0.083
+    },
+    {
+      "quarter": "2009Q2",
+      "statements": 204,
+      "median_lag": 27.0,
+      "on_due_day": 0.029,
+      "late": 0.044
+    },
+    {
+      "quarter": "2009Q3",
+      "statements": 205,
+      "median_lag": 29.0,
+      "on_due_day": 0.01,
+      "late": 0.044
+    },
+    {
+      "quarter": "2009Q4",
+      "statements": 211,
+      "median_lag": 46.0,
+      "on_due_day": 0.412,
+      "late": 0.1
+    },
+    {
+      "quarter": "2010Q1",
+      "statements": 212,
+      "median_lag": 30.0,
+      "on_due_day": 0.458,
+      "late": 0.071
+    },
+    {
+      "quarter": "2010Q2",
+      "statements": 215,
+      "median_lag": 26.0,
+      "on_due_day": 0.088,
+      "late": 0.028
+    },
+    {
+      "quarter": "2010Q3",
+      "statements": 218,
+      "median_lag": 29.0,
+      "on_due_day": 0.257,
+      "late": 0.05
+    },
+    {
+      "quarter": "2010Q4",
+      "statements": 215,
+      "median_lag": 45.0,
+      "on_due_day": 0.033,
+      "late": 0.065
+    },
+    {
+      "quarter": "2011Q1",
+      "statements": 214,
+      "median_lag": 29.0,
+      "on_due_day": 0.29,
+      "late": 0.042
+    },
+    {
+      "quarter": "2011Q2",
+      "statements": 215,
+      "median_lag": 27.0,
+      "on_due_day": 0.316,
+      "late": 0.06
+    },
+    {
+      "quarter": "2011Q3",
+      "statements": 216,
+      "median_lag": 31.0,
+      "on_due_day": 0.333,
+      "late": 0.028
+    },
+    {
+      "quarter": "2011Q4",
+      "statements": 220,
+      "median_lag": 45.0,
+      "on_due_day": 0.055,
+      "late": 0.064
+    },
+    {
+      "quarter": "2012Q1",
+      "statements": 218,
+      "median_lag": 30.0,
+      "on_due_day": 0.445,
+      "late": 0.078
+    },
+    {
+      "quarter": "2012Q2",
+      "statements": 220,
+      "median_lag": 27.0,
+      "on_due_day": 0.082,
+      "late": 0.032
+    },
+    {
+      "quarter": "2012Q3",
+      "statements": 224,
+      "median_lag": 30.0,
+      "on_due_day": 0.045,
+      "late": 0.036
+    },
+    {
+      "quarter": "2012Q4",
+      "statements": 224,
+      "median_lag": 45.0,
+      "on_due_day": 0.031,
+      "late": 0.076
+    },
+    {
+      "quarter": "2013Q1",
+      "statements": 181,
+      "median_lag": 30.0,
+      "on_due_day": 0.569,
+      "late": 0.05
+    },
+    {
+      "quarter": "2013Q2",
+      "statements": 221,
+      "median_lag": 26.0,
+      "on_due_day": 0.032,
+      "late": 0.018
+    },
+    {
+      "quarter": "2013Q3",
+      "statements": 219,
+      "median_lag": 30.0,
+      "on_due_day": 0.018,
+      "late": 0.023
+    },
+    {
+      "quarter": "2013Q4",
+      "statements": 220,
+      "median_lag": 45.0,
+      "on_due_day": 0.018,
+      "late": 0.064
+    },
+    {
+      "quarter": "2014Q1",
+      "statements": 220,
+      "median_lag": 30.0,
+      "on_due_day": 0.595,
+      "late": 0.041
+    },
+    {
+      "quarter": "2014Q2",
+      "statements": 220,
+      "median_lag": 30.0,
+      "on_due_day": 0.023,
+      "late": 0.018
+    },
+    {
+      "quarter": "2014Q3",
+      "statements": 217,
+      "median_lag": 29.0,
+      "on_due_day": 0.009,
+      "late": 0.028
+    },
+    {
+      "quarter": "2014Q4",
+      "statements": 220,
+      "median_lag": 44.0,
+      "on_due_day": 0.3,
+      "late": 0.086
+    },
+    {
+      "quarter": "2015Q1",
+      "statements": 218,
+      "median_lag": 29.5,
+      "on_due_day": 0.454,
+      "late": 0.046
+    },
+    {
+      "quarter": "2015Q2",
+      "statements": 217,
+      "median_lag": 27.0,
+      "on_due_day": 0.009,
+      "late": 0.018
+    },
+    {
+      "quarter": "2015Q3",
+      "statements": 218,
+      "median_lag": 29.0,
+      "on_due_day": 0.005,
+      "late": 0.014
+    },
+    {
+      "quarter": "2015Q4",
+      "statements": 224,
+      "median_lag": 43.0,
+      "on_due_day": 0.384,
+      "late": 0.094
+    },
+    {
+      "quarter": "2016Q1",
+      "statements": 223,
+      "median_lag": 29.0,
+      "on_due_day": 0.22,
+      "late": 0.022
+    },
+    {
+      "quarter": "2016Q2",
+      "statements": 221,
+      "median_lag": 26.0,
+      "on_due_day": 0.199,
+      "late": 0.018
+    },
+    {
+      "quarter": "2016Q3",
+      "statements": 220,
+      "median_lag": 28.0,
+      "on_due_day": 0.291,
+      "late": 0.023
+    },
+    {
+      "quarter": "2016Q4",
+      "statements": 219,
+      "median_lag": 45.0,
+      "on_due_day": 0.05,
+      "late": 0.046
+    },
+    {
+      "quarter": "2017Q1",
+      "statements": 217,
+      "median_lag": 28.0,
+      "on_due_day": 0.313,
+      "late": 0.088
+    },
+    {
+      "quarter": "2017Q2",
+      "statements": 218,
+      "median_lag": 26.0,
+      "on_due_day": 0.307,
+      "late": 0.023
+    },
+    {
+      "quarter": "2017Q3",
+      "statements": 217,
+      "median_lag": 30.0,
+      "on_due_day": 0.355,
+      "late": 0.028
+    },
+    {
+      "quarter": "2017Q4",
+      "statements": 217,
+      "median_lag": 45.0,
+      "on_due_day": 0.424,
+      "late": 0.046
+    },
+    {
+      "quarter": "2018Q1",
+      "statements": 213,
+      "median_lag": 28.0,
+      "on_due_day": 0.455,
+      "late": 0.038
+    },
+    {
+      "quarter": "2018Q2",
+      "statements": 214,
+      "median_lag": 30.0,
+      "on_due_day": 0.322,
+      "late": 0.033
+    },
+    {
+      "quarter": "2018Q3",
+      "statements": 209,
+      "median_lag": 30.0,
+      "on_due_day": 0.402,
+      "late": 0.019
+    },
+    {
+      "quarter": "2018Q4",
+      "statements": 207,
+      "median_lag": 45.0,
+      "on_due_day": 0.401,
+      "late": 0.039
+    },
+    {
+      "quarter": "2019Q1",
+      "statements": 201,
+      "median_lag": 30.0,
+      "on_due_day": 0.502,
+      "late": 0.04
+    },
+    {
+      "quarter": "2019Q2",
+      "statements": 198,
+      "median_lag": 26.0,
+      "on_due_day": 0.384,
+      "late": 0.03
+    },
+    {
+      "quarter": "2019Q3",
+      "statements": 196,
+      "median_lag": 30.0,
+      "on_due_day": 0.281,
+      "late": 0.02
+    },
+    {
+      "quarter": "2019Q4",
+      "statements": 193,
+      "median_lag": 45.0,
+      "on_due_day": 0.373,
+      "late": 0.036
+    },
+    {
+      "quarter": "2020Q1",
+      "statements": 193,
+      "median_lag": 51.0,
+      "on_due_day": 0.124,
+      "late": 0.648
+    },
+    {
+      "quarter": "2020Q2",
+      "statements": 193,
+      "median_lag": 41.0,
+      "on_due_day": 0.073,
+      "late": 0.528
+    },
+    {
+      "quarter": "2020Q3",
+      "statements": 195,
+      "median_lag": 30.0,
+      "on_due_day": 0.338,
+      "late": 0.021
+    },
+    {
+      "quarter": "2020Q4",
+      "statements": 193,
+      "median_lag": 46.0,
+      "on_due_day": 0.472,
+      "late": 0.036
+    },
+    {
+      "quarter": "2021Q1",
+      "statements": 190,
+      "median_lag": 29.0,
+      "on_due_day": 0.416,
+      "late": 0.037
+    },
+    {
+      "quarter": "2021Q2",
+      "statements": 188,
+      "median_lag": 29.5,
+      "on_due_day": 0.33,
+      "late": 0.021
+    },
+    {
+      "quarter": "2021Q3",
+      "statements": 187,
+      "median_lag": 29.0,
+      "on_due_day": 0.267,
+      "late": 0.107
+    },
+    {
+      "quarter": "2021Q4",
+      "statements": 188,
+      "median_lag": 45.0,
+      "on_due_day": 0.436,
+      "late": 0.048
+    },
+    {
+      "quarter": "2022Q1",
+      "statements": 184,
+      "median_lag": 29.0,
+      "on_due_day": 0.234,
+      "late": 0.19
+    },
+    {
+      "quarter": "2022Q2",
+      "statements": 184,
+      "median_lag": 27.0,
+      "on_due_day": 0.326,
+      "late": 0.011
+    },
+    {
+      "quarter": "2022Q3",
+      "statements": 184,
+      "median_lag": 28.0,
+      "on_due_day": 0.315,
+      "late": 0.005
+    },
+    {
+      "quarter": "2022Q4",
+      "statements": 185,
+      "median_lag": 45.0,
+      "on_due_day": 0.373,
+      "late": 0.07
+    },
+    {
+      "quarter": "2023Q1",
+      "statements": 183,
+      "median_lag": 28.0,
+      "on_due_day": 0.426,
+      "late": 0.027
+    },
+    {
+      "quarter": "2023Q2",
+      "statements": 182,
+      "median_lag": 27.0,
+      "on_due_day": 0.39,
+      "late": 0.038
+    },
+    {
+      "quarter": "2023Q3",
+      "statements": 181,
+      "median_lag": 30.0,
+      "on_due_day": 0.403,
+      "late": 0.044
+    },
+    {
+      "quarter": "2023Q4",
+      "statements": 179,
+      "median_lag": 45.0,
+      "on_due_day": 0.38,
+      "late": 0.039
+    },
+    {
+      "quarter": "2024Q1",
+      "statements": 179,
+      "median_lag": 29.0,
+      "on_due_day": 0.419,
+      "late": 0.078
+    },
+    {
+      "quarter": "2024Q2",
+      "statements": 177,
+      "median_lag": 30.0,
+      "on_due_day": 0.373,
+      "late": 0.023
+    },
+    {
+      "quarter": "2024Q3",
+      "statements": 176,
+      "median_lag": 30.0,
+      "on_due_day": 0.358,
+      "late": 0.028
+    },
+    {
+      "quarter": "2024Q4",
+      "statements": 177,
+      "median_lag": 45.0,
+      "on_due_day": 0.373,
+      "late": 0.056
+    },
+    {
+      "quarter": "2025Q1",
+      "statements": 177,
+      "median_lag": 29.0,
+      "on_due_day": 0.441,
+      "late": 0.045
+    },
+    {
+      "quarter": "2025Q2",
+      "statements": 177,
+      "median_lag": 30.0,
+      "on_due_day": 0.39,
+      "late": 0.045
+    },
+    {
+      "quarter": "2025Q3",
+      "statements": 176,
+      "median_lag": 30.0,
+      "on_due_day": 0.301,
+      "late": 0.045
+    },
+    {
+      "quarter": "2025Q4",
+      "statements": 175,
+      "median_lag": 44.0,
+      "on_due_day": 0.394,
+      "late": 0.08
+    },
+    {
+      "quarter": "2026Q1",
+      "statements": 174,
+      "median_lag": 30.0,
+      "on_due_day": 0.454,
+      "late": 0.075
+    },
+    {
+      "quarter": "2026Q2",
+      "statements": 173,
+      "median_lag": 30.0,
+      "on_due_day": 0.318,
+      "late": 0.104
+    }
+  ],
+  "filed_vs_due_day": {
+    "-20": 0.0129,
+    "-19": 0.0104,
+    "-18": 0.0127,
+    "-17": 0.0124,
+    "-16": 0.01,
+    "-15": 0.0157,
+    "-14": 0.0097,
+    "-13": 0.0148,
+    "-12": 0.0166,
+    "-11": 0.02,
+    "-10": 0.0178,
+    "-9": 0.0136,
+    "-8": 0.0208,
+    "-7": 0.0455,
+    "-6": 0.0536,
+    "-5": 0.0583,
+    "-4": 0.0529,
+    "-3": 0.0574,
+    "-2": 0.0272,
+    "-1": 0.106,
+    "0": 0.3134,
+    "1": 0.0117,
+    "2": 0.002,
+    "3": 0.0021,
+    "4": 0.0012,
+    "5": 0.0011,
+    "6": 0.0016,
+    "7": 0.0012,
+    "8": 0.0017,
+    "9": 0.001,
+    "10": 0.0022
+  },
+  "events": 5035,
+  "event_issuers": 120,
+  "event_tickers": 142,
+  "first_event": "2003-04-23",
+  "last_event": "2026-11-02",
+  "windows": {
+    "pre": [
+      -5,
+      -1
+    ],
+    "reaction": [
+      0,
+      1
+    ],
+    "drift": [
+      2,
+      60
+    ]
+  },
+  "reaction": {
+    "overall": {
+      "terciles": {
+        "good": 1678,
+        "bad": 1679,
+        "pre": {
+          "good": -0.00512,
+          "bad": -0.00763,
+          "difference": 0.00251,
+          "low": -0.00109,
+          "high": 0.00662
+        },
+        "reaction": {
+          "good": 0.00903,
+          "bad": -0.01245,
+          "difference": 0.02147,
+          "low": 0.01741,
+          "high": 0.02585
+        },
+        "drift": {
+          "good": -0.03962,
+          "bad": -0.078,
+          "difference": 0.03837,
+          "low": 0.02151,
+          "high": 0.05377
+        }
+      },
+      "sign": {
+        "good": 2865,
+        "bad": 2164,
+        "pre": {
+          "good": -0.00635,
+          "bad": -0.00761,
+          "difference": 0.00126,
+          "low": -0.00272,
+          "high": 0.00499
+        },
+        "reaction": {
+          "good": 0.00471,
+          "bad": -0.0108,
+          "difference": 0.01551,
+          "low": 0.0123,
+          "high": 0.01893
+        },
+        "drift": {
+          "good": -0.04403,
+          "bad": -0.07766,
+          "difference": 0.03364,
+          "low": 0.01987,
+          "high": 0.04765
+        }
+      }
+    },
+    "by_period": {
+      "2002-09": {
+        "terciles": {
+          "good": 569,
+          "bad": 500,
+          "pre": {
+            "good": -0.00672,
+            "bad": -0.01077,
+            "difference": 0.00405,
+            "low": -0.00501,
+            "high": 0.01298
+          },
+          "reaction": {
+            "good": 0.01409,
+            "bad": -0.01915,
+            "difference": 0.03324,
+            "low": 0.02577,
+            "high": 0.04163
+          },
+          "drift": {
+            "good": -0.06529,
+            "bad": -0.10586,
+            "difference": 0.04057,
+            "low": 0.01009,
+            "high": 0.06704
+          }
+        },
+        "sign": {
+          "good": 931,
+          "bad": 632,
+          "pre": {
+            "good": -0.00709,
+            "bad": -0.00947,
+            "difference": 0.00238,
+            "low": -0.00593,
+            "high": 0.00994
+          },
+          "reaction": {
+            "good": 0.00803,
+            "bad": -0.0178,
+            "difference": 0.02582,
+            "low": 0.0196,
+            "high": 0.03198
+          },
+          "drift": {
+            "good": -0.07678,
+            "bad": -0.11166,
+            "difference": 0.03488,
+            "low": 0.00547,
+            "high": 0.06735
+          }
+        }
+      },
+      "2010-14": {
+        "terciles": {
+          "good": 435,
+          "bad": 427,
+          "pre": {
+            "good": -0.00461,
+            "bad": -0.00655,
+            "difference": 0.00194,
+            "low": -0.00555,
+            "high": 0.0092
+          },
+          "reaction": {
+            "good": 0.0063,
+            "bad": -0.008,
+            "difference": 0.0143,
+            "low": 0.00722,
+            "high": 0.02547
+          },
+          "drift": {
+            "good": -0.00285,
+            "bad": -0.04713,
+            "difference": 0.04428,
+            "low": 0.01179,
+            "high": 0.07997
+          }
+        },
+        "sign": {
+          "good": 735,
+          "bad": 537,
+          "pre": {
+            "good": -0.00732,
+            "bad": -0.00708,
+            "difference": -0.00024,
+            "low": -0.01004,
+            "high": 0.00772
+          },
+          "reaction": {
+            "good": 0.00263,
+            "bad": -0.00631,
+            "difference": 0.00894,
+            "low": 0.00367,
+            "high": 0.01756
+          },
+          "drift": {
+            "good": -0.00688,
+            "bad": -0.04355,
+            "difference": 0.03667,
+            "low": 0.01003,
+            "high": 0.06336
+          }
+        }
+      },
+      "2015-19": {
+        "terciles": {
+          "good": 305,
+          "bad": 358,
+          "pre": {
+            "good": -0.00598,
+            "bad": -0.00487,
+            "difference": -0.00112,
+            "low": -0.00789,
+            "high": 0.00498
+          },
+          "reaction": {
+            "good": 0.00337,
+            "bad": -0.01633,
+            "difference": 0.0197,
+            "low": 0.01145,
+            "high": 0.02671
+          },
+          "drift": {
+            "good": -0.04363,
+            "bad": -0.08223,
+            "difference": 0.0386,
+            "low": -0.00498,
+            "high": 0.08257
+          }
+        },
+        "sign": {
+          "good": 578,
+          "bad": 469,
+          "pre": {
+            "good": -0.0055,
+            "bad": -0.00507,
+            "difference": -0.00043,
+            "low": -0.0053,
+            "high": 0.00517
+          },
+          "reaction": {
+            "good": 0.00033,
+            "bad": -0.01452,
+            "difference": 0.01484,
+            "low": 0.00955,
+            "high": 0.02024
+          },
+          "drift": {
+            "good": -0.04287,
+            "bad": -0.07511,
+            "difference": 0.03224,
+            "low": 0.00505,
+            "high": 0.06529
+          }
+        }
+      },
+      "2020-26": {
+        "terciles": {
+          "good": 369,
+          "bad": 394,
+          "pre": {
+            "good": -0.00254,
+            "bad": -0.00732,
+            "difference": 0.00477,
+            "low": -0.00132,
+            "high": 0.01158
+          },
+          "reaction": {
+            "good": 0.0091,
+            "bad": -0.00524,
+            "difference": 0.01434,
+            "low": 0.00925,
+            "high": 0.01934
+          },
+          "drift": {
+            "good": -0.04001,
+            "bad": -0.07234,
+            "difference": 0.03233,
+            "low": 0.00408,
+            "high": 0.05905
+          }
+        },
+        "sign": {
+          "good": 621,
+          "bad": 526,
+          "pre": {
+            "good": -0.00487,
+            "bad": -0.00817,
+            "difference": 0.0033,
+            "low": -0.00172,
+            "high": 0.0085
+          },
+          "reaction": {
+            "good": 0.00626,
+            "bad": -0.00368,
+            "difference": 0.00994,
+            "low": 0.00567,
+            "high": 0.01427
+          },
+          "drift": {
+            "good": -0.03974,
+            "bad": -0.07401,
+            "difference": 0.03427,
+            "low": 0.01374,
+            "high": 0.05483
+          }
+        }
+      }
+    }
+  }
+}

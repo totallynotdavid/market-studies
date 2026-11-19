@@ -79,6 +79,39 @@ def fill_broker_amounts(
     return total
 
 
+def fill_statements(
+    client: smv.SmvClient,
+    connection: sqlite3.Connection,
+    start: date,
+    end: date,
+    today: date,
+) -> int:
+    """Fetch individual and consolidated summary accounts for every quarter that
+    ends in `start..end` and before `today`."""
+    total = 0
+    for year in range(start.year, end.year + 1):
+        for quarter in (1, 2, 3, 4):
+            last = smv.quarter_end(year, quarter)
+            if not start <= last <= end or last >= today:
+                continue
+            for consolidated in (False, True):
+                rows = [
+                    records.statement(r, quarter, consolidated=consolidated)
+                    for r in smv.statements(
+                        client, year, quarter, consolidated=consolidated, today=today
+                    )
+                ]
+                total += store.write(connection, "statements", rows)
+                log.info(
+                    "statements %d Q%d %s: %d rows",
+                    year,
+                    quarter,
+                    "consolidated" if consolidated else "individual",
+                    len(rows),
+                )
+    return total
+
+
 def fill_bcrp(
     client: bcrp.BcrpClient,
     connection: sqlite3.Connection,

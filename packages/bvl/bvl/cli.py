@@ -22,6 +22,7 @@ STUDIES = {
     "disclosure": studies.run_disclosure,
     "politics": studies.run_politics,
     "brokers": studies.run_brokers,
+    "earnings": studies.run_earnings,
 }
 # Datasets the SMV answers one market day per request: table and fill.
 DAILY_FILLS = {
@@ -31,6 +32,7 @@ DAILY_FILLS = {
 # The first day each API query answers.
 QUOTES_START = date(1996, 1, 1)
 EVENTS_START = date(2010, 1, 1)
+STATEMENTS_START = date(2002, 1, 1)
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -43,7 +45,9 @@ def build_parser() -> argparse.ArgumentParser:
     commands = parser.add_subparsers(dest="command", required=True)
 
     fill = commands.add_parser("fetch", help="fill the panel from the SMV or BCRP API")
-    fill.add_argument("dataset", choices=["quotes", "events", *DAILY_FILLS, "bcrp"])
+    fill.add_argument(
+        "dataset", choices=["quotes", "events", "statements", *DAILY_FILLS, "bcrp"]
+    )
     fill.add_argument("--start", type=date.fromisoformat)
     fill.add_argument("--end", type=date.fromisoformat, default=date.today())
 
@@ -80,6 +84,9 @@ def _fetch(args: argparse.Namespace) -> None:
         elif args.dataset == "events":
             start = args.start or EVENTS_START
             fetch.fill_events(client, connection, start, args.end, today)
+        elif args.dataset == "statements":
+            start = args.start or STATEMENTS_START
+            fetch.fill_statements(client, connection, start, args.end, today)
         else:
             table, fill = DAILY_FILLS[args.dataset]
             days = [

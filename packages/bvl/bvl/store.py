@@ -1,5 +1,5 @@
 """The SQLite panel of BVL quotes, index levels, broker amounts, SMV material
-events and BCRP series.
+events, SMV quarterly statements and BCRP series.
 
 A fetch writes each answer whole, so a second fetch of the same span replaces
 rows and never duplicates them. One filing lists every event kind it reports
@@ -68,6 +68,24 @@ CREATE TABLE IF NOT EXISTS broker_amounts (
     sold REAL NOT NULL,
     PRIMARY KEY (date, broker)
 );
+CREATE TABLE IF NOT EXISTS statements (
+    rpj TEXT NOT NULL,
+    year INTEGER NOT NULL,
+    quarter INTEGER NOT NULL,
+    consolidated INTEGER NOT NULL,
+    ruc TEXT NOT NULL,
+    company TEXT NOT NULL,
+    company_type TEXT NOT NULL,
+    sector TEXT NOT NULL,
+    currency TEXT NOT NULL,
+    assets REAL,
+    liabilities REAL,
+    equity REAL,
+    revenue REAL,
+    net_income REAL,
+    filed_on TEXT,
+    PRIMARY KEY (rpj, year, quarter, consolidated)
+);
 CREATE TABLE IF NOT EXISTS bcrp_series (
     date TEXT NOT NULL,
     code TEXT NOT NULL,
@@ -76,7 +94,14 @@ CREATE TABLE IF NOT EXISTS bcrp_series (
 );
 """
 
-TABLES = ("quotes", "index_levels", "events", "broker_amounts", "bcrp_series")
+TABLES = (
+    "quotes",
+    "index_levels",
+    "events",
+    "broker_amounts",
+    "statements",
+    "bcrp_series",
+)
 
 
 def connect(path: Path) -> sqlite3.Connection:

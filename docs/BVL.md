@@ -9,11 +9,13 @@ uv run bvl fetch quotes      # BVL daily quotes, 1996 to today
 uv run bvl fetch events      # SMV material events, 2010 to today
 uv run bvl fetch indices     # BVL index levels, one request per market day
 uv run bvl fetch brokers     # each brokerage firm's amounts, one request per market day
+uv run bvl fetch statements  # quarterly summary accounts, 2002 to the last ended quarter
 uv run bvl fetch bcrp        # BCRP sol per dollar and copper, 1997 to today
 uv run bvl study liquidity   # writes studies/bvl-liquidity
 uv run bvl study disclosure  # writes studies/bvl-disclosure
 uv run bvl study politics    # writes studies/bvl-politics
 uv run bvl study brokers     # writes studies/bvl-brokers
+uv run bvl study earnings    # writes studies/bvl-earnings
 ```
 
 `--db` sets the database (default `data/bvl.sqlite`) and `--cache` the response
@@ -36,10 +38,15 @@ clients that do not send a browser User-Agent.
 | `registro/HechosSMVEmisor` | `events`       | Material events: issuer RUC and name, event kind, agreement date, filing minute, sector                  |
 | `valores/Indices`          | `index_levels` | Daily IGBVL, ISBVL and the other BVL indices                                                             |
 | `valores/MontoNegociado`   | `broker_amounts` | Each brokerage firm's (SAB) bought and sold amount on one day                                          |
+| `InfFinanciera/PrincipalCuentaSMV` | `statements` | Each filer's quarterly total assets, liabilities, equity, revenue and net income, with its filing date |
 
 Quote and event queries cover at most 90 days, so a fill walks the span in
 90-day windows. Index and broker queries answer one day each, so `fetch indices`
-and `fetch brokers` ask for every quotes day the table lacks. A broker row
+and `fetch brokers` ask for every quotes day the table lacks. A statements
+query answers one quarter, individual or consolidated, so `fetch statements`
+sends two per quarter. A late or amended statement can arrive months after its
+quarter, so a statements answer is kept only once a year has passed since the
+quarter ended. A broker row
 carries no date; the fill stamps it with the day it asked for. The API often fails with a server error about its own log file,
 under code `-2147024864` or under `-1` with "being used by another process". The
 client retries both with backoff. A window that closed more than 7 days ago
@@ -67,6 +74,11 @@ What the data lack:
   today's name on every day. Before 2010 the firms' bought amount covers well
   under the quotes' traded amount (42% in 1996), so the API lacks some firms of
   those years.
+- **Full statements.** `PrincipalCuentaSMV` carries five summary accounts, in
+  thousands of the statement's currency (soles or US dollars), and income for
+  the quarter alone. The filing date is the date the SMV registered the
+  statement; for an amended one it may be the amendment's date. The API has no
+  forecasts, so a study's earnings news is a change from a year before.
 
 The BCRP publishes its series at
 `https://estadisticas.bcrp.gob.pe/estadisticas/series/api/`, with no key. One
@@ -112,6 +124,7 @@ between bid and ask, which gives this index a small upward drift; over the 2 to
 | `disclosure.py` | The event-study grid, measures, placebos and bootstrap         |
 | `politics.py`   | The chained Peru General index and the political event table   |
 | `brokers.py`    | Brokerage firm shares and concentration (HHI)                  |
+| `earnings.py`   | Statement filing limits, due days, earnings news and CARs      |
 | `figures.py`    | Line and bar charts                                            |
 | `studies.py`    | Each study end to end: numbers.json and figures                |
 | `cli.py`        | The `bvl` command                                              |
