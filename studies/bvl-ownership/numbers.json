@@ -1,0 +1,674 @@
+{
+  "snapshot": "2026-11-19",
+  "last_market_day": "2026-11-13",
+  "holdings": 426,
+  "issuers": 186,
+  "smallest_stake": 4.02,
+  "unclassed_holdings": 16,
+  "holder_kinds": {
+    "company": 319,
+    "person": 71,
+    "state": 22,
+    "pension fund": 14
+  },
+  "foreign_holdings": 160,
+  "nationalities": {
+    "PANAMA": 36,
+    "CHILE": 19,
+    "ESTADOS UNIDOS": 19,
+    "VIRGENES, ISLAS (NORTEAMERICANAS)": 12,
+    "COLOMBIA": 11
+  },
+  "classes": 193,
+  "classes_by_kind_of_largest": {
+    "state": 18,
+    "pension fund": 1,
+    "person": 10,
+    "company": 164
+  },
+  "median_free_float": 2.86,
+  "classes_free_float_under_10": 128,
+  "classes_without_free_float": 23,
+  "controlled_share": 0.715,
+  "foreign_controlled_share": 0.342,
+  "classes_with_ticker": 89,
+  "classes_untraded": 31,
+  "sample": 57,
+  "sample_with_amihud": 36,
+  "correlations": {
+    "free_float_coverage": {
+      "rows": 57,
+      "rho": 0.109,
+      "low": -0.154,
+      "high": 0.358
+    },
+    "free_float_coverage_given_assets": {
+      "rows": 57,
+      "rho": 0.393,
+      "low": 0.156,
+      "high": 0.584
+    },
+    "assets_coverage": {
+      "rows": 57,
+      "rho": 0.572,
+      "low": 0.366,
+      "high": 0.724
+    },
+    "assets_free_float": {
+      "rows": 57,
+      "rho": -0.34,
+      "low": -0.547,
+      "high": -0.089
+    },
+    "free_float_amihud": {
+      "rows": 36,
+      "rho": -0.369,
+      "low": -0.646,
+      "high": -0.037
+    },
+    "free_float_amihud_given_assets": {
+      "rows": 36,
+      "rho": -0.56,
+      "low": -0.767,
+      "high": -0.249
+    }
+  },
+  "bands": [
+    {
+      "free_float": "0-10%",
+      "classes": 30,
+      "median_coverage": 0.174,
+      "median_amihud_per_million": 0.734
+    },
+    {
+      "free_float": "10-25%",
+      "classes": 11,
+      "median_coverage": 0.12,
+      "median_amihud_per_million": 0.65
+    },
+    {
+      "free_float": "25-50%",
+      "classes": 9,
+      "median_coverage": 0.429,
+      "median_amihud_per_million": 0.093
+    },
+    {
+      "free_float": "50-100%",
+      "classes": 7,
+      "median_coverage": 0.039,
+      "median_amihud_per_million": 0.721
+    }
+  ],
+  "classes_list": [
+    {
+      "ticker": "INTPEBC1",
+      "company": "INTEGRATEL PERU S.A.A.",
+      "share_class": "B",
+      "free_float": 0.7,
+      "largest": 99.3,
+      "largest_kind": "company",
+      "days": 23,
+      "coverage": 0.0987
+    },
+    {
+      "ticker": "BROCALC1",
+      "company": "SOCIEDAD MINERA EL BROCAL S.A.A.",
+      "share_class": "common",
+      "free_float": 35.27,
+      "largest": 58.25,
+      "largest_kind": "company",
+      "days": 100,
+      "coverage": 0.4292
+    },
+    {
+      "ticker": "FERREYC1",
+      "company": "FERREYCORP S.A.A.",
+      "share_class": "common",
+      "free_float": 60.7155,
+      "largest": 9.1696,
+      "largest_kind": "pension fund",
+      "days": 233,
+      "coverage": 1.0
+    },
+    {
+      "ticker": "RIMSEGC1",
+      "company": "RIMAC SEGUROS Y REASEGUROS",
+      "share_class": "common",
+      "free_float": 16.38,
+      "largest": 78.62,
+      "largest_kind": "company",
+      "days": 49,
+      "coverage": 0.2103
+    },
+    {
+      "ticker": "SCOTIAC1",
+      "company": "SCOTIABANK PERU S.A.A.",
+      "share_class": "common",
+      "free_float": 0.69,
+      "largest": 99.31,
+      "largest_kind": "company",
+      "days": 55,
+      "coverage": 0.2361
+    },
+    {
+      "ticker": "CREDITC1",
+      "company": "BANCO DE CREDITO DEL PERU",
+      "share_class": "common",
+      "free_float": 2.2613,
+      "largest": 97.7387,
+      "largest_kind": "company",
+      "days": 232,
+      "coverage": 0.9957
+    },
+    {
+      "ticker": "INTERBC1",
+      "company": "BANCO INTERNACIONAL DEL PERU S.A.A. - INTERBANK",
+      "share_class": "common",
+      "free_float": 0.967,
+      "largest": 99.033,
+      "largest_kind": "company",
+      "days": 56,
+      "coverage": 0.2403
+    },
+    {
+      "ticker": "ALICORC1",
+      "company": "ALICORP S.A.A.",
+      "share_class": "common",
+      "free_float": 47.71,
+      "largest": 21.46,
+      "largest_kind": "company",
+      "days": 228,
+      "coverage": 0.9785
+    },
+    {
+      "ticker": "HERMESC1",
+      "company": "HERMES TRANSPORTES BLINDADOS S.A.",
+      "share_class": "common",
+      "free_float": 0.2031,
+      "largest": 99.7969,
+      "largest_kind": "company",
+      "days": 17,
+      "coverage": 0.073
+    },
+    {
+      "ticker": "BUENAVC1",
+      "company": "COMPAÑIA DE MINAS BUENAVENTURA S.A.A.",
+      "share_class": "common",
+      "free_float": 6.57,
+      "largest": 80.71,
+      "largest_kind": "company",
+      "days": 44,
+      "coverage": 0.1888
+    },
+    {
+      "ticker": "TRADIC1",
+      "company": "TRADI S.A.",
+      "share_class": "common",
+      "free_float": 48.7244,
+      "largest": 9.3042,
+      "largest_kind": "company",
+      "days": 9,
+      "coverage": 0.0386
+    },
+    {
+      "ticker": "BPICHPC1",
+      "company": "BANCO PICHINCHA",
+      "share_class": "common",
+      "free_float": 11.9416,
+      "largest": 43.78,
+      "largest_kind": "company",
+      "days": 2,
+      "coverage": 0.0086
+    },
+    {
+      "ticker": "NEXAPEC1",
+      "company": "NEXA RESOURCES PERU S.A.A.",
+      "share_class": "common",
+      "free_float": 16.63,
+      "largest": 83.37,
+      "largest_kind": "company",
+      "days": 232,
+      "coverage": 0.9957
+    },
+    {
+      "ticker": "BACKUBC1",
+      "company": "UNION DE CERVECERIAS PERUANAS BACKUS Y JOHNSTON S.A.A.",
+      "share_class": "common",
+      "free_float": 2.8887,
+      "largest": 62.6072,
+      "largest_kind": "company",
+      "days": 56,
+      "coverage": 0.2403
+    },
+    {
+      "ticker": "GRHOLDC1",
+      "company": "GR HOLDING S.A.",
+      "share_class": "common",
+      "free_float": 6.996,
+      "largest": 93.004,
+      "largest_kind": "company",
+      "days": 3,
+      "coverage": 0.0129
+    },
+    {
+      "ticker": "ATACOAC1",
+      "company": "NEXA RESOURCES ATACOCHA S.A.A.",
+      "share_class": "A",
+      "free_float": 0.64,
+      "largest": 99.36,
+      "largest_kind": "company",
+      "days": 3,
+      "coverage": 0.0129
+    },
+    {
+      "ticker": "SAGAC1",
+      "company": "SAGA FALABELLA S.A.",
+      "share_class": "common",
+      "free_float": 1.21,
+      "largest": 98.79,
+      "largest_kind": "company",
+      "days": 3,
+      "coverage": 0.0129
+    },
+    {
+      "ticker": "BBVAC1",
+      "company": "BANCO BBVA PERU",
+      "share_class": "common",
+      "free_float": 5.7408,
+      "largest": 47.1296,
+      "largest_kind": "company",
+      "days": 232,
+      "coverage": 0.9957
+    },
+    {
+      "ticker": "UNACEMC1",
+      "company": "UNACEM CORP SOCIEDAD ANONIMA ABIERTA - UNACEM CORP S.A.A.",
+      "share_class": "common",
+      "free_float": 36.3943,
+      "largest": 34.8101,
+      "largest_kind": "company",
+      "days": 217,
+      "coverage": 0.9313
+    },
+    {
+      "ticker": "SHPC1",
+      "company": "SHOUGANG HIERRO PERU S.A.A.",
+      "share_class": "common",
+      "free_float": 1.48,
+      "largest": 98.52,
+      "largest_kind": "company",
+      "days": 40,
+      "coverage": 0.1717
+    },
+    {
+      "ticker": "MOROCOC1",
+      "company": "COMPAÑIA MINERA SAN IGNACIO DE MOROCOCHA S.A.A.",
+      "share_class": "common",
+      "free_float": 4.28,
+      "largest": 48.85,
+      "largest_kind": "company",
+      "days": 1,
+      "coverage": 0.0043
+    },
+    {
+      "ticker": "SEALDC1",
+      "company": "SOCIEDAD ELECTRICA DEL SUR OESTE S.A. - SEAL",
+      "share_class": "D",
+      "free_float": 91.4856,
+      "largest": 8.5144,
+      "largest_kind": "company",
+      "days": 9,
+      "coverage": 0.0386
+    },
+    {
+      "ticker": "POSITIC1",
+      "company": "LA POSITIVA SEGUROS Y REASEGUROS S.A.",
+      "share_class": "common",
+      "free_float": 1.134,
+      "largest": 93.9601,
+      "largest_kind": "company",
+      "days": 1,
+      "coverage": 0.0043
+    },
+    {
+      "ticker": "COCESUC1",
+      "company": "CORPORACION CERVESUR S.A.A.",
+      "share_class": "common",
+      "free_float": 23.278,
+      "largest": 32.8327,
+      "largest_kind": "company",
+      "days": 2,
+      "coverage": 0.0086
+    },
+    {
+      "ticker": "INVCENC1",
+      "company": "INVERSIONES CENTENARIO S.A.A.",
+      "share_class": "common",
+      "free_float": 33.649,
+      "largest": 15.691,
+      "largest_kind": "company",
+      "days": 11,
+      "coverage": 0.0472
+    },
+    {
+      "ticker": "ASJUANC1",
+      "company": "EMPRESA AGRICOLA SAN JUAN S.A.",
+      "share_class": "common",
+      "free_float": 8.01,
+      "largest": 91.99,
+      "largest_kind": "company",
+      "days": 2,
+      "coverage": 0.0086
+    },
+    {
+      "ticker": "SNJACIC1",
+      "company": "AGROINDUSTRIAS SAN JACINTO S.A.A.",
+      "share_class": "common",
+      "free_float": 17.24,
+      "largest": 82.76,
+      "largest_kind": "company",
+      "days": 29,
+      "coverage": 0.1245
+    },
+    {
+      "ticker": "ANDAHUC1",
+      "company": "EMPRESA AGRARIA AZUCARERA ANDAHUASI S.A.A.",
+      "share_class": "common",
+      "free_float": 17.8648,
+      "largest": 27.781,
+      "largest_kind": "company",
+      "days": 2,
+      "coverage": 0.0086
+    },
+    {
+      "ticker": "SNJUANC1",
+      "company": "CERVECERIA SAN JUAN S.A.",
+      "share_class": "common",
+      "free_float": 2.97,
+      "largest": 97.03,
+      "largest_kind": "company",
+      "days": 14,
+      "coverage": 0.0601
+    },
+    {
+      "ticker": "CASAGRC1",
+      "company": "CASA GRANDE SOCIEDAD ANONIMA ABIERTA",
+      "share_class": "common",
+      "free_float": 36.1,
+      "largest": 58.56,
+      "largest_kind": "company",
+      "days": 164,
+      "coverage": 0.7039
+    },
+    {
+      "ticker": "CARTAVC1",
+      "company": "CARTAVIO SOCIEDAD ANONIMA ABIERTA",
+      "share_class": "common",
+      "free_float": 13.0768,
+      "largest": 86.9232,
+      "largest_kind": "company",
+      "days": 112,
+      "coverage": 0.4807
+    },
+    {
+      "ticker": "LAREDOC1",
+      "company": "AGROINDUSTRIAL LAREDO S.A.A.",
+      "share_class": "common",
+      "free_float": 15.171,
+      "largest": 70.259,
+      "largest_kind": "company",
+      "days": 23,
+      "coverage": 0.0987
+    },
+    {
+      "ticker": "TUMANC1",
+      "company": "EMPRESA AGROINDUSTRIAL TUMAN S.A.A.",
+      "share_class": "common",
+      "free_float": 71.0,
+      "largest": 15.0,
+      "largest_kind": "company",
+      "days": 10,
+      "coverage": 0.0429
+    },
+    {
+      "ticker": "PODERC1",
+      "company": "COMPAÑIA MINERA PODEROSA S.A.A.",
+      "share_class": "common",
+      "free_float": 6.0495,
+      "largest": 16.6465,
+      "largest_kind": "company",
+      "days": 157,
+      "coverage": 0.6738
+    },
+    {
+      "ticker": "POMALCC1",
+      "company": "EMPRESA AGROINDUSTRIAL POMALCA S.A.A.",
+      "share_class": "common",
+      "free_float": 63.686,
+      "largest": 16.305,
+      "largest_kind": "company",
+      "days": 108,
+      "coverage": 0.4635
+    },
+    {
+      "ticker": "CVERDEC1",
+      "company": "SOCIEDAD MINERA CERRO VERDE S.A.A.",
+      "share_class": "common",
+      "free_float": 5.28,
+      "largest": 54.14,
+      "largest_kind": "company",
+      "days": 225,
+      "coverage": 0.9657
+    },
+    {
+      "ticker": "MINCORC1",
+      "company": "SOCIEDAD MINERA CORONA S.A.",
+      "share_class": "common",
+      "free_float": 0.3777,
+      "largest": 92.33,
+      "largest_kind": "company",
+      "days": 4,
+      "coverage": 0.0172
+    },
+    {
+      "ticker": "PLUZENC1",
+      "company": "PLUZ ENERGIA PERU S.A.A.",
+      "share_class": "common",
+      "free_float": 2.84,
+      "largest": 97.16,
+      "largest_kind": "company",
+      "days": 147,
+      "coverage": 0.6309
+    },
+    {
+      "ticker": "EGEPIBC1",
+      "company": "ENEL GENERACION PIURA S.A.",
+      "share_class": "B",
+      "free_float": 63.503,
+      "largest": 36.497,
+      "largest_kind": "company",
+      "days": 4,
+      "coverage": 0.0172
+    },
+    {
+      "ticker": "ORYGENC1",
+      "company": "ORYGEN PERU S.A.A.",
+      "share_class": "common",
+      "free_float": 7.65,
+      "largest": 92.35,
+      "largest_kind": "company",
+      "days": 227,
+      "coverage": 0.9742
+    },
+    {
+      "ticker": "LUSURC1",
+      "company": "LUZ DEL SUR S.A.A.",
+      "share_class": "common",
+      "free_float": 2.86,
+      "largest": 69.24,
+      "largest_kind": "company",
+      "days": 127,
+      "coverage": 0.5451
+    },
+    {
+      "ticker": "AENZAC1",
+      "company": "AENZA S.A.A.",
+      "share_class": "common",
+      "free_float": 5.29,
+      "largest": 28.22,
+      "largest_kind": "company",
+      "days": 151,
+      "coverage": 0.6481
+    },
+    {
+      "ticker": "PACIFIC1",
+      "company": "PACIFICO COMPAÑIA DE SEGUROS Y REASEGUROS",
+      "share_class": "common",
+      "free_float": 1.1429,
+      "largest": 65.2,
+      "largest_kind": "company",
+      "days": 3,
+      "coverage": 0.0129
+    },
+    {
+      "ticker": "ENGIEC1",
+      "company": "ENGIE ENERGIA PERU S.A.A.",
+      "share_class": "common",
+      "free_float": 17.03,
+      "largest": 61.77,
+      "largest_kind": "company",
+      "days": 227,
+      "coverage": 0.9742
+    },
+    {
+      "ticker": "AUSTRAC1",
+      "company": "AUSTRAL GROUP S.A.A.",
+      "share_class": "common",
+      "free_float": 9.88,
+      "largest": 90.12,
+      "largest_kind": "company",
+      "days": 41,
+      "coverage": 0.176
+    },
+    {
+      "ticker": "PERENBC1",
+      "company": "PERUANA DE ENERGIA S.A.A.",
+      "share_class": "B",
+      "free_float": 88.96,
+      "largest": 6.17,
+      "largest_kind": "company",
+      "days": 8,
+      "coverage": 0.0343
+    },
+    {
+      "ticker": "ANDEXBC1",
+      "company": "MINERA ANDINA DE EXPLORACIONES S.A.A.",
+      "share_class": "B",
+      "free_float": 84.88,
+      "largest": 8.34,
+      "largest_kind": "company",
+      "days": 8,
+      "coverage": 0.0343
+    },
+    {
+      "ticker": "CORAREC1",
+      "company": "CORPORACION ACEROS AREQUIPA S.A.",
+      "share_class": "common",
+      "free_float": 39.49,
+      "largest": 16.02,
+      "largest_kind": "person",
+      "days": 37,
+      "coverage": 0.1588
+    },
+    {
+      "ticker": "EXALMC1",
+      "company": "PESQUERA EXALMAR S.A.A.",
+      "share_class": "common",
+      "free_float": 10.0429,
+      "largest": 75.04,
+      "largest_kind": "company",
+      "days": 25,
+      "coverage": 0.1073
+    },
+    {
+      "ticker": "VOLCAAC1",
+      "company": "VOLCAN COMPAÑIA MINERA S.A.A.",
+      "share_class": "A",
+      "free_float": 5.179,
+      "largest": 55.03,
+      "largest_kind": "company",
+      "days": 18,
+      "coverage": 0.0773
+    },
+    {
+      "ticker": "SIDERC1",
+      "company": "EMPRESA SIDERURGICA DEL PERU S.A.A. - SIDERPERU",
+      "share_class": "common",
+      "free_float": 9.97,
+      "largest": 90.03,
+      "largest_kind": "company",
+      "days": 209,
+      "coverage": 0.897
+    },
+    {
+      "ticker": "CPACASC1",
+      "company": "CEMENTOS PACASMAYO S.A.A.",
+      "share_class": "common",
+      "free_float": 29.6,
+      "largest": 50.01,
+      "largest_kind": "company",
+      "days": 221,
+      "coverage": 0.9485
+    },
+    {
+      "ticker": "AIHC1",
+      "company": "ANDINO INVESTMENT HOLDING S.A.A.",
+      "share_class": "common",
+      "free_float": 16.08,
+      "largest": 67.29,
+      "largest_kind": "company",
+      "days": 28,
+      "coverage": 0.1202
+    },
+    {
+      "ticker": "CRECAPC1",
+      "company": "CREDICORP CAPITAL PERU S.A.A.",
+      "share_class": "common",
+      "free_float": 1.8182,
+      "largest": 85.3451,
+      "largest_kind": "company",
+      "days": 4,
+      "coverage": 0.0172
+    },
+    {
+      "ticker": "FOSSALC1",
+      "company": "FOSSAL S.A.A.",
+      "share_class": "common",
+      "free_float": 7.4476,
+      "largest": 79.7403,
+      "largest_kind": "person",
+      "days": 1,
+      "coverage": 0.0043
+    },
+    {
+      "ticker": "IPCHAC1",
+      "company": "INVERSIONES PORTUARIAS CHANCAY S.A.A.",
+      "share_class": "A",
+      "free_float": 5.17,
+      "largest": 55.03,
+      "largest_kind": "company",
+      "days": 44,
+      "coverage": 0.1888
+    },
+    {
+      "ticker": "CUMBRAC1",
+      "company": "CUMBRA HOLDING S.A.A.",
+      "share_class": "common",
+      "free_float": 30.12,
+      "largest": 20.35,
+      "largest_kind": "company",
+      "days": 20,
+      "coverage": 0.0858
+    }
+  ]
+}

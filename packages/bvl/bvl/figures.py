@@ -128,3 +128,22 @@ def bars(
     )
     axes.axhline(0, color=MUTED, lw=0.8)
     _save(figure, path, note)
+
+
+def scatter(
+    x: pd.Series,
+    y: pd.Series,
+    path: Path,
+    *,
+    title: str,
+    xlabel: str,
+    ylabel: str,
+    note: str,
+    size: pd.Series | None = None,
+) -> None:
+    """One point per row; `size`, if given, scales each point's area."""
+    figure, axes = _axes(title, ylabel)
+    area = 12.0 if size is None else 10 + 190 * size / size.max()
+    axes.scatter(x, y, s=area, color=INK, alpha=0.6, linewidths=0)
+    axes.set_xlabel(xlabel, color=INK)
+    _save(figure, path, note)

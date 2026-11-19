@@ -23,6 +23,7 @@ STUDIES = {
     "politics": studies.run_politics,
     "brokers": studies.run_brokers,
     "earnings": studies.run_earnings,
+    "ownership": studies.run_ownership,
 }
 # Datasets the SMV answers one market day per request: table and fill.
 DAILY_FILLS = {
@@ -46,7 +47,8 @@ def build_parser() -> argparse.ArgumentParser:
 
     fill = commands.add_parser("fetch", help="fill the panel from the SMV or BCRP API")
     fill.add_argument(
-        "dataset", choices=["quotes", "events", "statements", *DAILY_FILLS, "bcrp"]
+        "dataset",
+        choices=["quotes", "events", "statements", "holders", *DAILY_FILLS, "bcrp"],
     )
     fill.add_argument("--start", type=date.fromisoformat)
     fill.add_argument("--end", type=date.fromisoformat, default=date.today())
@@ -87,6 +89,8 @@ def _fetch(args: argparse.Namespace) -> None:
         elif args.dataset == "statements":
             start = args.start or STATEMENTS_START
             fetch.fill_statements(client, connection, start, args.end, today)
+        elif args.dataset == "holders":
+            fetch.fill_holders(client, connection, today)
         else:
             table, fill = DAILY_FILLS[args.dataset]
             days = [

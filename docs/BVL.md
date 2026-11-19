@@ -10,12 +10,14 @@ uv run bvl fetch events      # SMV material events, 2010 to today
 uv run bvl fetch indices     # BVL index levels, one request per market day
 uv run bvl fetch brokers     # each brokerage firm's amounts, one request per market day
 uv run bvl fetch statements  # quarterly summary accounts, 2002 to the last ended quarter
+uv run bvl fetch holders     # today's register of large holders, as a dated snapshot
 uv run bvl fetch bcrp        # BCRP sol per dollar and copper, 1997 to today
 uv run bvl study liquidity   # writes studies/bvl-liquidity
 uv run bvl study disclosure  # writes studies/bvl-disclosure
 uv run bvl study politics    # writes studies/bvl-politics
 uv run bvl study brokers     # writes studies/bvl-brokers
 uv run bvl study earnings    # writes studies/bvl-earnings
+uv run bvl study ownership   # writes studies/bvl-ownership
 ```
 
 `--db` sets the database (default `data/bvl.sqlite`) and `--cache` the response
@@ -39,6 +41,7 @@ clients that do not send a browser User-Agent.
 | `valores/Indices`          | `index_levels` | Daily IGBVL, ISBVL and the other BVL indices                                                             |
 | `valores/MontoNegociado`   | `broker_amounts` | Each brokerage firm's (SAB) bought and sold amount on one day                                          |
 | `InfFinanciera/PrincipalCuentaSMV` | `statements` | Each filer's quarterly total assets, liabilities, equity, revenue and net income, with its filing date |
+| `registro/AccionistaSMVEmisor` | `holders` | Each issuer's large holders: name, nationality, stake, share class and the date the stake began |
 
 Quote and event queries cover at most 90 days, so a fill walks the span in
 90-day windows. Index and broker queries answer one day each, so `fetch indices`
@@ -79,6 +82,17 @@ What the data lack:
   the quarter alone. The filing date is the date the SMV registered the
   statement; for an amended one it may be the amendment's date. The API has no
   forecasts, so a study's earnings news is a change from a year before.
+- **Past registers of holders.** `AccionistaSMVEmisor` takes no date and
+  answers only the current register, so `fetch holders` stores it under the
+  day it ran and each run adds a snapshot. The register lists stakes from about
+  4% (the smallest on 2026-11-19 is 4.02%), names the share class in free
+  text, and files every foreign issuer under RUC `0`.
+
+`registro/NormasSMV` lists SMV rules by publication date
+(`sFechaInicio`, `sFechaFin`). It was read and left out: on 2026-11-19 it held
+143 rules from 1983 to 2026, all in the sections `MERCADO SECUNDARIO` and
+`BOLSA DE VALORES`, and it lacks issuer-reporting rules such as Resolución SMV
+013-2014-SMV/01, the filing limits the earnings study uses. No study reads it.
 
 The BCRP publishes its series at
 `https://estadisticas.bcrp.gob.pe/estadisticas/series/api/`, with no key. One
@@ -125,7 +139,8 @@ between bid and ask, which gives this index a small upward drift; over the 2 to
 | `politics.py`   | The chained Peru General index and the political event table   |
 | `brokers.py`    | Brokerage firm shares and concentration (HHI)                  |
 | `earnings.py`   | Statement filing limits, due days, earnings news and CARs      |
-| `figures.py`    | Line and bar charts                                            |
+| `ownership.py`  | Share classes, free float, class tickers and rank correlations |
+| `figures.py`    | Line, bar and scatter charts                                   |
 | `studies.py`    | Each study end to end: numbers.json and figures                |
 | `cli.py`        | The `bvl` command                                              |
 

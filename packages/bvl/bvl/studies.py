@@ -19,6 +19,7 @@ from bvl import (
     figures,
     issuers,
     liquidity,
+    ownership,
     panel,
     politics,
 )
@@ -717,6 +718,111 @@ def _earnings_figures(
         note=EVENTS_SOURCE + " Terciles of the change in net income from a year"
         " before, over assets.",
     )
+
+
+OWNERSHIP_SOURCE = "Source: SMV open data API, register of holders, and BVL quotes."
+CONTROL = 50.0
+
+
+def run_ownership(db: Path, out: Path) -> dict[str, object]:
+    holders = ownership.load(db)
+    snapshot = str(holders["fetched_on"].iloc[0])
+    frame = ownership.classes(holders)
+    traded, last_day = ownership.traded_classes(db, frame, snapshot)
+    sample = traded[traded["days"] > 0].dropna(subset=["assets"])
+    rng = np.random.default_rng(SEED)
+    note = OWNERSHIP_SOURCE + f" Register of {snapshot}."
+
+    edges = range(0, 101, 10)
+    counts = pd.cut(frame["free_float"], list(edges), right=False, include_lowest=True)
+    figures.bars(
+        counts.value_counts(sort=False).set_axis([f"{a}-{a + 10}" for a in edges[:-1]]),
+        out / "free-float.png",
+        title="Share classes by free float, 100 less the listed stakes",
+        ylabel="share classes",
+        note=note + " Free float, %.",
+    )
+    kinds = frame.groupby("largest_kind").size().reindex(ownership.KINDS, fill_value=0)
+    figures.bars(
+        kinds,
+        out / "largest-holder.png",
+        title="Kind of the largest holder of each share class",
+        ylabel="share classes",
+        note=note,
+    )
+    figures.scatter(
+        sample["free_float"],
+        sample["coverage"] * 100,
+        out / "float-trading.png",
+        title="Free float and the share of market days a class traded",
+        xlabel="free float, %",
+        ylabel="% of market days, last 12 months",
+        note=note + " Point area: total assets.",
+        size=sample["assets"],
+    )
+
+    amihud = sample.dropna(subset=["amihud"])
+    tests = {
+        "free_float_coverage": ownership.correlation(
+            sample, "free_float", "coverage", rng
+        ),
+        "free_float_coverage_given_assets": ownership.correlation(
+            sample, "free_float", "coverage", rng, control="assets"
+        ),
+        "assets_coverage": ownership.correlation(sample, "assets", "coverage", rng),
+        "assets_free_float": ownership.correlation(sample, "assets", "free_float", rng),
+        "free_float_amihud": ownership.correlation(amihud, "free_float", "amihud", rng),
+        "free_float_amihud_given_assets": ownership.correlation(
+            amihud, "free_float", "amihud", rng, control="assets"
+        ),
+    }
+    numbers: dict[str, object] = {
+        "snapshot": snapshot,
+        "last_market_day": last_day.date().isoformat(),
+        "holdings": len(holders),
+        "issuers": int(holders["ruc"].nunique()),
+        "smallest_stake": round(float(holders["percent"].min()), 2),
+        "unclassed_holdings": int(holders["share_class"].isna().sum()),
+        "holder_kinds": holders["kind"].value_counts().to_dict(),
+        "foreign_holdings": int(holders["foreign"].sum()),
+        "nationalities": holders.loc[holders["foreign"], "nationality"]
+        .value_counts()
+        .head(5)
+        .to_dict(),
+        "classes": len(frame),
+        "classes_by_kind_of_largest": kinds.to_dict(),
+        "median_free_float": round(float(frame["free_float"].median()), 2),
+        "classes_free_float_under_10": int((frame["free_float"] < 10).sum()),
+        "classes_without_free_float": int((frame["free_float"] <= 0).sum()),
+        "controlled_share": round(float((frame["largest"] > CONTROL).mean()), 4),
+        "foreign_controlled_share": round(
+            float(((frame["largest"] > CONTROL) & frame["largest_foreign"]).mean()), 4
+        ),
+        "classes_with_ticker": len(traded),
+        "classes_untraded": int((traded["days"] == 0).sum()),
+        "sample": len(sample),
+        "sample_with_amihud": len(amihud),
+        "correlations": {
+            name: {k: round(v, 3) if isinstance(v, float) else v for k, v in t.items()}
+            for name, t in tests.items()
+        },
+        "bands": _records(ownership.bands(sample).round(3)),
+        "classes_list": _records(
+            sample.set_index("ticker")[
+                [
+                    "company",
+                    "share_class",
+                    "free_float",
+                    "largest",
+                    "largest_kind",
+                    "days",
+                    "coverage",
+                ]
+            ].round(4)
+        ),
+    }
+    _write_numbers(out, numbers)
+    return numbers
 
 
 def _msci_shift(monthly: pd.Series) -> dict[str, float]:

@@ -1,0 +1,15 @@
+{
+ "ResponseCode": "0",
+ "Message": "Consulta generada",
+ "Resultado": [
+  {"RPJ": "B30006", "RUC": "20100055237", "Empresa": "ALICORP S.A.A.", "Accionista": "BIRMINGHAM MERCHANT S.A.", "Nacionalidad": "PANAMA", "Fecha_Inicio": "25/03/2026", "Porcentaje_Participacion": "19.24", "Serie": ""},
+  {"RPJ": "B30006", "RUC": "20100055237", "Empresa": "ALICORP S.A.A.", "Accionista": "GRUPO PIURANO DE INVERSIONES S.A.", "Nacionalidad": "PERU", "Fecha_Inicio": "25/03/2026", "Porcentaje_Participacion": "11.59", "Serie": ""},
+  {"RPJ": "B30006", "RUC": "20100055237", "Empresa": "ALICORP S.A.A.", "Accionista": "INVERSIONES PIURANAS S.A.", "Nacionalidad": "PERU", "Fecha_Inicio": "25/03/2026", "Porcentaje_Participacion": "21.46", "Serie": ""},
+  {"RPJ": "CM0001", "RUC": "20383045267", "Empresa": "VOLCAN COMPAÑIA MINERA S.A.A.", "Accionista": "BLUE STREAK INTERNATIONAL N.V.", "Nacionalidad": "PANAMA", "Fecha_Inicio": "21/06/2017", "Porcentaje_Participacion": "8.38", "Serie": "A"},
+  {"RPJ": "CM0001", "RUC": "20383045267", "Empresa": "VOLCAN COMPAÑIA MINERA S.A.A.", "Accionista": "DE ROMAÑA LETTS, JOSE IGNACIO", "Nacionalidad": "PERU", "Fecha_Inicio": "21/06/2017", "Porcentaje_Participacion": "10.33", "Serie": "A"},
+  {"RPJ": "CM0001", "RUC": "20383045267", "Empresa": "VOLCAN COMPAÑIA MINERA S.A.A.", "Accionista": "EMPRESA MINERA PARAGSHA S.A.C.", "Nacionalidad": "PERU", "Fecha_Inicio": "07/08/2017", "Porcentaje_Participacion": "11.181001", "Serie": "A"},
+  {"RPJ": "CM0001", "RUC": "20383045267", "Empresa": "VOLCAN COMPAÑIA MINERA S.A.A.", "Accionista": "LETTS COLMENARES DE DE ROMAÑA, IRENE FLORENCIA", "Nacionalidad": "PERU", "Fecha_Inicio": "21/06/2017", "Porcentaje_Participacion": "9.9", "Serie": "A"},
+  {"RPJ": "CM0001", "RUC": "20383045267", "Empresa": "VOLCAN COMPAÑIA MINERA S.A.A.", "Accionista": "TRANSITION METALS AG", "Nacionalidad": "SUIZA", "Fecha_Inicio": "08/05/2024", "Porcentaje_Participacion": "55.03", "Serie": "A"},
+  {"RPJ": "J01375", "RUC": "0", "Empresa": "AUNA S.A.", "Accionista": "DISCOVERY 2 L.P", "Nacionalidad": "CAIMAN, ISLAS", "Fecha_Inicio": "29/12/2017", "Porcentaje_Participacion": "54.53", "Serie": "B"}
+ ]
+}
