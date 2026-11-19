@@ -12,6 +12,8 @@ Two market projects in one workspace:
     with the central bank's exchange rate and copper series.
   - [How concentrated is BVL brokerage?](studies/bvl-brokers/README.md),
     from the amounts each brokerage firm bought and sold each day.
+  - [When BVL issuers file their quarterly results, and how prices take them](studies/bvl-earnings/README.md),
+    from the SMV's quarterly summary accounts since 2002.
 
   The [live site](https://market-studies.vercel.app/peru) shows them too.
   [docs/BVL.md](docs/BVL.md) describes the data and the `bvl` command.

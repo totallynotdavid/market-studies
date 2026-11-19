@@ -100,6 +100,28 @@ def test_client_does_not_keep_an_unsettled_answer(tmp_path: Path) -> None:
     assert list(tmp_path.iterdir()) == []
 
 
+def test_quarter_end_is_the_last_day_of_its_third_month() -> None:
+    ends = [smv.quarter_end(2024, q) for q in (1, 2, 3, 4)]
+    assert ends == [
+        date(2024, 3, 31),
+        date(2024, 6, 30),
+        date(2024, 9, 30),
+        date(2024, 12, 31),
+    ]
+
+
+def test_statements_keep_an_answer_only_a_year_after_the_quarter(
+    tmp_path: Path,
+) -> None:
+    body = answer("statements.json")
+    for today, kept in ((date(2025, 12, 1), False), (date(2026, 1, 15), True)):
+        cache = tmp_path / str(today)
+        smv.statements(
+            client(Scripted([body]), cache), 2024, 4, consolidated=True, today=today
+        )
+        assert cache.exists() == kept
+
+
 def test_a_window_settles_a_week_after_it_closes() -> None:
     assert smv.settled(date(2026, 11, 1), today=date(2026, 11, 14))
     assert not smv.settled(date(2026, 11, 10), today=date(2026, 11, 14))

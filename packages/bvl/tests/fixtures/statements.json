@@ -1,0 +1,63 @@
+{
+ "ResponseCode": "OK",
+ "Message": "ConsultaGenerada",
+ "data": [
+  {
+   "RPJ": "OE5661    ",
+   "TipoEmpresa": "SOCIEDADES AGENTES DE BOLSA",
+   "TipoSector": "",
+   "NombreEmpresa": "ACRES SOCIEDAD AGENTE DE BOLSA S.A.",
+   "RUC": "20551094198",
+   "CIIU": "",
+   "Ejercicio": "2015",
+   "TipoInformacion": "Trimestral Individual",
+   "Trimestre": "1er Trimestre",
+   "Moneda": "Soles",
+   "MetodoFlujoEfectivo": "M todo Indirecto",
+   "ActivoTotal": 2081.0,
+   "PatrimonioTotal": 2021.0,
+   "TotalIngreso": 22.0,
+   "UtilidadNeta": 1.0,
+   "PasivoTotal": 60.0,
+   "FechaRegistro": "30/04/2015"
+  },
+  {
+   "RPJ": "020045",
+   "TipoEmpresa": "EMPRESAS EMISORAS",
+   "TipoSector": "DIVERSOS",
+   "NombreEmpresa": "ACTIVO INMOBILIARIO PERUANO S.A.A. (ANTES FALABELLA PERU S.A.A.)",
+   "RUC": "20260172035",
+   "CIIU": "",
+   "Ejercicio": "2015",
+   "TipoInformacion": "Trimestral Individual",
+   "Trimestre": "1er Trimestre",
+   "Moneda": "Soles",
+   "MetodoFlujoEfectivo": "M todo Directo",
+   "ActivoTotal": 4411793.0,
+   "PatrimonioTotal": 4410964.0,
+   "TotalIngreso": 0.0,
+   "UtilidadNeta": 86151.0,
+   "PasivoTotal": 829.0,
+   "FechaRegistro": "30/04/2015"
+  },
+  {
+   "RPJ": "OE4006",
+   "TipoEmpresa": "EMPRESAS EMISORAS",
+   "TipoSector": "AGRICOLAS",
+   "NombreEmpresa": "AGRICOLA CERRO PRIETO S.A.",
+   "RUC": "20461642706",
+   "CIIU": "",
+   "Ejercicio": "2015",
+   "TipoInformacion": "Trimestral Individual",
+   "Trimestre": "1er Trimestre",
+   "Moneda": "D lares",
+   "MetodoFlujoEfectivo": "M todo Directo",
+   "ActivoTotal": 151582.0,
+   "PatrimonioTotal": 102368.0,
+   "TotalIngreso": 559.0,
+   "UtilidadNeta": -1076.0,
+   "PasivoTotal": 49214.0,
+   "FechaRegistro": "05/05/2015"
+  }
+ ]
+}

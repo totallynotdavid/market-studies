@@ -14,6 +14,7 @@ import pandas as pd
 from bvl import (
     brokers,
     disclosure,
+    earnings,
     events,
     figures,
     issuers,
@@ -488,6 +489,234 @@ def run_brokers(db: Path, out: Path) -> dict[str, object]:
     }
     _write_numbers(out, numbers)
     return numbers
+
+
+STATEMENTS_SOURCE = "Source: SMV open data API, quarterly statements."
+EVENTS_SOURCE = "Source: SMV open data API, quarterly statements and BVL quotes."
+# How far before and after the filing the reaction profile runs, in market days.
+EARNINGS_SPAN = (-5, 60)
+EARNINGS_WINDOWS = {"pre": (-5, -1), "reaction": (0, 1), "drift": (2, 60)}
+EARNINGS_PERIODS = {
+    "2002-09": (2002, 2009),
+    "2010-14": (2010, 2014),
+    "2015-19": (2015, 2019),
+    "2020-26": (2020, 2026),
+}
+# Days from the due day shown in the filing-day histogram.
+DUE_OFFSETS = range(-20, 11)
+
+
+def run_earnings(db: Path, out: Path) -> dict[str, object]:
+    rng = np.random.default_rng(SEED)
+    quotes = liquidity.local_quotes(db)
+    days = panel.market_days(quotes)
+    statements = earnings.load(db)
+    links = _statement_links(quotes, statements)
+    statements["traded_share"] = statements["ruc"].isin(links["ruc"])
+    # A quarter counts once every limit has passed in the panel.
+    complete = statements["quarter_end"] + pd.offsets.MonthEnd(3) < days[-1]
+    timed = earnings.timing(statements[complete])
+    individual = timed[
+        ~timed["consolidated"] & (timed["company_type"] == earnings.ISSUER)
+    ]
+
+    by_quarter = _timing_by_quarter(individual)
+    ruled = individual[individual["filed_on"] >= earnings.RULE_FROM]
+    offsets = (ruled["filed_on"] - ruled["due_on"]).dt.days
+    shares = offsets.value_counts(normalize=True).reindex(DUE_OFFSETS, fill_value=0.0)
+    by_traded = {
+        "traded share": _timing_summary(ruled[ruled["traded_share"]]),
+        "no traded share": _timing_summary(ruled[~ruled["traded_share"]]),
+    }
+
+    grid = disclosure.build_grid(quotes, panel.market_log_level(quotes))
+    sample = _earnings_sample(grid, statements, links)
+    reaction = _earnings_reaction(grid, sample, rng)
+    _earnings_figures(grid, by_quarter, shares, sample, out)
+
+    numbers: dict[str, object] = {
+        "statements": len(statements),
+        "filers": int(statements["rpj"].nunique()),
+        "first_quarter": str(statements["quarter_end"].min().to_period("Q")),
+        "last_quarter": str(timed["quarter_end"].max().to_period("Q")),
+        "issuer_statements": len(individual),
+        "issuers": int(individual["rpj"].nunique()),
+        "rule_from": earnings.RULE_FROM.date().isoformat(),
+        "since_rule": _timing_summary(ruled),
+        "since_rule_by_traded": by_traded,
+        "by_quarter": _records(
+            by_quarter.round(3)
+            .set_axis(pd.DatetimeIndex(by_quarter.index).to_period("Q").astype(str))
+            .rename_axis("quarter")
+        ),
+        "filed_vs_due_day": {str(k): round(float(v), 4) for k, v in shares.items()},
+        "events": len(sample),
+        "event_issuers": int(sample["ruc"].nunique()),
+        "event_tickers": int(sample["ticker"].nunique()),
+        "first_event": sample["filed_on"].min().date().isoformat(),
+        "last_event": sample["filed_on"].max().date().isoformat(),
+        "windows": {k: list(v) for k, v in EARNINGS_WINDOWS.items()},
+        "reaction": reaction,
+    }
+    _write_numbers(out, numbers)
+    return numbers
+
+
+def _statement_links(quotes: pd.DataFrame, statements: pd.DataFrame) -> pd.DataFrame:
+    names = quotes.sort_values("date", ascending=False).drop_duplicates(
+        ["ticker", "name"]
+    )[["ticker", "name"]]
+    filers = statements.sort_values("filed_on", ascending=False).drop_duplicates("ruc")
+    return issuers.link(names, filers[["ruc", "company"]])
+
+
+def _timing_summary(rows: pd.DataFrame) -> dict[str, object]:
+    return {
+        "statements": len(rows),
+        "median_lag": float(rows["lag"].median()),
+        "on_due_day": round(float(rows["on_due_day"].mean()), 4),
+        "late": round(float(rows["late"].mean()), 4),
+        "late_over_30_days": round(
+            float((rows["filed_on"] - rows["due_on"]).dt.days.gt(30).mean()), 4
+        ),
+    }
+
+
+def _timing_by_quarter(rows: pd.DataFrame) -> pd.DataFrame:
+    """Per fiscal quarter: statements, median lag and the share on and after the due day."""
+    grouped = rows.groupby("quarter_end")
+    return pd.DataFrame(
+        {
+            "statements": grouped.size(),
+            "median_lag": grouped["lag"].median(),
+            "on_due_day": grouped["on_due_day"].mean(),
+            "late": grouped["late"].mean(),
+        }
+    )
+
+
+def _earnings_sample(
+    grid: disclosure.Grid, statements: pd.DataFrame, links: pd.DataFrame
+) -> pd.DataFrame:
+    """Individual statements of share issuers with earnings news, on their busiest
+    ticker, each with its day 0 and cumulative abnormal return in every window."""
+    individual = statements[~statements["consolidated"]].reset_index(drop=True)
+    individual["news"] = earnings.news(individual)
+    rows = individual.dropna(subset=["news"]).merge(links[["ticker", "ruc"]], on="ruc")
+    rows["day0"] = disclosure.day_zero(rows["filed_on"], grid.days)
+    rows = rows[rows["day0"] < len(grid.days)]
+    rows["event"] = rows["rpj"] + " " + rows["quarter_end"].dt.date.astype(str)
+    picked = disclosure.most_traded(grid, rows[["event", "ticker", "day0"]])
+    sample = (
+        rows.drop(columns=["ticker"])
+        .drop_duplicates("event")
+        .merge(picked[["event", "ticker", "column"]], on="event")
+    )
+    for name, span in EARNINGS_WINDOWS.items():
+        sample[f"car_{name}"] = earnings.car(
+            grid, sample["column"].to_numpy(), sample["day0"].to_numpy(), span
+        )
+    sample = sample.dropna(subset=["car_reaction"]).reset_index(drop=True)
+    sample["tercile"] = pd.qcut(sample["news"], 3, labels=["bad", "middle", "good"])
+    return sample
+
+
+def _earnings_reaction(
+    grid: disclosure.Grid, sample: pd.DataFrame, rng: np.random.Generator
+) -> dict[str, object]:
+    """Mean CAR of good-news less bad-news events in each window, by tercile and
+    by sign, with a bootstrap that resamples day 0."""
+
+    def gap(rows: pd.DataFrame, good: pd.Series, bad: pd.Series) -> dict[str, Any]:
+        result: dict[str, Any] = {"good": int(good.sum()), "bad": int(bad.sum())}
+        if min(good.sum(), bad.sum()) < MIN_EVENTS:
+            return result
+        for name in EARNINGS_WINDOWS:
+            column = rows[f"car_{name}"]
+            point, low, high = disclosure.excess(
+                column[good], column[bad], rows["day0"], "mean", rng
+            )
+            result[name] = {
+                "good": round(float(column[good].mean()), 5),
+                "bad": round(float(column[bad].mean()), 5),
+                "difference": round(point, 5),
+                "low": round(low, 5),
+                "high": round(high, 5),
+            }
+        return result
+
+    def split(rows: pd.DataFrame) -> dict[str, Any]:
+        return {
+            "terciles": gap(rows, rows["tercile"] == "good", rows["tercile"] == "bad"),
+            "sign": gap(rows, rows["news"] > 0, rows["news"] < 0),
+        }
+
+    year = sample["filed_on"].dt.year
+    return {
+        "overall": split(sample),
+        "by_period": {
+            name: split(sample[year.between(a, b)])
+            for name, (a, b) in EARNINGS_PERIODS.items()
+        },
+    }
+
+
+def _earnings_figures(
+    grid: disclosure.Grid,
+    by_quarter: pd.DataFrame,
+    shares: pd.Series,
+    sample: pd.DataFrame,
+    out: Path,
+) -> None:
+    note = STATEMENTS_SOURCE + " Individual statements of issuers."
+    rule = {earnings.RULE_FROM.date().isoformat(): "SMV 013-2014 in force"}
+    figures.lines(
+        {"median days after quarter end": by_quarter["median_lag"]},
+        out / "lag.png",
+        title="How long issuers take to file a quarterly statement",
+        ylabel="days",
+        note=note + " One point per fiscal quarter, by quarter end.",
+        marks=rule,
+    )
+    figures.lines(
+        {
+            "filed on the due day": by_quarter["on_due_day"] * 100,
+            "filed after it": by_quarter["late"] * 100,
+        },
+        out / "due-day.png",
+        title="Share of statements filed on the due day and after it",
+        ylabel="% of statements",
+        note=note + " Due day: the SMV limit moved past closed days.",
+        marks=rule,
+    )
+    figures.bars(
+        shares * 100,
+        out / "filing-day.png",
+        title="Filing day against the due day, since July 2014",
+        ylabel="% of statements",
+        note=note + " 0 is the due day.",
+    )
+    returns, _, _ = disclosure.profile(
+        grid, sample["column"].to_numpy(), sample["day0"].to_numpy(), EARNINGS_SPAN
+    )
+    offsets = pd.Index(range(EARNINGS_SPAN[0], EARNINGS_SPAN[1] + 1), name="day")
+    figures.lines(
+        {
+            f"{name} news": pd.Series(
+                np.nancumsum(
+                    np.nanmean(returns[(sample["tercile"] == name).to_numpy()], axis=0)
+                )
+                * 100,
+                offsets,
+            )
+            for name in ("good", "middle", "bad")
+        },
+        out / "drift.png",
+        title="Mean cumulative abnormal return around a quarterly filing",
+        ylabel="cumulative %, from the close of day -6",
+        note=EVENTS_SOURCE + " Terciles of the change in net income from a year"
+        " before, over assets.",
+    )
 
 
 def _msci_shift(monthly: pd.Series) -> dict[str, float]:
