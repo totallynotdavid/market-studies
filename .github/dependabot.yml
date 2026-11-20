@@ -12,6 +12,10 @@ updates:
         update-types:
           - minor
           - patch
+    ignore:
+      - dependency-name: fast-uri
+      - dependency-name: typescript
+      - dependency-name: uv
 
   - package-ecosystem: github-actions
     directories:
@@ -26,3 +30,7 @@ updates:
           - major
           - minor
           - patch
+    ignore:
+      - dependency-name: fast-uri
+      - dependency-name: typescript
+      - dependency-name: uv
