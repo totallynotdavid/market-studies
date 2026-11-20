@@ -4,18 +4,14 @@ uv_venv_auto = true
 [tools]
 python = "3.15.2"
 uv = "0.13.7"
-bun = "1.4.4"
 
 [env]
 SEC_USER_AGENT = "equity-analysis research bot"
 
 [tasks.install]
-description = "Install all workspace packages and dependencies from the lockfiles"
+description = "Install all workspace packages and dependencies from the lockfile"
 alias = "i"
-run = [
-    "uv sync --all-packages --locked",
-    "cd web && bun install --frozen-lockfile",
-]
+run = "uv sync --all-packages --locked"
 
 [tasks.fix]
 description = "Lint & format all .py files"
@@ -30,8 +26,9 @@ description = "Type check the entire codebase with mypy"
 alias = "m"
 run = "uv run mypy ."
 
-[tasks."check:python"]
-description = "Lint, format check, type check and test the Python code"
+[tasks.check]
+description = "Every check CI runs, except the end-to-end backtests of check:e2e"
+alias = "c"
 run = [
     "uv run ruff check . --no-fix",
     "uv run ruff format --check .",
@@ -43,40 +40,10 @@ run = [
 description = "Run the end-to-end backtests that check leaves out"
 run = "uv run pytest -q -m e2e"
 
-[tasks."check:web"]
-description = "Format check, test and build the web page"
-dir = "web"
-run = [
-    "bunx prettier --check src tests astro.config.mjs vitest.config.ts",
-    "bun run typecheck",
-    "bun run test",
-    "bun run build",
-]
-
-[tasks.check]
-description = "Every check CI runs, except the end-to-end backtests of check:e2e"
-alias = "c"
-depends = ["check:python", "check:web"]
-
-[tasks.site]
-description = "Export the latest scores and build the static page from them"
-run = [
-    "uv run eq export",
-    "cd web && bun run build",
-]
-
-[tasks."deploy:data"]
-description = "Score the demo universe on real data into deploy/scores.json. Needs TIINGO_API_KEY"
-run = "scripts/deploy-data.sh"
+[tasks."ledger:publish"]
+description = "Score the demo universe on real data and append it to ledger/. Needs TIINGO_API_KEY"
+run = "scripts/publish-ledger.sh"
 
 [tasks.cli]
 description = "Run the eq command-line interface"
 run = "uv run eq"
-
-[tasks.api]
-description = "Start the FastAPI development server"
-run = "uv run uvicorn index_api.main:app --reload"
-
-[tasks.web]
-description = "Start the Bun/Astro development server for the web frontend"
-run = "bun --cwd ./web dev"

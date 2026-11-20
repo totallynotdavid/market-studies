@@ -190,9 +190,8 @@ of the same universe and period (`development` or `holdout`): the run's
 settings, the three checks and the verdict, the out-of-sample predictions, and a
 row of every metric above for each model, year, score and feature. `eq run` and
 `eq export` publish it as `evidence.json`, preferring the holdout run
-([Outputs](OUTPUTS.md#evidencejson)). The web page `/evidence` prints that file
-and computes nothing, so a number on it is a number the backtest stored. The
-ledger below is kept apart: it outlives the runs it counts.
+([Outputs](OUTPUTS.md#evidencejson)). The file computes nothing, so a number in
+it is a number the backtest stored. The ledger below is kept apart: it outlives the runs it counts.
 
 ## Multiple testing
 

@@ -1,37 +1,17 @@
-# market-studies
+# us-stock-score
 
-Two market projects in one workspace:
-
-- **bvl** studies the Lima Stock Exchange on the SMV's open data: daily quotes
-  since 1996 and every material event filed since 2010. Each study is a folder
-  with its report, figures and numbers:
-  - [BVL liquidity since 1996](studies/bvl-liquidity/README.md), and the MSCI
-    review of 2015-16.
-  - [Do BVL prices move before a material event is filed?](studies/bvl-disclosure/README.md)
-  - [How the BVL and the sol take Peru's political shocks](studies/bvl-politics/README.md),
-    with the central bank's exchange rate and copper series.
-  - [How concentrated is BVL brokerage?](studies/bvl-brokers/README.md),
-    from the amounts each brokerage firm bought and sold each day.
-  - [When BVL issuers file their quarterly results, and how prices take them](studies/bvl-earnings/README.md),
-    from the SMV's quarterly summary accounts since 2002.
-  - [Who holds BVL issuers, and does a concentrated register trade less?](studies/bvl-ownership/README.md),
-    from the SMV's register of large holders.
-
-  The [live site](https://market-studies.vercel.app/peru) shows them too.
-  [docs/BVL.md](docs/BVL.md) describes the data and the `bvl` command.
-
-- **index** scores US stocks. The rest of this page is about index.
-
-## index
-
-index ranks US stocks with a daily score from 1 to 10. The score is the decile
-of a LightGBM model's estimated probability that a stock beats SPY over the next
-63 trading days. Score 10 is the top tenth of the stocks you give it.
+us-stock-score ranks US stocks with a daily score from 1 to 10. The score is
+the decile of a LightGBM model's estimated probability that a stock beats SPY
+over the next 63 trading days. Score 10 is the top tenth of the stocks you give
+it.
 
 You give it a universe: tickers with the dates they were members. It fetches
 prices and SEC filings, fits the model and writes the scores to SQLite and to a
-JSON file. A read-only API and a static web page show them: a screener, a page
-for each ticker and the evidence of the backtest.
+JSON file. Each week the demo universe's scores go into an append-only ledger
+that anyone can audit.
+
+The Lima Stock Exchange studies that shared this repository now live in
+[risinghq/research](https://github.com/risinghq/research).
 
 **Experimental, not validated.** The model is fitted once on a chronological,
 purged split of 20 technical and 14 fundamental features. `eq backtest` measures
@@ -56,8 +36,8 @@ brew install libomp             # macOS (not verified)
 Install the workspace once:
 
 ```bash
-git clone https://github.com/totallynotdavid/market-studies
-cd market-studies
+git clone https://github.com/totallynotdavid/us-stock-score
+cd us-stock-score
 uv sync --all-packages
 ```
 
@@ -119,8 +99,7 @@ TIINGO_API_KEY=... \
 - A page for each ticker with its fundamentals, the percentile of each in the
   universe and its sector, and every figure linked to the SEC filing it was
   reported in. [Ticker reports](docs/OUTPUTS.md#ticker-reports)
-- `scores.json` export, a read-only FastAPI service and an Astro page.
-  [Outputs](docs/OUTPUTS.md)
+- A `scores.json` file for each run. [Outputs](docs/OUTPUTS.md)
 - An append-only forecast ledger with an OpenTimestamps proof and an independent
   `eq audit` grader. [Ledger](docs/LEDGER.md)
 - Deterministic synthetic prices and filings for offline runs and tests.
@@ -136,11 +115,10 @@ uv run eq audit ledger
 
 The command prints the chain, byte, timestamp and matured-track-record checks.
 To grade outcomes with your own realised prices, add `--prices prices.csv`.
-The repository starts with no forecasts committed. The first real
-`deploy:data` run creates the first ledger entry when the operator has working
-Tiingo and SEC sources. The following tamper demo is a synthetic ledger made
-by the test helpers; it is not a production forecast. This is the real audit
-output before tampering:
+`mise run ledger:publish` adds one entry a week. The first forecasts mature in
+early 2027. The following tamper demo is a synthetic ledger made by the test
+helpers; it is not a production forecast. This is the real audit output before
+tampering:
 
 ```text
 PASS chain is unbroken: 1 entries
@@ -165,8 +143,5 @@ push the first actual maturity later.
 ## Documentation
 
 - [The manual](docs/README.md) lists every document: commands, outputs, model,
-  fundamentals, backtest, architecture and deploy.
-- [Live page](https://market-studies.vercel.app) shows the demo universe scored
-  on Tiingo prices and EDGAR filings, and `/api/scores` returns them as JSON.
-  [Deploy](docs/DEPLOY.md) explains how.
+  fundamentals, backtest, architecture and ledger.
 - [Contributing](.github/CONTRIBUTING.md) covers setup, checks and tests.

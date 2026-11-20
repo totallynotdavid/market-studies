@@ -1,11 +1,7 @@
 # Forecast ledger
 
 The ledger publishes the exact bytes of each forecast before its 63-trading-day
-outcome is known. A publication is one directory under `ledger/`:
-
-The repository starts with an empty `ledger/` directory. The first real
-`deploy:data` run creates the first entry; no seed forecast is committed.
-Each publication is one directory under `ledger/`:
+outcome is known. Each publication is one directory under `ledger/`:
 
 ```text
 ledger/000001-<as_of>/
@@ -21,24 +17,25 @@ cache. If no cache was supplied, it records a `source_response_note` explaining
 why the digest map is empty. `manifest.ots` is an OpenTimestamps detached proof
 of the manifest bytes. The sequence and previous digest make the directories an
 append-only chain. The `code_worktree_dirty` flag describes source changes. It
-ignores files under `ledger/` and `deploy/`.
+ignores files under `ledger/`.
 
 ## Publish
 
-`mise run deploy:data` audits the existing ledger, scores the real demo
-universe, and appends one entry:
+`mise run ledger:publish` upgrades the pending proofs, audits the existing
+ledger, scores the real demo universe, and appends one entry:
 
 ```bash
-mise run deploy:data
+mise run ledger:publish
 ```
 
 The task needs the real-data credentials described in [CLI](CLI.md#real-data).
-It does not schedule a recurring run. To use a test calendar, pass its URL to
-the publish command:
+The repository does not schedule it. A weekly job outside the repository runs
+it every Saturday and commits the new entry. To use a test calendar, pass its
+URL to the publish command:
 
 ```bash
 uv run eq ledger publish \
-  --scores deploy/scores.json \
+  --scores outputs/scores.json \
   --ledger ledger \
   --cache data/cache \
   --calendar https://calendar.example/
@@ -101,15 +98,7 @@ the expected and actual score-file hashes. Removing or swapping an entry names
 the missing or reordered sequence. A timestamp after `horizon_start` names the
 two dates that disagree.
 
-The repository does not claim a seed entry came from `deploy:data`. The first
-real run is made by the operator when the Tiingo and SEC sources are available.
-Until then, an empty ledger audits as a passing chain with `no forecasts
-committed`; the evidence page shows the same empty status. A later real-data
-publish will include the source-cache digests and generate
-`deploy/ledger-status.json` from the ledger. It does not contain hand-entered
-counts.
-
-An empty ledger produces these audit lines:
+An empty ledger audits as a passing chain with `no forecasts committed`:
 
 ```text
 PASS chain is unbroken: no forecasts committed

@@ -1,9 +1,9 @@
-"""The proof page's numbers: what a backtest stores and what the page reads back.
+"""The evidence file's numbers: what a backtest stores and what is read back.
 
 `backtest_record` flattens a `Backtest` into the figures `Store.save_backtest`
 keeps. `build_evidence` reads them again, with the stored out-of-sample rows and
 the trial ledger, into the `EvidenceReport` that `eq export` publishes. Nothing
-on the page is typed in: a figure is either stored or computed here from stored
+in the file is typed in: a figure is either stored or computed here from stored
 rows.
 """
 
@@ -207,7 +207,7 @@ class _Figures:
 
 
 def build_evidence(store: Store, universe: str) -> EvidenceReport | None:
-    """The proof page of `universe`: the held-out backtest if there is one,
+    """The evidence of `universe`: the held-out backtest if there is one,
     else the development one, and None before any backtest."""
     stored = store.latest_backtest(universe)
     if stored is None:

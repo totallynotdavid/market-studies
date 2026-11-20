@@ -1,4 +1,4 @@
-"""The proof page's data, from a backtest stored and read back.
+"""The evidence file's data, from a backtest stored and read back.
 
 The prices carry a planted signal, so the stored figures have known signs.
 """

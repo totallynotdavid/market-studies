@@ -5,8 +5,6 @@ has fallen, its beta, and what share of its movement the Fama-French factors
 explain, each with a 95% interval. The code is in
 [`risk.py`](../packages/core/index_core/risk.py). `eq run` and `eq metrics`
 compute it with the rest of the [ticker report](FUNDAMENTALS.md#ticker-reports).
-It comes from prices, so the web pages do not show it and the deployed reports
-do not hold it ([Deploy](DEPLOY.md#what-runs-where)).
 
 ## The window
 

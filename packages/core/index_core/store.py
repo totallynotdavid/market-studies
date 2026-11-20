@@ -812,8 +812,8 @@ class Store:
     def save_report(self, report: ScoresReport) -> None:
         """Store a run, replacing any earlier run of the same universe and date.
 
-        The run keeps its own sources, so a database that holds only a report,
-        as `eq import` makes, still says where its scores came from.
+        The run keeps its own sources, so a database that holds only a report
+        still says where its scores came from.
         """
         as_of = report.as_of.isoformat()
         key = (as_of, report.universe)

@@ -10,7 +10,6 @@ through uv from the repository root, for example `uv run eq run ...`.
 | `eq filings`  | Fetches only the filings and company names of a universe     | [below](#eq-filings)            |
 | `eq metrics`  | Recomputes the ticker reports from the stored filings        | [below](#eq-metrics)            |
 | `eq export`   | Writes the latest stored scores and ticker reports as JSON   | [below](#eq-export)             |
-| `eq import`   | Stores a scores file and ticker reports, for the API         | [below](#eq-import)             |
 | `eq coverage` | Lists names with few fundamentals in the stored filings      | [Fundamentals](FUNDAMENTALS.md) |
 | `eq factors`  | Stores the Fama-French five-factor daily returns             | [below](#eq-factors)            |
 | `eq backtest` | Walks forward over the stored data and prints the evidence   | [Backtest](BACKTEST.md)         |
@@ -193,8 +192,7 @@ fail without it.
 | `TIINGO_API_KEY` | [Tiingo](https://www.tiingo.com/) API token for prices | none                               |
 | `SEC_USER_AGENT` | The `User-Agent` header sent to the SEC for filings    | set by [`mise.toml`](../mise.toml) |
 
-`INDEX_DB` selects the database ([below](#the-database)). `SCORES_JSON` is read
-by the web page ([Outputs](OUTPUTS.md#web-page)).
+`INDEX_DB` selects the database ([below](#the-database)).
 
 The SEC refuses a request without a declared `User-Agent`, and `www.sec.gov`
 also refuses a browser string. [`mise.toml`](../mise.toml) sets
@@ -355,20 +353,3 @@ choice to one universe. Without it, the latest run of any universe is written.
 reports to `--tickers` (default `tickers` beside `--out`), replacing the `.json`
 files there, and the stored backtest of the universe to `--evidence` (default
 `evidence.json` beside `--out`), as step 6 of [`eq run`](#eq-run) does.
-
-## eq import
-
-```bash
-uv run eq import --scores deploy/scores.json --tickers deploy/tickers \
-  --db data/deploy.sqlite
-```
-
-Reads a file in the shape of `eq run`'s `--out` ([Outputs](OUTPUTS.md)) and
-stores it as the run of its universe and as-of date. With `--tickers` it also
-stores every ticker report file of that directory, replacing a stored report of
-the same universe and ticker. The database then holds the scores and their two
-sources and the reports, and no prices or filings, so `index-api` serves it and
-`eq export` writes the files back unchanged. A file that is not a scores report
-fails with the fields that are wrong. A ticker report of another universe or
-another as-of date than the scores file fails the import and stores nothing.
-`--db` works as for `eq run`.

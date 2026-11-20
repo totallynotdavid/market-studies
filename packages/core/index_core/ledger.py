@@ -74,7 +74,6 @@ def _worktree_dirty() -> bool:
                 "--",
                 ".",
                 ":(exclude)ledger/**",
-                ":(exclude)deploy/**",
             ],
             check=True,
             capture_output=True,
