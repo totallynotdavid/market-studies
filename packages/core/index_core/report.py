@@ -395,7 +395,7 @@ class Trial(BaseModel):
 
 
 class EvidenceReport(BaseModel):
-    """The published proof page: the out-of-sample result of a stored backtest
+    """The published evidence: the out-of-sample result of a stored backtest
     and the ledger of every specification tried."""
 
     status: Literal["experimental, not validated"] = "experimental, not validated"

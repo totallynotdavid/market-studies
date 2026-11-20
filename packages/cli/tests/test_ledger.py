@@ -160,7 +160,7 @@ def _publish(scores: Path, ledger: Path, calendar: _Calendar) -> None:
     )
 
 
-def _deploy_test_ends() -> tuple[date, date]:
+def _publish_test_ends() -> tuple[date, date]:
     first = datetime.now(UTC).date()
     while first.weekday() >= 5:
         first -= timedelta(days=1)
@@ -326,15 +326,13 @@ def test_publish_accepts_the_day_before_the_horizon(
     assert (ledger / "000001-2025-01-02").is_dir()
 
 
-def test_code_worktree_dirty_ignores_ledger_and_deploy_outputs(
+def test_code_worktree_dirty_ignores_ledger_outputs(
     tmp_path: Path, calendar: _Calendar, monkeypatch: pytest.MonkeyPatch
 ) -> None:
     repo = tmp_path / "repo"
     repo.mkdir()
     (repo / "ledger").mkdir()
-    (repo / "deploy").mkdir()
     (repo / "ledger" / ".gitkeep").write_text("clean\n")
-    (repo / "deploy" / "status.json").write_text("clean\n")
     (repo / "source.py").write_text("clean\n")
     subprocess.run(["git", "init", "--quiet"], cwd=repo, check=True)
     subprocess.run(["git", "config", "user.name", "Test"], cwd=repo, check=True)
@@ -348,7 +346,6 @@ def test_code_worktree_dirty_ignores_ledger_and_deploy_outputs(
     monkeypatch.chdir(repo)
 
     (repo / "ledger" / ".gitkeep").write_text("changed\n")
-    (repo / "deploy" / "status.json").write_text("changed\n")
     scores = tmp_path / "scores.json"
     _scores(scores, "2025-01-02")
     ledger = repo / "ledger"
@@ -472,7 +469,7 @@ def test_missing_ledger_fails_closed(
     assert "FAIL missing ledger" in capsys.readouterr().out
 
 
-def test_deploy_data_stops_before_writing_on_a_broken_chain(tmp_path: Path) -> None:
+def test_publish_ledger_stops_before_writing_on_a_broken_chain(tmp_path: Path) -> None:
     repo = Path(__file__).parents[3]
     calendar = _Calendar()
     ledger = tmp_path / "ledger"
@@ -494,15 +491,14 @@ def test_deploy_data_stops_before_writing_on_a_broken_chain(tmp_path: Path) -> N
         raise
     environment = {
         **os.environ,
-        "DEPLOY_LEDGER_DIR": str(ledger),
-        "DEPLOY_DIR": str(tmp_path / "deploy"),
-        "DEPLOY_DB": str(tmp_path / "db.sqlite"),
-        "DEPLOY_CACHE": str(tmp_path / "cache"),
+        "LEDGER_DIR": str(ledger),
+        "LEDGER_DB": str(tmp_path / "db.sqlite"),
+        "LEDGER_CACHE": str(tmp_path / "cache"),
         "OTS_CALENDAR": calendar.url,
     }
     try:
         result = subprocess.run(
-            ["scripts/deploy-data.sh", "--end", "2025-01-03"],
+            ["scripts/publish-ledger.sh", "--end", "2025-01-03"],
             cwd=repo,
             env=environment,
             capture_output=True,
@@ -512,31 +508,34 @@ def test_deploy_data_stops_before_writing_on_a_broken_chain(tmp_path: Path) -> N
         assert result.returncode != 0
         assert "FAIL chain" in output
         assert "expected" in output and "got" in output
-        assert not (tmp_path / "deploy" / "scores.json").exists()
+        assert not (tmp_path / "db.sqlite").exists()
+        assert sorted(entry.name for entry in ledger.iterdir()) == [
+            "000001-2025-01-02",
+            "000002-2025-01-03",
+        ]
     finally:
         calendar.close()
 
 
-def test_deploy_data_appends_a_second_pending_entry(tmp_path: Path) -> None:
+def test_publish_ledger_appends_a_second_pending_entry(tmp_path: Path) -> None:
     repo = Path(__file__).parents[3]
     calendar = _Calendar()
     universe = tmp_path / "synthetic.txt"
     universe.write_text("AAA,2000-01-03\n")
     environment = {
         **os.environ,
-        "DEPLOY_LEDGER_DIR": str(tmp_path / "ledger"),
-        "DEPLOY_DIR": str(tmp_path / "deploy"),
-        "DEPLOY_DB": str(tmp_path / "db.sqlite"),
-        "DEPLOY_CACHE": str(tmp_path / "cache"),
-        "DEPLOY_UNIVERSE": str(universe),
-        "DEPLOY_FACTORS_SOURCE": "synthetic",
+        "LEDGER_DIR": str(tmp_path / "ledger"),
+        "LEDGER_DB": str(tmp_path / "db.sqlite"),
+        "LEDGER_CACHE": str(tmp_path / "cache"),
+        "LEDGER_UNIVERSE": str(universe),
+        "LEDGER_FACTORS_SOURCE": "synthetic",
         "OTS_CALENDAR": calendar.url,
     }
     try:
-        for end in _deploy_test_ends():
+        for end in _publish_test_ends():
             result = subprocess.run(
                 [
-                    "scripts/deploy-data.sh",
+                    "scripts/publish-ledger.sh",
                     "--prices",
                     "synthetic",
                     "--filings",
@@ -554,7 +553,5 @@ def test_deploy_data_appends_a_second_pending_entry(tmp_path: Path) -> None:
             assert result.returncode == 0, result.stdout + result.stderr
         entries = sorted((tmp_path / "ledger").glob("[0-9]" * 6 + "-*"))
         assert [entry.name[:6] for entry in entries] == ["000001", "000002"]
-        status = json.loads((tmp_path / "deploy" / "ledger-status.json").read_text())
-        assert status["forecasts_committed"] == 2
     finally:
         calendar.close()

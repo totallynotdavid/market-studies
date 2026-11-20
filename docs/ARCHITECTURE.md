@@ -1,39 +1,24 @@
 # Architecture
 
-market-studies is a
-[uv workspace](https://docs.astral.sh/uv/concepts/projects/workspaces/) of four
-Python packages and an Astro site. Two projects share it: index, a US stock
-scorer with its API, page and ledger, and bvl, studies of the Lima Stock
-Exchange on SMV open data. They share tooling and import nothing from each
-other.
+us-stock-score is a
+[uv workspace](https://docs.astral.sh/uv/concepts/projects/workspaces/) of two
+Python packages.
 
 ```text
 ├── packages/
-│   ├── core/   index-core: sources, store, features, model, backtest
-│   ├── cli/    index-cli: the `eq` command
-│   ├── api/    index-api: read-only FastAPI over the SQLite file
-│   └── bvl/    bvl: the SMV client, the BVL panel and the `bvl` command
-├── studies/    one folder per bvl study: README, figures and numbers.json
-├── api/        Vercel entrypoint that serves index-api under /api
+│   ├── core/   index-core: sources, store, features, model, backtest, ledger
+│   └── cli/    index-cli: the `eq` command
 ├── universes/  universe files (ticker, start, end) and build_sp500.py
-├── web/        Astro site: the screener, the ticker pages, /evidence, /method
 ├── docs/       the manual
-├── deploy/     the real scores, ticker reports and evidence the deployed site shows
 ├── ledger/     immutable forecast entries and OpenTimestamps proofs
-├── scripts/    deploy-data.sh refreshes deploy/, deploy-db.sh loads it
+├── scripts/    publish-ledger.sh scores the demo universe and appends it to ledger/
 ├── .github/    contributing guide and the CI workflow
 ├── pyproject.toml   workspace members, ruff, mypy and pytest settings
-├── vercel.json      how Vercel builds the page and routes /api
 └── mise.toml        tool versions and tasks
 ```
 
-[bvl](BVL.md) describes the bvl package. The rest of this document is index.
-
 `index-core` holds all the logic as functions over data and has no interface.
-`index-cli` and `index-api` call into it and add arguments, formatting and HTTP.
-`web` does not import Python. It reads the JSON files that `eq run` writes and
-renders them at build time. The screener filters and sorts in the browser over
-the rows the build embedded.
+`index-cli` calls into it and adds arguments and formatting.
 
 ## A run
 
@@ -91,8 +76,8 @@ file. It does not import the model or the producer.
   the following 64 days, and the training split drops rows whose label window
   overlaps the holdout or the test quarter.
 - **The report shapes.** [`report.py`](../packages/core/index_core/report.py)
-  defines `ScoresReport` and `TickerReport`. The store, the JSON files and the
-  API all use them.
+  defines `ScoresReport` and `TickerReport`. The store and the JSON files both
+  use them.
 
 ## Modules of index-core
 
@@ -127,7 +112,7 @@ file. It does not import the model or the producer.
 | `risk.py`                              | Beta, volatility, drawdown and the five-factor regression            |
 | `regression.py`                        | Least squares with Newey-West standard errors                        |
 | `report.py`                            | `ScoresReport`, `TickerReport` and `EvidenceReport`                  |
-| `evidence.py`                          | A backtest to its stored rows, and the stored rows to the proof page |
+| `evidence.py`                          | A backtest to its stored rows, and the stored rows to the evidence   |
 | `ledger.py`                            | Immutable publication entries and OpenTimestamps proofs              |
 | `audit.py`                             | Independent chain, byte, stamp and track-record grader               |
 | `backtest_text.py`, `coverage_text.py` | The text that `eq backtest` and `eq coverage` print                  |

@@ -5,7 +5,6 @@ import socket
 from datetime import date, timedelta
 from pathlib import Path
 from types import SimpleNamespace
-from typing import TYPE_CHECKING, Any
 
 import pandas as pd
 import pytest
@@ -18,10 +17,6 @@ from index_core.sources.edgar import CONCEPTS
 from index_core.sources.synthetic import SyntheticSource
 from index_core.store import Store
 from membership import always
-
-
-if TYPE_CHECKING:
-    from collections.abc import Callable
 
 
 def _without_openmp(monkeypatch: pytest.MonkeyPatch) -> None:
@@ -83,46 +78,6 @@ def test_export_rewrites_the_stored_scores_unchanged(ran: Path) -> None:
     main(["export", "--db", str(ran.parent / "db.sqlite"), "--out", str(exported)])
 
     assert exported.read_text() == ran.read_text()
-
-
-def _foreign_sources(scores: dict[str, Any]) -> None:
-    scores["price_source"], scores["facts_source"] = "tiingo", "edgar"
-
-
-def _reordered_with_left_out(scores: dict[str, Any]) -> None:
-    scores["rows"].reverse()
-    scores["left_out"] = [
-        {"ticker": "ZZZ", "reason": "no prices"},
-        {"ticker": "AAA", "reason": "no filings"},
-    ]
-
-
-@pytest.mark.parametrize(
-    "edit", [_foreign_sources, _reordered_with_left_out], ids=["sources", "order"]
-)
-def test_import_stores_a_scores_file_so_export_returns_it_unchanged(
-    ran: Path, edit: Callable[[dict[str, Any]], None]
-) -> None:
-    tmp_path = ran.parent
-    scores = json.loads(ran.read_text())
-    edit(scores)
-    published = tmp_path / "published.json"
-    published.write_text(json.dumps(scores, indent=2) + "\n")
-    database = str(tmp_path / "published.sqlite")
-
-    main(["import", "--scores", str(published), "--db", database])
-    exported = tmp_path / "exported.json"
-    main(["export", "--db", database, "--out", str(exported)])
-
-    assert exported.read_text() == published.read_text()
-
-
-def test_import_rejects_a_file_that_is_not_a_scores_report(tmp_path: Path) -> None:
-    broken = tmp_path / "broken.json"
-    broken.write_text('{"as_of": "2026-09-30"}')
-
-    with pytest.raises(SystemExit, match=r"^eq: .*validation error"):
-        main(["import", "--scores", str(broken), "--db", str(tmp_path / "db.sqlite")])
 
 
 @pytest.mark.parametrize("command", ["export", "coverage", "backtest"])
@@ -316,53 +271,19 @@ def test_a_run_replaces_the_reports_of_an_earlier_run(tmp_path: Path) -> None:
     assert not stale.exists()
 
 
-def test_export_and_import_carry_the_ticker_reports(ran: Path) -> None:
+def test_export_carries_the_ticker_reports(ran: Path) -> None:
     tmp_path = ran.parent
-    database = str(tmp_path / "published.sqlite")
+    again = tmp_path / "again" / "s.json"
 
-    main(
-        [
-            *["import", "--scores", str(tmp_path / "scores.json")],
-            *["--tickers", str(tmp_path / "tickers"), "--db", database],
-        ]
-    )
-    main(
-        [
-            *["export", "--db", database, "--out", str(tmp_path / "again" / "s.json")],
-        ]
-    )
+    main(["export", "--db", str(tmp_path / "db.sqlite"), "--out", str(again)])
 
-    again = sorted((tmp_path / "again" / "tickers").glob("*.json"))
-    assert [p.name for p in again] == [
+    exported = sorted((again.parent / "tickers").glob("*.json"))
+    assert [p.name for p in exported] == [
         p.name for p in sorted((tmp_path / "tickers").glob("*.json"))
     ]
     assert all(
-        a.read_text() == (tmp_path / "tickers" / a.name).read_text() for a in again
+        a.read_text() == (tmp_path / "tickers" / a.name).read_text() for a in exported
     )
-
-
-@pytest.mark.parametrize(
-    ("field", "other"), [("universe", "other"), ("as_of", "2020-01-02")]
-)
-def test_import_refuses_ticker_reports_that_differ_from_the_scores_file(
-    ran: Path, field: str, other: str
-) -> None:
-    tmp_path = ran.parent
-    stray = tmp_path / "tickers" / "AAA.json"
-    report = json.loads(next((tmp_path / "tickers").glob("*.json")).read_text())
-    report["ticker"], report[field] = "AAA", other
-    stray.write_text(json.dumps(report))
-    database = tmp_path / "published.sqlite"
-
-    with pytest.raises(SystemExit, match=r"^eq: .*AAA\.json is for "):
-        main(
-            [
-                *["import", "--scores", str(tmp_path / "scores.json")],
-                *["--tickers", str(tmp_path / "tickers"), "--db", str(database)],
-            ]
-        )
-
-    assert not database.exists()
 
 
 def test_filings_store_the_facts_and_names_without_any_prices(

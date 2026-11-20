@@ -25,7 +25,6 @@ from index_core.pipeline import (
     missing_filings,
     run,
 )
-from index_core.report import EvidenceReport, ScoresReport, TickerReport
 from index_core.sources.base import SourceError
 from index_core.sources.edgar import EdgarSource
 from index_core.sources.french import FamaFrenchSource
@@ -42,6 +41,7 @@ from index_core.universe import read_universe
 if TYPE_CHECKING:
     from collections.abc import Callable, Mapping, Sequence
 
+    from index_core.report import EvidenceReport, ScoresReport, TickerReport
     from index_core.sources.base import FactorSource, FilingsSource, PriceSource
 
 DEFAULT_OUT = Path("outputs/scores.json")
@@ -232,23 +232,9 @@ def build_parser() -> argparse.ArgumentParser:
     export_command.add_argument(
         "--evidence",
         type=Path,
-        help="file for the backtest's proof page data (default: `evidence.json` "
+        help="file for the stored backtest's evidence (default: `evidence.json` "
         "beside --out)",
     )
-
-    import_command = commands.add_parser(
-        "import",
-        help="store scores and ticker reports from JSON files, for the API to serve",
-        description="Reads the files that `eq run` or `eq export` wrote and stores "
-        "them as the latest run, so the API can serve them without prices.",
-    )
-    import_command.add_argument("--scores", type=Path, required=True)
-    import_command.add_argument(
-        "--tickers",
-        type=Path,
-        help="directory of ticker report files to store as well",
-    )
-    import_command.add_argument("--db", type=Path, help=DB_HELP)
 
     ledger_command = commands.add_parser(
         "ledger", help="publish and verify the append-only forecast ledger"
@@ -342,8 +328,6 @@ def main(argv: Sequence[str] | None = None) -> None:
             _metrics(args)
         elif args.command == "coverage":
             _coverage(args)
-        elif args.command == "import":
-            _import(args)
         elif args.command == "ledger":
             if args.ledger_command == "publish":
                 _ledger_publish(args)
@@ -515,30 +499,6 @@ def _export(args: argparse.Namespace) -> None:
     _write_evidence(evidence, args.evidence or args.out.parent / "evidence.json")
 
 
-def _import(args: argparse.Namespace) -> None:
-    report = ScoresReport.model_validate_json(args.scores.read_text())
-    reports = []
-    for path in [] if args.tickers is None else sorted(args.tickers.glob("*.json")):
-        ticker_report = TickerReport.model_validate_json(path.read_text())
-        if (ticker_report.universe, ticker_report.as_of) != (
-            report.universe,
-            report.as_of,
-        ):
-            raise StoreError(
-                f"{path} is for {ticker_report.universe} as of "
-                f"{ticker_report.as_of}, not {report.universe} as of "
-                f"{report.as_of} like {args.scores}"
-            )
-        reports.append(ticker_report)
-    with Store.open(args.db) as store:
-        store.save_report(report)
-        store.add_ticker_reports(reports)
-    sys.stdout.write(
-        f"stored {len(report.rows)} scores as of {report.as_of} and "
-        f"{len(reports)} ticker reports in {args.db}\n"
-    )
-
-
 def _ledger_publish(args: argparse.Namespace) -> None:
     entry = publish(
         args.scores,
@@ -588,7 +548,7 @@ def _write_tickers(reports: list[TickerReport], directory: Path) -> None:
 
 
 def _write_evidence(evidence: EvidenceReport | None, out: Path) -> None:
-    """Replace the proof page's file. Without a stored backtest it removes the
+    """Replace the evidence file. Without a stored backtest it removes the
     file, so an earlier universe's evidence is not published beside new scores."""
     if evidence is None:
         out.unlink(missing_ok=True)

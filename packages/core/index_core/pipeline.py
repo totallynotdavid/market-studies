@@ -632,7 +632,7 @@ def backtest(
     development months and, with `final`, on the held-out ones, so the deflated
     Sharpe ratio counts every specification ever run on that store. The result
     is stored too, in place of the earlier backtest of the same universe and
-    period, for the proof page.
+    period, for the evidence file.
     `cost` is the fraction of each trade's notional lost, one way.
     """
     if cost < 0:

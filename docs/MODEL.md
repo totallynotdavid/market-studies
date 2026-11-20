@@ -64,8 +64,8 @@ The 14 fundamental features come from SEC filings. See
   each holdout date in `holdout_auc_per_date`. Its 95% interval is a moving
   block bootstrap over dates. A block spans 13 snapshots, the 63-trading-day
   label horizon at a five-day snapshot step. AUC 0.5 is chance. The per-date
-  figure is the ranking diagnostic the screener needs; a pooled AUC also
-  compares scores from different dates.
+  figure measures the ranking within each date, which is what a score does; a
+  pooled AUC also compares scores from different dates.
 - **Settings.** 150 boosting rounds with the fixed `PARAMS` in `model.py`: small
   trees (5 leaves, depth 3), a learning rate of 0.05 and L2 of 10. The seed is
   fixed and nothing tunes them.
